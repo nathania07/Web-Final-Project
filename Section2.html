@@ -13,17 +13,19 @@
         <!-- Three Feature Cards -->
         <div class="izhen-cards">
             
-            <!-- CARD 1: i珍食 Query Link -->
+            <!-- CARD 1: i珍食 Query Link (FIXED) -->
             <div class="izhen-card">
                 <div class="card-icon">🔍</div>
                 <h3>Find i珍食 Near You</h3>
                 <p>Check real-time discounted food at convenience stores near your location</p>
+                <!-- FIXED: Correct link to FamilyMart i珍食 page -->
                 <a href="https://www.family.com.tw/mkt/izenshoku/" 
                    target="_blank" 
+                   rel="noopener noreferrer"
                    class="izhen-btn izhen-btn-primary">
                     Check i珍食 Inventory →
                 </a>
-                <p class="card-note">* Links to FamilyMart i珍食 page</p>
+                <p class="card-note">* Links to FamilyMart i珍食 page (opens in new tab)</p>
             </div>
             
             <!-- CARD 2: Countdown Timer -->
@@ -38,7 +40,7 @@
                 <p class="discount-info">🏷️ i珍食 offers 30% off near-expiry food</p>
             </div>
             
-            <!-- CARD 3: Discount Calculator -->
+            <!-- CARD 3: Discount Calculator (FIXED) -->
             <div class="izhen-card">
                 <div class="card-icon">💰</div>
                 <h3>Discount Calculator</h3>
@@ -62,7 +64,7 @@
             
         </div>
         
-        <!-- Optional: Food Waste Fact Banner -->
+        <!-- Food Waste Fact Banner -->
         <div class="waste-fact">
             <p>🌍 <strong>Did you know?</strong> One-third of all food produced globally is wasted — enough to feed every hungry person on Earth.</p>
         </div>
@@ -284,59 +286,68 @@
 </style>
 
 <!-- ========================================== -->
-<!-- JAVASCRIPT FOR SECTION 2                   -->
-<!-- (This can also go in your separate JS file) -->
+<!-- JAVASCRIPT FOR SECTION 2 (FIXED)           -->
 <!-- ========================================== -->
 <script>
-    // ==========================================
-    // FEATURE 1: COUNTDOWN TIMER (to 5:00 PM)
-    // ==========================================
-    function updateCountdown() {
-        const now = new Date();
-        let targetTime = new Date();
+    // Wait for the page to fully load before running JavaScript
+    document.addEventListener('DOMContentLoaded', function() {
         
-        // Set target to 5:00 PM (17:00) today
-        targetTime.setHours(17, 0, 0, 0);
-        
-        // If current time is past 5 PM, target is tomorrow 5 PM
-        if (now > targetTime) {
-            targetTime.setDate(targetTime.getDate() + 1);
+        // ==========================================
+        // FEATURE 1: COUNTDOWN TIMER (to 5:00 PM)
+        // ==========================================
+        function updateCountdown() {
+            const now = new Date();
+            let targetTime = new Date();
+            
+            // Set target to 5:00 PM (17:00) today
+            targetTime.setHours(17, 0, 0, 0);
+            
+            // If current time is past 5 PM, target is tomorrow 5 PM
+            if (now > targetTime) {
+                targetTime.setDate(targetTime.getDate() + 1);
+            }
+            
+            // Calculate time difference in milliseconds
+            const diff = targetTime - now;
+            
+            // Convert to hours, minutes, seconds
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            // Format with leading zeros
+            const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // Update the timer element
+            const timerElement = document.getElementById('countdown-timer');
+            if (timerElement) {
+                timerElement.textContent = timeString;
+            }
         }
         
-        // Calculate time difference in milliseconds
-        const diff = targetTime - now;
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Run immediately when page loads
         
-        // Convert to hours, minutes, seconds
-        const hours = Math.floor(diff / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        // ==========================================
+        // FEATURE 2: DISCOUNT CALCULATOR (FIXED)
+        // ==========================================
         
-        // Format with leading zeros
-        const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        // Get the button element
+        const calculateBtn = document.getElementById('calculate-btn');
         
-        // Update the timer element
-        const timerElement = document.getElementById('countdown-timer');
-        if (timerElement) {
-            timerElement.textContent = timeString;
-        }
-    }
-    
-    // Update countdown every second
-    setInterval(updateCountdown, 1000);
-    updateCountdown(); // Run immediately when page loads
-    
-    // ==========================================
-    // FEATURE 2: DISCOUNT CALCULATOR (30% off)
-    // ==========================================
-    const calculateBtn = document.getElementById('calculate-btn');
-    if (calculateBtn) {
-        calculateBtn.addEventListener('click', function() {
-            // Get the original price
-            const originalPrice = parseFloat(document.getElementById('original-price').value);
+        // Function to calculate discount
+        function calculateDiscount() {
+            // Get the input element and its value
+            const priceInput = document.getElementById('original-price');
+            const originalPrice = parseFloat(priceInput.value);
+            
+            // Get the result box
+            const resultBox = document.getElementById('discount-result');
             
             // Check if input is valid
             if (isNaN(originalPrice) || originalPrice <= 0) {
-                document.getElementById('discount-result').innerHTML = '❌ Please enter a valid price (NT$)';
+                resultBox.innerHTML = '❌ Please enter a valid price (NT$)';
                 return;
             }
             
@@ -346,25 +357,34 @@
             const discountedPrice = originalPrice - discountAmount;
             
             // Display the result
-            document.getElementById('discount-result').innerHTML = `
+            resultBox.innerHTML = `
                 💰 Original: NT$${originalPrice}<br>
                 🏷️ 30% OFF: -NT$${discountAmount.toFixed(0)}<br>
                 ✅ <strong>You pay: NT$${discountedPrice.toFixed(0)}</strong>
                 <br><br>
                 🎉 You save NT$${discountAmount.toFixed(0)}!
             `;
-        });
-    }
-    
-    // Allow Enter key to trigger calculate
-    const priceInput = document.getElementById('original-price');
-    if (priceInput) {
-        priceInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                document.getElementById('calculate-btn').click();
-            }
-        });
-    }
-    
-    console.log("i珍食 Section Loaded! 🍱");
+        }
+        
+        // Add click event to button
+        if (calculateBtn) {
+            calculateBtn.addEventListener('click', calculateDiscount);
+            console.log("Calculator button is working!"); // For testing
+        } else {
+            console.log("Button not found!"); // If button isn't found
+        }
+        
+        // Allow Enter key to trigger calculate
+        const priceInput = document.getElementById('original-price');
+        if (priceInput) {
+            priceInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    calculateDiscount();
+                }
+            });
+        }
+        
+        console.log("i珍食 Section Loaded! 🍱");
+        
+    }); // End of DOMContentLoaded
 </script>
