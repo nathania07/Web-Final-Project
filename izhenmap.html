@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-Hant-TW">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>i珍食風格頁面 · 即期地圖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>i珍食 Style Page · Near-expiry Food Guide</title>
     <style>
         * {
             margin: 0;
@@ -12,19 +12,17 @@
         }
 
         body {
-            background: #fef7e0;  /* 暖色底，類似超商文宣 */
-            font-family: system-ui, 'Segoe UI', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+            background: #fef7e0;
+            font-family: system-ui, 'Segoe UI', -apple-system, 'Helvetica Neue', sans-serif;
             padding: 2rem 1rem;
             color: #2c221b;
         }
 
-        /* 主要容器 – 卡片式介面 */
         .container {
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* 頁首標題區 */
         .hero {
             text-align: center;
             margin-bottom: 2.5rem;
@@ -35,7 +33,6 @@
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            letter-spacing: -0.5px;
         }
         .hero p {
             font-size: 1.1rem;
@@ -53,15 +50,13 @@
             margin-top: 0.8rem;
         }
 
-        /* 商店格線系統 */
         .store-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin: 2rem 0;
         }
 
-        /* 卡片通用樣式 */
         .store-card {
             background: white;
             border-radius: 2rem;
@@ -73,10 +68,8 @@
         .store-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 20px 28px -12px rgba(0, 0, 0, 0.15);
-            border-color: #f7d98c;
         }
 
-        /* 卡片頭 banner – 各品牌代表色 */
         .card-header {
             padding: 1.2rem 1.5rem;
             color: white;
@@ -87,19 +80,16 @@
         }
         .card-header h2 {
             font-size: 1.6rem;
-            font-weight: 700;
-            letter-spacing: -0.3px;
         }
-        .family-header { background: #00734a; }  /* 全家經典綠 */
-        .seven-header { background: #e43f1f; }   /* 7-11 橘紅 */
-        .hilife-header { background: #004b8f; }  /* 萊爾富藍 */
-        .ok-header { background: #3e8b48; }      /* OK 綠 */
+        .family-header { background: #00734a; }
+        .seven-header { background: #e43f1f; }
+        .hilife-header { background: #004b8f; }
+        .ok-header { background: #3e8b48; }
 
         .card-body {
             padding: 1.5rem;
         }
 
-        /* 折扣標籤 */
         .discount-tag {
             display: inline-block;
             background: #fee2b5;
@@ -138,13 +128,15 @@
             font-weight: 500;
             margin-top: 0.8rem;
             transition: 0.2s;
+            cursor: pointer;
+            border: none;
+            font-size: 0.9rem;
         }
         .btn-link:hover {
             background: #e6dcc8;
             gap: 0.7rem;
         }
 
-        /* 倒數計時器區域 */
         .countdown-area {
             background: #fff6ea;
             border-radius: 2rem;
@@ -164,7 +156,7 @@
             background: white;
             border-radius: 2rem;
             padding: 0.8rem 1.5rem;
-            min-width: 160px;
+            min-width: 180px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.03);
         }
         .timer-label {
@@ -179,7 +171,6 @@
             color: #2d2b26;
         }
 
-        /* 折扣試算工具 */
         .calculator-panel {
             background: #fff3e2;
             border-radius: 1.8rem;
@@ -222,7 +213,6 @@
             border-radius: 2rem;
             padding: 1rem;
             display: inline-block;
-            width: auto;
             margin-top: 0.5rem;
             font-weight: 500;
         }
@@ -252,112 +242,114 @@
 <body>
 <div class="container">
     <div class="hero">
-        <h1>🍱 即期守門員 · i珍食風格地圖</h1>
-        <p>友善打折 · 惜食減少浪費</p>
-        <div class="hero-badge">#SDG2 零飢餓 | #店家即時資訊</div>
+        <h1>🍱 Last Call · i珍食 Style</h1>
+        <p>Save food, save money, reduce waste</p>
+        <div class="hero-badge">#SDG2 Zero Hunger | #Near-expiry Food Guide</div>
     </div>
 
-    <!-- 四大超商即品資訊 (完全替代失效官網連結) -->
-    <div class="store-grid" id="storeGrid">
-        <!-- 全家友善時光 -->
+    <!-- Store Grid - 4 convenience stores -->
+    <div class="store-grid">
+        <!-- FamilyMart -->
         <div class="store-card">
             <div class="card-header family-header">
-                <span>🏪</span><h2>全家</h2>
+                <span>🏪</span><h2>FamilyMart</h2>
             </div>
             <div class="card-body">
-                <div class="discount-tag">✨ 友善時光 · 7折</div>
+                <div class="discount-tag">✨ Friendly Hours · 30% OFF</div>
                 <div class="time-slot">
-                    <strong>🕒 時段一</strong> 10:00 ~ 17:00 (當日 17:00到期)<br>
-                    <strong>🕒 時段二</strong> 17:00 ~ 24:00 (當日到期商品)
+                    <strong>🕒 Period 1</strong> 10:00 ~ 17:00 (expires at 17:00)<br>
+                    <strong>🕒 Period 2</strong> 17:00 ~ 24:00 (expires at midnight)
                 </div>
-                <div class="inclusive-text">🔹 鮮食、便當、飯糰、三明治，貼「友善食光」貼紙即享優惠</div>
-                <a href="#" class="btn-link" onclick="alert('🏪 全家即期商品查詢：建議至各店舖「即期專區」或詢問店員。\n也可透過全家APP「友善地圖」功能檢視庫存。'); return false;">📱 模擬查詢庫存 →</a>
+                <div class="inclusive-text">🔹 Meals, bento boxes, rice balls, sandwiches with "Friendly Hours" sticker</div>
+                <button class="btn-link" onclick="alert('FamilyMart near-expiry food: Check the discounted section in store or use the FamilyMart APP to see inventory.');">📱 Check Inventory →</button>
             </div>
         </div>
 
-        <!-- 7-11 i珍食 -->
+        <!-- 7-ELEVEN -->
         <div class="store-card">
             <div class="card-header seven-header">
                 <span>🏪</span><h2>7-ELEVEN</h2>
             </div>
             <div class="card-body">
-                <div class="discount-tag">🌟 i珍食 · 65折</div>
+                <div class="discount-tag">🌟 i珍食 · 35% OFF</div>
                 <div class="time-slot">
-                    <strong>🕒 第一時段</strong> 10:00 ~ 17:00<br>
-                    <strong>🕒 第二時段</strong> 20:00 ~ 03:00 (隔日3點到期)[citation:3]
+                    <strong>🕒 Period 1</strong> 10:00 ~ 17:00<br>
+                    <strong>🕒 Period 2</strong> 20:00 ~ 03:00 (expires at 3am next day)
                 </div>
-                <div class="inclusive-text">🔹 鮮食、便當、三明治、麵食類，商品有「i珍食」貼紙或標示</div>
-                <a href="#" class="btn-link" onclick="alert('7-ELEVEN i珍食查詢：建議使用OPEN POINT APP「i珍食地圖」查看附近店鋪庫存。'); return false;">🗺️ 模擬地圖查詢 →</a>
+                <div class="inclusive-text">🔹 Fresh food, bento boxes, sandwiches, noodles with "i珍食" sticker</div>
+                <button class="btn-link" onclick="alert('7-ELEVEN i珍食: Use the OPEN POINT APP to check the i珍食 map for nearby store inventory.');">🗺️ Check Inventory →</button>
             </div>
         </div>
 
-        <!-- 萊爾富 -->
+        <!-- Hi-Life -->
         <div class="store-card">
             <div class="card-header hilife-header">
-                <span>🏪</span><h2>萊爾富</h2>
+                <span>🏪</span><h2>Hi-Life</h2>
             </div>
             <div class="card-body">
-                <div class="discount-tag">🌿 惜福食堂 · 7折</div>
+                <div class="discount-tag">🌿 Cherish Food · 30% OFF</div>
                 <div class="time-slot">
-                    <strong>🕒 折扣時段</strong> 18:00 ~ 24:00 (當日24點到期商品)
+                    <strong>🕒 Discount Hours</strong> 18:00 ~ 24:00 (expires at midnight)
                 </div>
-                <div class="inclusive-text">🔹 貼有「惜福食堂」貼紙鮮食、甜點、輕食</div>
-                <a href="#" class="btn-link" onclick="alert('萊爾富惜福食堂即期品查詢：門市晚上6點後開始販售，建議直接至鮮食區尋找貼紙標示。'); return false;">🥗 探索惜福商品 →</a>
+                <div class="inclusive-text">🔹 Fresh food, desserts, snacks with "Cherish Food" sticker</div>
+                <button class="btn-link" onclick="alert('Hi-Life near-expiry food: Available after 6PM. Look for the Cherish Food sticker in the fresh food section.');">🥗 Check Inventory →</button>
             </div>
         </div>
 
-        <!-- OK mart -->
+        <!-- OK Mart -->
         <div class="store-card">
             <div class="card-header ok-header">
-                <span>🏪</span><h2>OK mart</h2>
+                <span>🏪</span><h2>OK Mart</h2>
             </div>
             <div class="card-body">
-                <div class="discount-tag">🍙 晚鳥優惠 · 6折</div>
+                <div class="discount-tag">🍙 Late Bird · 40% OFF</div>
                 <div class="time-slot">
-                    <strong>🕒 折扣時段</strong> 16:30 ~ 22:30
+                    <strong>🕒 Discount Hours</strong> 16:30 ~ 22:30
                 </div>
-                <div class="inclusive-text">🔹 飯糰、微波食品、鮮食，以門市即期標示為主</div>
-                <a href="#" class="btn-link" onclick="alert('OK超商即期品：每日下午4:30後開始貼標，可詢問店員當日即期專區。'); return false;">🍽️ 晚鳥省錢專區</a>
+                <div class="inclusive-text">🔹 Rice balls, microwave meals, fresh food</div>
+                <button class="btn-link" onclick="alert('OK Mart near-expiry food: Starts at 4:30 PM daily. Ask staff about the discounted section.');">🍽️ Check Inventory →</button>
             </div>
         </div>
     </div>
 
-    <!-- 倒數計時器 — 模擬下一個i珍食時段 -->
+    <!-- Countdown Timer -->
     <div class="countdown-area">
-        <span style="font-weight: 600;">⏳ 距離下一個「主要折扣時段」</span>
-        <div class="timer-grid" id="timerGrid">
-            <div class="timer-item"><div class="timer-label">7-11 i珍食(晚場)</div><div class="timer-clock" id="sevenTimer">--:--:--</div></div>
-            <div class="timer-item"><div class="timer-label">全家友善時光(晚場)</div><div class="timer-clock" id="familyTimer">--:--:--</div></div>
+        <span style="font-weight: 600;">⏳ Time until next discount period</span>
+        <div class="timer-grid">
+            <div class="timer-item">
+                <div class="timer-label">7-ELEVEN i珍食 (Evening)</div>
+                <div class="timer-clock" id="sevenTimer">--:--:--</div>
+            </div>
+            <div class="timer-item">
+                <div class="timer-label">FamilyMart Friendly Hours (Evening)</div>
+                <div class="timer-clock" id="familyTimer">--:--:--</div>
+            </div>
         </div>
-        <div class="inclusive-text" style="margin-top: 8px;">* 即期品數量以各門市現場庫存為準，此處為折扣起點預估</div>
+        <div class="inclusive-text" style="margin-top: 8px;">* Inventory varies by store. This shows when discount periods start.</div>
     </div>
 
-    <!-- 折扣試算工具 (延續先前功能) -->
+    <!-- Discount Calculator -->
     <div class="calculator-panel">
-        <strong>💰 即期品折扣試算</strong> (65折 ~ 7折)
+        <strong>💰 Discount Calculator</strong> (30-35% OFF)
         <div class="calc-input">
-            <input type="number" id="originPrice" class="price-input" placeholder="輸入原價 (NT$)" value="100">
-            <button id="calcDiscountBtn">計算折扣價</button>
+            <input type="number" id="originPrice" class="price-input" placeholder="Enter original price (NT$)" value="100">
+            <button id="calcDiscountBtn">Calculate</button>
         </div>
-        <div id="discountResult" class="result-discount">✨ 折扣後約 NT$65 — 70 (視超商不同)</div>
-        <div class="inclusive-text" style="margin-top: 12px;">🍱 i珍食(7-11)約65折 · 友善時光(全家)約7折 · 惜福食堂7折</div>
+        <div id="discountResult" class="result-discount">✨ Discounted price: NT$65 — 70</div>
+        <div class="inclusive-text" style="margin-top: 12px;">🍱 7-ELEVEN i珍食: 35% OFF · FamilyMart: 30% OFF</div>
     </div>
     <hr>
     <footer>
-        🌍 響應SDG 2 零飢餓 · 減少食物浪費 · 本頁面為實作查詢模擬器<br>
-        ※ 即時庫存請以各超商APP或店面為主，本工具提供惜食資訊整合。
+        🌍 Supporting SDG 2: Zero Hunger · Reduce Food Waste<br>
+        ※ Real-time inventory depends on each store. This tool provides educational information.
     </footer>
 </div>
 
 <script>
     (function() {
-        // 取得需要倒數的元件
         const sevenTimerDiv = document.getElementById('sevenTimer');
         const familyTimerDiv = document.getElementById('familyTimer');
 
-        // 定義目標時間 : 
-        // 7-11 i珍食晚場 20:00
-        // 全家友善時光晚場 17:00 (但也有人預期到24:00，示範以17:00為起點)
         function getNextTarget(hours, minutes) {
             const now = new Date();
             let target = new Date();
@@ -378,23 +370,19 @@
         }
 
         function updateTimers() {
-            const now = new Date();
-            // 7-11 i珍食晚場 20:00
             let targetSeven = getNextTarget(20, 0);
-            let diffSeven = targetSeven - now;
-            // 全家友善時光晚場 17:00 (第二時段開始)
+            let diffSeven = targetSeven - new Date();
             let targetFamily = getNextTarget(17, 0);
-            let diffFamily = targetFamily - now;
+            let diffFamily = targetFamily - new Date();
 
             if (sevenTimerDiv) sevenTimerDiv.innerText = formatTimeDiff(diffSeven);
             if (familyTimerDiv) familyTimerDiv.innerText = formatTimeDiff(diffFamily);
         }
 
-        // 立即執行並每秒更新
         updateTimers();
         setInterval(updateTimers, 1000);
 
-        // 折扣試算邏輯 (支援不同折扣率)
+        // Discount Calculator
         const calcBtn = document.getElementById('calcDiscountBtn');
         const priceInput = document.getElementById('originPrice');
         const resultBox = document.getElementById('discountResult');
@@ -402,23 +390,21 @@
         function updateDiscount() {
             let price = parseFloat(priceInput.value);
             if (isNaN(price) || price <= 0) {
-                resultBox.innerHTML = '⚠️ 請輸入有效價格 (正數)';
+                resultBox.innerHTML = '⚠️ Please enter a valid price';
                 return;
             }
-            // 示範範圍：全家7折 / 7-11 65折 / 取中間值顯示範圍
             const price70 = price * 0.7;
             const price65 = price * 0.65;
-            resultBox.innerHTML = `🍱 折扣後預估範圍: NT$${price65.toFixed(0)} ~ NT$${price70.toFixed(0)}<br><span style="font-size:0.75rem;">(7-11 i珍食約65折／全家友善約7折)</span>`;
+            resultBox.innerHTML = `🍱 Discounted price: NT$${price65.toFixed(0)} ~ NT$${price70.toFixed(0)}<br><span style="font-size:0.75rem;">(7-ELEVEN: 35% OFF / FamilyMart: 30% OFF)</span>`;
         }
 
         calcBtn.addEventListener('click', updateDiscount);
         priceInput.addEventListener('keypress', (e) => {
             if(e.key === 'Enter') updateDiscount();
         });
-        updateDiscount();  // 初始載入範例
+        updateDiscount();
 
-        // 額外小功能：動態產生超商link提示 (非強制)
-        console.log("i珍食風格頁面已啟動—即時惜食地圖模擬");
+        console.log("i珍食 page loaded - English version");
     })();
 </script>
 </body>
