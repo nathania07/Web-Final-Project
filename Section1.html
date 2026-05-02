@@ -45,8 +45,9 @@
                 <button class="thirty-hours-btn-primary">Calculate Portions →</button>
                 
                 <div class="result-box">
-                    🍞 Bread Portions: <span id="bread-count">0</span>
+                    🍲 成功資助：<span id="bread-count" style="font-weight:bold; color:#8B5A2B;">0</span> 天的生命糧食
                 </div>
+                <p class="card-note">* 註：每 3 USD 即可負擔一名孩童整日所需的營養補給。</p>
             </div>
 
             <!-- CARD 3: World Hunger Map -->
@@ -253,8 +254,8 @@
             const secs = String(totalSeconds % 60).padStart(2, '0');
             timeDisplay.innerText = `${hrs}:${mins}:${secs}`;
             
-            // 計算飢餓程度：假設停留 200 秒達到 100% 飢餓
-            const hungerLevel = Math.min((totalSeconds / 200) * 100, 100);
+            // 計算飢餓程度：假設停留30min達到 100% 飢餓
+            const hungerLevel = Math.min((totalSeconds /1800 ) * 100, 100);
             hungerDisplay.innerText = Math.floor(hungerLevel);
             
             // 使用 CSS Filter 讓網頁變灰
@@ -270,19 +271,18 @@
     // ==========================================
     const amountInput = document.getElementById('donation-amount');
     const breadCount = document.getElementById('bread-count');
-    
-    // 監聽輸入框變化
+
     amountInput.addEventListener('input', function() {
         const usdAmount = parseFloat(this.value) || 0;
-        
-        // 換算邏輯：假設 15 USD 可以提供一個孩子一週的飽足麵包 (參考設計稿)
-        const portions = Math.floor(usdAmount / 15);
-        breadCount.innerText = portions;
-        
-        // 如果你有進度條，也可以在這裡同步更新寬度
+    
+        // 邏輯：每 3 USD 提供一名孩童 1 整天所需的糧食
+        const daysOfFood = Math.floor(usdAmount / 3);
+        breadCount.innerText = daysOfFood;
+    
+        // 同步更新進度條 (假設目標是 300 USD，即幫助 100 天份量)
         const progressBar = document.getElementById('progress-fill');
         if(progressBar) {
-            const progressPercent = Math.min((usdAmount / 1000) * 100, 100); // 以 1000 USD 為目標
+            const progressPercent = Math.min((usdAmount / 300) * 100, 100);
             progressBar.style.width = progressPercent + '%';
         }
     });
