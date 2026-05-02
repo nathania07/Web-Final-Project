@@ -48,6 +48,8 @@
                 <div class="result-box">
                     🍲 成功資助：<span id="bread-count" style="font-weight:bold; color:#8B5A2B;">0</span> 天的生命糧食
                 </div>
+                <div id="celebration-msg" style="margin-top: 10px; font-weight: bold; color: #5A8F4C; min-height: 1.2em;"></div>
+                </div>
                 <p class="card-note">* 註：每 3 USD 即可負擔一名孩童整日所需的營養補給。</p>
             </div>
 
@@ -232,6 +234,14 @@
         display: inline-block;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
+    #celebration-msg {
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(5px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 </style>
 <!-- ========================================== -->
 <!-- JAVASCRIPT FOR SECTION 1                   -->
@@ -275,12 +285,22 @@
 
     amountInput.addEventListener('input', function() {
         const usdAmount = parseFloat(this.value) || 0;
-    
-        // 邏輯：每 3 USD 提供一名孩童 1 整天所需的糧食
+
+        // 每 3 USD 提供一名孩童 1 整天所需的糧食
         const daysOfFood = Math.floor(usdAmount / 3);
         breadCount.innerText = daysOfFood;
-    
-        // 同步更新進度條 (假設目標是 300 USD，即幫助 100 天份量)
+
+        const celebrationMsg = document.getElementById('celebration-msg');
+        if (daysOfFood >= 100) {
+            celebrationMsg.innerText = "🎉 Amazing! You've provided 100+ days of hope!";
+            celebrationMsg.style.transform = "scale(1.1)";
+            celebrationMsg.style.transition = "0.3s";
+        } else {
+            celebrationMsg.innerText = ""; 
+        }
+   
+
+        // 同步更新進度條
         const progressBar = document.getElementById('progress-fill');
         if(progressBar) {
             const progressPercent = Math.min((usdAmount / 300) * 100, 100);
