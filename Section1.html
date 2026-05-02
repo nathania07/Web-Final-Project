@@ -54,30 +54,40 @@
             </div>
 
             <!-- CARD 3: World Hunger Map -->
+            <!-- 修改後的第三張卡片 -->
             <div class="thirty-hours-card">
                 <div class="card-icon">🌍</div>
                 <h3 class="card-title">World Hunger Map</h3>
                 <p class="card-text">Explore global hunger statistics and read stories from disaster areas.</p>
-                
-                <div class="map-preview">
-                    <div class="map-placeholder">Interactive Map Preview</div>
-                </div>
-
-                <a href="#" class="thirty-hours-btn-primary" style="text-decoration: none; text-align: center;">
+    
+                <!-- 合併後的單一按鈕 -->
+                <button id="open-map-btn" class="thirty-hours-btn-primary">
                     Open Global Map →
-                </a>
-                
+                </button>
+    
                 <p class="card-note">* Sources: World Vision & WFP</p>
             </div>
 
+            <!-- 新增：世界地圖彈窗 (Modal) -->
+            <div id="map-modal" class="modal-overlay">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <h3 style="color: #8B5A2B; margin-bottom: 20px;">Global Hunger Stories</h3>
+        
+                    <div class="map-container">
+                        <!-- 這裡使用一張世界地圖圖片作為背景 -->
+                        <img src="https://images.unsplash.com/photo-1589519160732-57fc498494f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="World Map" class="map-image">
+            
+                        <!-- 紅色圓點 (定位可依圖片微調) -->
+                        <div class="map-dot" style="top: 45%; left: 65%;" onclick="showStory(0)"></div> <!-- 東非 -->
+                        <div class="map-dot" style="top: 35%; left: 55%;" onclick="showStory(1)"></div> <!-- 中亞 -->
+                        <div class="map-dot" style="top: 65%; left: 30%;" onclick="showStory(2)"></div> <!-- 南美 -->
+                    </div>
+                    <p class="map-tip">💡 Click on the red dots to read the stories.</p>
+                </div>
+            </div>
+
         </div> <!-- End of cards -->
-
-        <!-- Bottom Banner (類似圖中 Did you know 的樣式) -->
-        <div class="info-banner">
-            🌍 <strong>Did you know?</strong> One-third of all food produced globally is wasted — enough to feed every hungry person on Earth.
-        </div>
-
-    </div>
 </section>
 <!-- ========================================== -->
 <!-- CSS STYLES FOR SECTION 1 ONLY              -->
@@ -223,18 +233,66 @@
         margin-top: 15px;
     }
 
-    /* 底部 Banner (漸層效果) */
-    .info-banner {
-        margin-top: 50px;
-        background: linear-gradient(to right, #8B5A2B, #5A8F4C); /* 混合 Earth Brown 與 Leaf Green */
-        color: white;
-        padding: 20px 40px;
-        border-radius: 50px;
-        font-size: 1rem;
-        display: inline-block;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    .modal-overlay {
+        display: none; /* 預設隱藏 */
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.7);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
     }
     
+    .modal-content {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        max-width: 800px;
+        width: 90%;
+        position: relative;
+        text-align: center;
+    }
+
+    .close-modal {
+        position: absolute;
+        top: 15px; right: 20px;
+        font-size: 28px; cursor: pointer; color: #666;
+    }
+
+    .map-container {
+        position: relative;
+        width: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .map-image {
+        width: 100%;
+        display: block;
+        filter: sepia(0.3); /* 讓地圖有一點復古感，符合主題 */
+    }
+
+    .map-dot {
+        position: absolute;
+        width: 15px; height: 15px;
+        background-color: #ff4757;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 0 0 rgba(255, 71, 87, 0.4);
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7); }
+        70% { box-shadow: 0 0 0 10px rgba(255, 71, 87, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); }
+    }
+
+    .map-tip {
+        margin-top: 15px;
+        font-size: 0.9rem;
+        color: #888;
+    }
 </style>
 <!-- ========================================== -->
 <!-- JAVASCRIPT FOR SECTION 1                   -->
@@ -304,28 +362,32 @@
     // ==========================================
     // 3. 世界地圖小故事 (World Hunger Map Stories)
     // ==========================================
-    // 這邊模擬點擊地圖按鈕後顯示隨機故事，也可以改為點擊特定位置
-    const mapStories = [
-        { region: "東非 (East Africa)", story: "因氣候變遷導致連年乾旱，當地的玉米產量僅剩往年的兩成，數百萬孩童正面臨營養不良。" },
-        { region: "中亞 (Central Asia)", story: "受戰爭衝突影響，供應鏈中斷，基本糧食價格上漲了 300%，家長們被迫削減每日用餐次數。" },
-        { region: "南美洲 (South America)", story: "偏遠山區的學童每日需步行 2 小時上學，學校午餐是他們一天中唯一的一頓正餐。" }
-    ];
+    
+    // 控制彈窗開關
+    const modal = document.getElementById('map-modal');
+    const openBtn = document.getElementById('open-map-btn');
+    const closeBtn = document.querySelector('.close-modal');
 
-    function showMapStory() {
-        // 隨機挑選一個故事作為示範
-        const randomStory = mapStories[Math.floor(Math.random() * mapStories.length)];
-        
-        // 使用 SweetAlert 或簡單的 alert
-        alert(`【${randomStory.region} 實況】\n\n${randomStory.story}`);
+    openBtn.onclick = () => modal.style.display = 'flex';
+    closeBtn.onclick = () => modal.style.display = 'none';
+
+    // 點擊彈窗外部也可關閉
+    window.onclick = (event) => {
+        if (event.target == modal) modal.style.display = 'none';
     }
 
-    // 修改按鈕行為
-    const mapBtn = document.querySelector('.thirty-hours-card:nth-child(3) .thirty-hours-btn-primary');
-    if(mapBtn) {
-        mapBtn.onclick = function(e) {
-            e.preventDefault();
-            showMapStory();
-        };
+    // 故事資料
+    const mapStories = [
+        { region: "East Africa", story: "Continuous drought has reduced crop yields to 20%, leaving millions of children facing malnutrition." },
+        { region: "Central Asia", story: "Conflict has disrupted supply chains, causing basic food prices to skyrocket by 300%." },
+        { region: "South America", story: "Remote mountain students walk 2 hours to school for their only full meal of the day." }
+    ];
+
+    // 點擊圓點顯示故事
+    function showStory(index) {
+        const data = mapStories[index];
+        // 使用 alert 或你可以自訂更漂亮的訊息框
+        alert(`【${data.region}】\n\n${data.story}`);
     }
 
     // 啟動模擬器
