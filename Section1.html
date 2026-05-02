@@ -7,8 +7,7 @@
         <!-- Section Header -->
         <div class="thirty-hours-header">
             <h2 class="thirty-hours-title">⌛ 30 Hours for Change / 飢餓三十</h2>
-            <p class="thirty-hours-subtitle">choosing to set aside our own basic needs and experience the lives of vulnerable children through action</p>
-            
+            <p class="thirty-hours-subtitle">Save lives, share hope, change the world</p>
         </div>
 
         <!-- Three Feature Cards -->
@@ -17,106 +16,218 @@
             <!-- CARD 1: Virtual Hunger Simulation -->
             <div class="thirty-hours-card">
                 <div class="card-icon">👁️</div>
-                <h3>Virtual Hunger Simulation</h3>
-                <p>Simulates physical effects of hunger by making the page grayer over time using CSS Filters.</p>
+                <h3 class="card-title">Virtual Hunger Simulation</h3>
+                <p class="card-text">Simulates physical effects of hunger by making the page grayer over time.</p>
                 
-                <div class="simulation-status">
-                    <div class="status-item">Time on site: <span id="time-display">00:00:00</span></div>
-                    <div class="status-item">Hunger Level: <span id="hunger-display">0</span>%</div>
+                <div class="simulation-display">
+                    <div class="display-box">
+                        <span id="time-display" class="display-number">00:00:00</span>
+                    </div>
+                    <p class="display-note">until maximum hunger level</p>
                 </div>
                 
-                <p class="card-note">* Notice the website colors fading as your virtual hunger increases.</p>
+                <div class="info-tag">
+                    💡 Hunger Level: <span id="hunger-display">0</span>%
+                </div>
+                <p class="card-note">* Colors will fade as time passes</p>
             </div>
 
             <!-- CARD 2: Dynamic Donation Progress Bar -->
             <div class="thirty-hours-card">
                 <div class="card-icon">💰</div>
-                <h3>Donation Progress Bar</h3>
-                <p>Enter a donation amount to see how many bread portions it translates to for children in need.</p>
+                <h3 class="card-title">Donation Progress Bar</h3>
+                <p class="card-text">Enter an amount to see how many bread portions it buys for children.</p>
                 
-                <div class="donation-input-group">
-                    <label for="donation-amount">Amount (USD): $</label>
-                    <input type="number" id="donation-amount" class="input-primary" placeholder="0">
+                <div class="input-container">
+                    <input type="number" id="donation-amount" class="card-input" placeholder="Enter amount (USD)">
                 </div>
                 
-                <div class="bread-result">
-                    <span>🍞 Bread Portions: </span><span id="bread-count">0</span>
+                <button class="thirty-hours-btn-primary">Calculate Portions →</button>
+                
+                <div class="result-box">
+                    🍞 Bread Portions: <span id="bread-count">0</span>
                 </div>
-
-                <div class="progress-track">
-                    <div id="progress-fill" class="progress-fill"></div>
-                </div>
-                <p class="card-note">* Makes your contribution tangible and easy to visualize.</p>
             </div>
 
             <!-- CARD 3: World Hunger Map -->
             <div class="thirty-hours-card">
                 <div class="card-icon">🌍</div>
-                <h3>World Hunger Map</h3>
-                <p>Explore global hunger statistics and read local stories from disaster-stricken areas.</p>
+                <h3 class="card-title">World Hunger Map</h3>
+                <p class="card-text">Explore global hunger statistics and read stories from disaster areas.</p>
                 
-                <div class="map-interactive-area" id="hunger-map">
-                    <!-- Map logic and local stories will be triggered here -->
-                    <div class="map-placeholder-text">Click regions to see local stories & statistics</div>
-                    
-                    <a href="#" class="thirty-hours-btn thirty-hours-btn-primary" onclick="alert('Opening interactive map...'); return false;">
-                        Open Global Map →
-                    </a>
+                <div class="map-preview">
+                    <div class="map-placeholder">Interactive Map Preview</div>
                 </div>
+
+                <a href="#" class="thirty-hours-btn-primary" style="text-decoration: none; text-align: center;">
+                    Open Global Map →
+                </a>
                 
-                <p class="card-note">* Sources: World Vision, UN World Food Programme (WFP)</p>
+                <p class="card-note">* Sources: World Vision & WFP</p>
             </div>
 
-        </div> <!-- End of thirty-hours-cards -->
+        </div> <!-- End of cards -->
 
-    </div> <!-- End of thirty-hours-container -->
+        <!-- Bottom Banner (類似圖中 Did you know 的樣式) -->
+        <div class="info-banner">
+            🌍 <strong>Did you know?</strong> One-third of all food produced globally is wasted — enough to feed every hungry person on Earth.
+        </div>
+
+    </div>
 </section>
-<!-- ============================================= -->
-<!-- CSS STYLES FOR SECTION 1 ONLY       -->
-<!-- ============================================= -->
+<!-- ========================================== -->
+<!-- CSS STYLES FOR SECTION 1 ONLY              -->
+<!-- ========================================== -->
 <style>
+    /* 基礎設定 */
     .thirty-hours-section {
-    background-color: #FFF8E7; /* Cream */
-    font-family: 'Open Sans', 'Noto Sans TC', sans-serif;
-    padding: 60px 0;
-   }
+        background-color: #FFF8E7; /* Cream 背景 */
+        font-family: 'Open Sans', 'Noto Sans TC', sans-serif;
+        padding: 80px 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .thirty-hours-container {
+        max-width: 1200px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* 標題區塊 */
+    .thirty-hours-header {
+        margin-bottom: 50px;
+    }
+
     .thirty-hours-title {
-    color: #000;
-    border-bottom: 4px solid #F4C542; /* Wheat Gold */
-    display: inline-block;
-   }
-    .text-action {
-    color: #e74c3c;
-    font-weight: bold;
-   }
+        color: #8B5A2B; /* Earth Brown */
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    .thirty-hours-subtitle {
+        color: #5A8F4C; /* Leaf Green */
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    /* 卡片容器排版 (Flexbox) */
+    .thirty-hours-cards {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        flex-wrap: wrap; /* 手機版會自動換行 */
+    }
+
+    /* 單一卡片樣式 (參考附圖) */
     .thirty-hours-card {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
-    border-left: 6px solid #8B5A2B; /* Earth Brown */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-   }
-    .progress-track {
-    background: #eee;
-    height: 12px;
-    border-radius: 6px;
-    margin-top: 10px;
-    overflow: hidden;
-   }
-    .progress-fill {
-    background: #5A8F4C; /* Leaf Green */
-    width: 0%;
-    height: 100%;
-    transition: width 0.4s ease;
-   }
+        background: white;
+        border-radius: 25px; /* 柔和的大圓角 */
+        padding: 40px 30px;
+        flex: 1;
+        min-width: 300px;
+        max-width: 360px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* 輕盈的陰影 */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* 內部元素全部置中 */
+        transition: transform 0.3s ease;
+    }
+
+    .thirty-hours-card:hover {
+        transform: translateY(-5px);
+    }
+
+    /* 卡片內元素樣式 */
+    .card-icon {
+        font-size: 50px;
+        margin-bottom: 20px;
+    }
+
+    .card-title {
+        color: #8B5A2B;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .card-text {
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 25px;
+    }
+
+    /* 模擬器數字區 (參考附圖中的深色計時器樣式) */
+    .display-box {
+        background: #2D3436;
+        color: #F4C542; /* Wheat Gold */
+        padding: 15px 30px;
+        border-radius: 12px;
+        font-family: monospace;
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+    }
+
+    .display-note {
+        font-size: 0.8rem;
+        color: #999;
+        margin-bottom: 20px;
+    }
+
+    /* 輸入框與按鈕 (參考附圖) */
+    .card-input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #EEE;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        text-align: center;
+        font-size: 1rem;
+    }
+
     .thirty-hours-btn-primary {
-    background-color: #F4C542;
-    color: #000;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    display: inline-block;
-    margin-top: 15px;
-    font-weight: bold;
-   }
+        background-color: #5A8F4C; /* Leaf Green */
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%;
+        margin-bottom: 15px;
+        transition: background 0.3s;
+    }
+
+    .thirty-hours-btn-primary:hover {
+        background-color: #46713a;
+    }
+
+    /* 結果顯示標籤 */
+    .result-box, .info-tag {
+        background: #F1F1F1;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        color: #555;
+        width: fit-content;
+    }
+
+    .card-note {
+        font-size: 0.75rem;
+        color: #AAA;
+        margin-top: 15px;
+    }
+
+    /* 底部 Banner (漸層效果) */
+    .info-banner {
+        margin-top: 50px;
+        background: linear-gradient(to right, #8B5A2B, #5A8F4C); /* 混合 Earth Brown 與 Leaf Green */
+        color: white;
+        padding: 20px 40px;
+        border-radius: 50px;
+        font-size: 1rem;
+        display: inline-block;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
 </style>
