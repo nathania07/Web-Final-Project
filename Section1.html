@@ -231,3 +231,89 @@
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 </style>
+<!-- ========================================== -->
+<!-- JAVASCRIPT FOR SECTION 1                   -->
+<!-- ========================================== -->
+<script>
+    // ==========================================
+    // 1. 虛擬飢餓模擬 (Virtual Hunger Simulation)
+    // ==========================================
+    let totalSeconds = 0;
+    const timeDisplay = document.getElementById('time-display');
+    const hungerDisplay = document.getElementById('hunger-display');
+    
+    // 設定飢餓模擬：每秒鐘更新一次
+    function startHungerSimulation() {
+        setInterval(() => {
+            totalSeconds++;
+            
+            // 更新停留時間顯示 (格式 00:00:00)
+            const hrs = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+            const mins = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+            const secs = String(totalSeconds % 60).padStart(2, '0');
+            timeDisplay.innerText = `${hrs}:${mins}:${secs}`;
+            
+            // 計算飢餓程度：假設停留 200 秒達到 100% 飢餓
+            const hungerLevel = Math.min((totalSeconds / 200) * 100, 100);
+            hungerDisplay.innerText = Math.floor(hungerLevel);
+            
+            // 使用 CSS Filter 讓網頁變灰
+            // grayscale(0) 是彩色，grayscale(1) 是全黑白
+            const grayscaleValue = hungerLevel / 100;
+            document.body.style.filter = `grayscale(${grayscaleValue})`;
+            
+        }, 1000);
+    }
+
+    // ==========================================
+    // 2. 動態募款換算 (Donation Converter)
+    // ==========================================
+    const amountInput = document.getElementById('donation-amount');
+    const breadCount = document.getElementById('bread-count');
+    
+    // 監聽輸入框變化
+    amountInput.addEventListener('input', function() {
+        const usdAmount = parseFloat(this.value) || 0;
+        
+        // 換算邏輯：假設 15 USD 可以提供一個孩子一週的飽足麵包 (參考設計稿)
+        const portions = Math.floor(usdAmount / 15);
+        breadCount.innerText = portions;
+        
+        // 如果你有進度條，也可以在這裡同步更新寬度
+        const progressBar = document.getElementById('progress-fill');
+        if(progressBar) {
+            const progressPercent = Math.min((usdAmount / 1000) * 100, 100); // 以 1000 USD 為目標
+            progressBar.style.width = progressPercent + '%';
+        }
+    });
+
+    // ==========================================
+    // 3. 世界地圖小故事 (World Hunger Map Stories)
+    // ==========================================
+    // 這邊模擬點擊地圖按鈕後顯示隨機故事，也可以改為點擊特定位置
+    const mapStories = [
+        { region: "東非 (East Africa)", story: "因氣候變遷導致連年乾旱，當地的玉米產量僅剩往年的兩成，數百萬孩童正面臨營養不良。" },
+        { region: "中亞 (Central Asia)", story: "受戰爭衝突影響，供應鏈中斷，基本糧食價格上漲了 300%，家長們被迫削減每日用餐次數。" },
+        { region: "南美洲 (South America)", story: "偏遠山區的學童每日需步行 2 小時上學，學校午餐是他們一天中唯一的一頓正餐。" }
+    ];
+
+    function showMapStory() {
+        // 隨機挑選一個故事作為示範
+        const randomStory = mapStories[Math.floor(Math.random() * mapStories.length)];
+        
+        // 使用 SweetAlert 或簡單的 alert
+        alert(`【${randomStory.region} 實況】\n\n${randomStory.story}`);
+    }
+
+    // 修改按鈕行為
+    const mapBtn = document.querySelector('.thirty-hours-card:nth-child(3) .thirty-hours-btn-primary');
+    if(mapBtn) {
+        mapBtn.onclick = function(e) {
+            e.preventDefault();
+            showMapStory();
+        };
+    }
+
+    // 啟動模擬器
+    window.onload = startHungerSimulation;
+</script>
