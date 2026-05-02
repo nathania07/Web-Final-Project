@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30 Hours for Change - 飢餓三十</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --wheat-gold: #F4C542;
+            --earth-brown: #8B5A2B;
+            --leaf-green: #5A8F4C;
+            --cream: #FFF8E7;
+            --gray-text: #555;
+        }
+
+        /* 初始狀態 */
+        body {
+            background-color: var(--cream);
+            color: #333;
+            font-family: 'Open Sans', 'Noto Sans TC', sans-serif;
+            margin: 0;
+            transition: filter 1s ease; /* 為了平滑變色 */
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* 標題樣式 */
+        .section-header {
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 5px;
+            color: #000;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 0;
+            display: inline-block;
+            border-bottom: 4px solid var(--wheat-gold);
+            padding-bottom: 5px;
+        }
+
+        .intro-text {
+            line-height: 1.8;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .highlight {
+            font-weight: bold;
+        }
+
+        .action-text {
+            color: #e74c3c; /* 呼應圖中的紅色 action */
+            font-weight: bold;
+        }
+
+        /* 功能區塊卡片 */
+        .feature-box {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--earth-brown);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* Feature 1: 飢餓模擬器樣式 */
+        .status-bar {
+            display: flex;
+            gap: 20px;
+            background: #eee;
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-flex;
+            margin-bottom: 10px;
+        }
+
+        /* Feature 2: 募款進度條 */
+        .donation-ui {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            border: 2px solid var(--wheat-gold);
+            border-radius: 5px;
+            width: 120px;
+        }
+
+        .progress-container {
+            width: 100%;
+            background: #ddd;
+            height: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        #progress-bar {
+            width: 0%;
+            height: 100%;
+            background: var(--leaf-green);
+            transition: width 0.5s ease;
+        }
+
+        /* Feature 3: 地圖概念區 */
+        .map-placeholder {
+            width: 100%;
+            height: 300px;
+            background: #cbd5e0;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .map-dot {
+            width: 15px;
+            height: 15px;
+            background: red;
+            border-radius: 50%;
+            position: absolute;
+            cursor: pointer;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .story-popup {
+            display: none;
+            position: absolute;
+            bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            max-width: 80%;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Section 1 Header -->
+        <header class="section-header">
+            <h1>30 Hours for Change</h1>
+            <h2>飢餓三十</h2>
+        </header>
+
+        <section class="intro-text">
+            <p>
+                When we choose to <span class="highlight">abstain from solid food for 12 or 30 hours</span>, we are choosing to set aside our own basic needs and experience the lives of vulnerable children through <span class="action-text">action</span>. 
+                <span class="highlight">Experiencing hunger</span> allows us to better understand the impact of "starvation" and "scarcity" on children, leading to concrete actions.
+            </p>
+            <p>
+                The event is a global humanitarian relief operation initiated by World Vision, and it is also an activity with great social educational significance. Since 1989, World Vision Taiwan has been raising funds from countless Taiwanese people every year to alleviate the most urgent needs in disaster-stricken areas around the world.
+            </p>
+        </section>
+
+        <!-- Feature 1: Virtual Hunger Simulation -->
+        <div class="feature-box">
+            <h3>Feature 1: Virtual Hunger Simulation</h3>
+            <p>隨著您在網頁停留的時間增加，視覺將逐漸失去色彩，模擬飢餓導致的感官退化。</p>
+            <div class="status-bar">
+                <span>停留時間: <span id="time-on-site">00:00:00</span></span>
+                <span>飢餓程度: <span id="hunger-level">0</span>%</span>
+            </div>
+        </div>
+
+        <!-- Feature 2: Dynamic Donation Progress Bar -->
+        <div class="feature-box">
+            <h3>Feature 2: Dynamic Donation Progress Bar</h3>
+            <div class="donation-ui">
+                <label for="donation-amount">輸入募款金額 (USD):</label>
+                <input type="number" id="donation-amount" placeholder="金額" min="0">
+                <span>≈ <span id="bread-portions" style="font-weight:bold; color:var(--earth-brown);">0</span> 份足以溫飽的麵包</span>
+            </div>
+            <div class="progress-container">
+                <div id="progress-bar"></div>
+            </div>
+        </div>
+
+        <!-- Feature 3: World Hunger Map -->
+        <div class="feature-box">
+            <h3>Feature 3: World Hunger Map</h3>
+            <p>點擊地圖上的紅點，了解當地的飢餓故事。</p>
+            <div class="map-placeholder">
+                <!-- 模擬非洲地區的點 -->
+                <div class="map-dot" style="top: 55%; left: 52%;" onclick="showStory('東非地區', '因連年乾旱，當地有超過數百萬孩童面臨嚴重糧食短缺...')"></div>
+                <!-- 模擬亞洲地區的點 -->
+                <div class="map-dot" style="top: 50%; left: 70%;" onclick="showStory('東南亞地區', '部分偏遠地區的家庭每日收入不足 1 美元，難以負擔基本營養...')"></div>
+                
+                <div id="story-popup" class="story-popup">
+                    <strong id="story-title"></strong>
+                    <p id="story-content" style="font-size: 0.9rem; margin: 5px 0 0 0;"></p>
+                    <button onclick="this.parentElement.style.display='none'" style="margin-top:10px; cursor:pointer;">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. 飢餓模擬邏輯 (CSS Filter)
+        let seconds = 0;
+        function updateHunger() {
+            seconds++;
+            const hungerLevel = Math.min(seconds / 2, 100); // 假設200秒達到100%飢餓
+            
+            // 更新文字顯示
+            const hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
+            const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+            const secs = String(seconds % 60).padStart(2, '0');
+            document.getElementById('time-on-site').innerText = `${hrs}:${mins}:${secs}`;
+            document.getElementById('hunger-level').innerText = Math.floor(hungerLevel);
+
+            // 更新 CSS Filter (變灰度)
+            // 飽和度隨時間降低 (saturate)，灰度隨時間增加 (grayscale)
+            const grayValue = hungerLevel / 100;
+            document.body.style.filter = `grayscale(${grayValue})`;
+        }
+        setInterval(updateHunger, 1000);
+
+        // 2. 募款進度計算
+        const donationInput = document.getElementById('donation-amount');
+        const breadText = document.getElementById('bread-portions');
+        const progressBar = document.getElementById('progress-bar');
+
+        donationInput.addEventListener('input', function() {
+            const val = parseFloat(this.value) || 0;
+            // 假設 5 美元可以買 1 份麵包
+            const portions = Math.floor(val / 5);
+            breadText.innerText = portions;
+
+            // 更新進度條 (假設目標是 1000 美元)
+            const progress = Math.min((val / 1000) * 100, 100);
+            progressBar.style.width = progress + '%';
+        });
+
+        // 3. 地圖故事顯示
+        function showStory(title, text) {
+            const popup = document.getElementById('story-popup');
+            document.getElementById('story-title').innerText = title;
+            document.getElementById('story-content').innerText = text;
+            popup.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
