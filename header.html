@@ -602,14 +602,524 @@
       navAbout.classList.remove('active');
       if (entry.target.id === 'home')  navHome.classList.add('active');
       if (entry.target.id === 'about') navAbout.classList.add('active');
-    });
-  }, { threshold: 0.5 });
+    });<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FoodBridge – Food Rescue Mission</title>
 
-  ['home','about'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) obs.observe(el);
-  });
-</script>
+  <!-- Google Fonts: loads the Open Sans font from the internet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+
+    /* This removes the default spacing browsers add to every element */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Base styles for the whole page */
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #FFF8E7;
+      color: #8B5A2B;
+    }
+
+    /* ── HEADER ── */
+    /* A simple bar across the top of the page */
+    .header {
+      background-color: #8B5A2B;
+      padding: 14px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* The FoodBridge text logo */
+    .logo-text {
+      color: #F4C542;
+      font-size: 1.2rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    /* The nav links on the right side of the header */
+    .nav {
+      list-style: none;   /* removes bullet points */
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav a {
+      color: #FFF8E7;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background-color: #6B3F18;
+    }
+
+    /* ── LANDING SECTION ── */
+    /* The big hero area visitors see first */
+    #landing {
+      background-color: #6B3F18;
+      text-align: center;
+      padding: 80px 30px;
+    }
+
+    .landing-emoji {
+      font-size: 5rem;          /* makes the emoji very large */
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .landing-title {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #F4C542;
+      margin-bottom: 10px;
+    }
+
+    .landing-subtitle {
+      color: #c9a870;
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;  /* makes text ALL CAPS */
+      margin-bottom: 40px;
+    }
+
+    /* The two buttons side by side */
+    .landing-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+    }
+
+    /* ── BUTTONS ── */
+    /* Shared styles all buttons use */
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: 2px solid #F4C542;
+      cursor: pointer;              /* shows a hand cursor on hover */
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    /* Yellow filled button */
+    .btn-yellow {
+      background-color: #F4C542;
+      color: #6B3F18;
+    }
+
+    /* See-through button with a border */
+    .btn-outline {
+      background-color: #6B3F18;
+      color: #F4C542;
+    }
+
+    /* Green button used for Take Action */
+    .btn-green {
+      background-color: #5A8F4C;
+      color: #ffffff;
+      border-color: #5A8F4C;
+    }
+
+    /* ── HOME SECTION ── */
+    #home {
+      background-color: #FFF8E7;
+      text-align: center;
+      padding: 60px 30px;
+    }
+
+    /* Small pill-shaped label */
+    .badge {
+      display: inline-block;
+      background-color: #5A8F4C;
+      color: #ffffff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    #home h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #6B3F18;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .home-chant {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #3d6634;
+      margin-bottom: 20px;
+    }
+
+    /* The paragraph of body text */
+    .home-body {
+      font-size: 0.97rem;
+      line-height: 1.9;
+      color: #5a3e20;
+      margin-bottom: 30px;
+      max-width: 620px;
+      margin-left: auto;      /* centers the paragraph block */
+      margin-right: auto;
+    }
+
+    /* The row of 3 brown stat cards */
+    .stat-row {
+      display: flex;
+      flex-wrap: wrap;        /* cards stack if screen is small */
+      gap: 14px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .stat-card {
+      background-color: #8B5A2B;
+      color: #FFF8E7;
+      border-radius: 12px;
+      padding: 18px 24px;
+      min-width: 130px;
+      text-align: center;
+    }
+
+    /* The big number inside each card */
+    .stat-card strong {
+      display: block;
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #F4C542;
+      margin-bottom: 6px;
+    }
+
+    /* The small label below the number */
+    .stat-card span {
+      font-size: 0.75rem;
+    }
+
+    /* ── TAKE ACTION SECTION ── */
+    /* Replaces the popup modal — now a regular visible section */
+    #action {
+      background-color: #eef6eb;
+      text-align: center;
+      padding: 60px 30px;
+    }
+
+    #action h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #3d6634;
+      margin-bottom: 10px;
+    }
+
+    #action p {
+      color: #5a3e20;
+      font-size: 0.95rem;
+      margin-bottom: 30px;
+    }
+
+    /* The two option cards side by side */
+    .action-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    /* Each option card */
+    .action-card {
+      background-color: #ffffff;
+      border: 2px solid #5A8F4C;
+      border-radius: 12px;
+      padding: 24px 20px;
+      width: 240px;
+      text-align: center;
+      text-decoration: none;
+      color: #6B3F18;
+    }
+
+    .action-card .card-emoji {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .action-card strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: #3d6634;
+    }
+
+    .action-card span {
+      font-size: 0.8rem;
+      color: #8a6040;
+      line-height: 1.5;
+    }
+
+    /* ── ABOUT SECTION ── */
+    #about {
+      background-color: #6B3F18;
+      text-align: center;
+      padding: 60px 30px;
+      color: #FFF8E7;
+    }
+
+    /* The About badge uses yellow instead of green */
+    #about .badge {
+      background-color: #F4C542;
+      color: #6B3F18;
+    }
+
+    #about h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #F4C542;
+      margin-bottom: 16px;
+    }
+
+    .about-intro {
+      font-size: 0.97rem;
+      line-height: 1.9;
+      color: #c9a870;
+      margin-bottom: 30px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* The 4 source cards in a row */
+    .sources-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+    }
+
+    .source-card {
+      background-color: #7a4e24;
+      border: 1px solid #c9a870;
+      border-radius: 12px;
+      padding: 20px 16px;
+      width: 160px;
+      text-align: center;
+    }
+
+    .source-icon {
+      font-size: 1.8rem;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .source-card h4 {
+      font-size: 0.87rem;
+      font-weight: 700;
+      color: #F4C542;
+      margin-bottom: 6px;
+    }
+
+    .source-card p {
+      font-size: 0.72rem;
+      color: #c9a870;
+      line-height: 1.5;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background-color: #3d2610;
+      color: #a07850;
+      text-align: center;
+      padding: 18px 30px;
+      font-size: 0.75rem;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════
+       HEADER
+       A simple bar at the top with the logo and nav links
+  ══════════════════════════ -->
+  <header class="header">
+
+    <!-- Logo (just text, no SVG) -->
+    <a class="logo-text" href="#landing">🌾 FoodBridge</a>
+
+    <!-- Navigation links -->
+    <ul class="nav">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#action">Take Action</a></li>
+      <li><a href="#about">About Us</a></li>
+    </ul>
+
+  </header>
+
+
+  <!-- ══════════════════════════
+       LANDING SECTION
+       The first big screen visitors see
+  ══════════════════════════ -->
+  <section id="landing">
+
+    <!-- Large emoji as the "logo" -->
+    <span class="landing-emoji">🌾</span>
+
+    <h1 class="landing-title">FoodBridge</h1>
+    <p class="landing-subtitle">Food Rescue Mission · 食物救援任務</p>
+
+    <!-- Two buttons: one goes to Home, one to About -->
+    <div class="landing-buttons">
+      <a class="btn btn-yellow" href="#home">🏠 Home</a>
+      <a class="btn btn-outline" href="#about">About Us</a>
+    </div>
+
+  </section>
+
+
+  <!-- ══════════════════════════
+       HOME SECTION
+       Mission statement and food waste facts
+  ══════════════════════════ -->
+  <section id="home">
+
+    <!-- Small green label above the heading -->
+    <span class="badge">Our Mission</span>
+
+    <h2>Rescuing Food.<br>Restoring Dignity.</h2>
+    <p class="home-chant">Together we can stop hunger. 🌾</p>
+
+    <!-- Body text paragraphs -->
+    <p class="home-body">
+      <strong>FoodBridge</strong> is a food rescue mission that bridges the gap between surplus food
+      and those who need it most. Every day, tonnes of edible food are discarded while millions
+      go hungry — we believe this doesn't have to be the case.
+      <br><br>
+      We connect restaurants, supermarkets, and households with community members facing food
+      insecurity. Through awareness, education, and direct action, FoodBridge builds a world
+      where no good food goes to waste and no one goes to bed hungry.
+    </p>
+
+    <!-- 3 stat cards showing food waste facts -->
+    <div class="stat-row">
+      <div class="stat-card">
+        <strong>733M</strong>
+        <span>People face hunger globally</span>
+      </div>
+      <div class="stat-card">
+        <strong>1/3</strong>
+        <span>Of all food produced is wasted</span>
+      </div>
+      <div class="stat-card">
+        <strong>2.5B</strong>
+        <span>Tonnes wasted each year</span>
+      </div>
+    </div>
+
+    <!-- Button scrolls down to the Take Action section -->
+    <a class="btn btn-green" href="#action">❤️ Take Action</a>
+
+  </section>
+
+
+  <!-- ══════════════════════════
+       TAKE ACTION SECTION
+       Replaces the popup modal — now a plain section on the page
+  ══════════════════════════ -->
+  <section id="action">
+
+    <h2>Choose Your Action</h2>
+    <p>How would you like to make a difference today?</p>
+
+    <!-- Two option cards -->
+    <div class="action-options">
+
+      <!-- Option 1 -->
+      <a class="action-card" href="#30hr">
+        <span class="card-emoji">⏱️</span>
+        <strong>30HR Challenge</strong>
+        <span>Go 30 hours without food to experience hunger and raise awareness.</span>
+      </a>
+
+      <!-- Option 2 -->
+      <a class="action-card" href="#izhenshi">
+        <span class="card-emoji">🍱</span>
+        <strong>我珍食</strong>
+        <span>Cherish every meal — reduce food waste starting from home and school.</span>
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- ══════════════════════════
+       ABOUT SECTION
+  ══════════════════════════ -->
+  <section id="about">
+
+    <span class="badge">About Us</span>
+
+    <h2>Why FoodBridge?</h2>
+    <p class="about-intro">
+      We are a student-driven initiative passionate about tackling food waste and hunger.
+      Our work is grounded in research and data from leading international organisations.
+      The facts that drive us come from these trusted sources:
+    </p>
+
+    <!-- 4 source cards -->
+    <div class="sources-grid">
+      <div class="source-card">
+        <span class="source-icon">🌏</span>
+        <h4>World Vision</h4>
+        <p>Child &amp; community hunger data worldwide</p>
+      </div>
+      <div class="source-card">
+        <span class="source-icon">🇺🇳</span>
+        <h4>United Nations</h4>
+        <p>Global food security &amp; SDG reports</p>
+      </div>
+      <div class="source-card">
+        <span class="source-icon">🌾</span>
+        <h4>FAO</h4>
+        <p>Food &amp; Agriculture Organization statistics</p>
+      </div>
+      <div class="source-card">
+        <span class="source-icon">🍽️</span>
+        <h4>World Food Programme</h4>
+        <p>Hunger relief &amp; aid programme research</p>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ══════════════════════════
+       FOOTER
+  ══════════════════════════ -->
+  <footer class="footer">
+    © 2025 FoodBridge · Food Rescue Mission &nbsp;·&nbsp;
+    Sources: World Vision · UN · FAO · World Food Programme
+  </footer>
+
+
+  <!-- No JavaScript at all in this version! -->
 
 </body>
 </html>
