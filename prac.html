@@ -55,28 +55,26 @@
                 請先輸入資助金額以開啟第三關 ↓
             </button>
         </div>
-
         <div id="stage-3" class="gamified-stage stage-locked">
             <div class="lock-overlay">🔒 達成第二關後解鎖</div>
             <div class="stage-badge">STAGE 03</div>
             <h3 class="block-main-title">第三關：看見世界</h3>
             <p class="block-sub-text">恭喜抵達最終章。點擊地圖上的紅色警示點，聆聽來自全球前線災區的真實聲音。</p>
-            
+    
             <div class="map-game-box">
-                <div class="map-container" style="position: relative; width: 100%;">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg" alt="World Map" class="map-image" style="width: 100%; display: block;">
+                <div class="map-container" style="position: relative; width: 100%; border-radius: 18px; overflow: hidden; background: #EDF4F7;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg" alt="World Map" class="map-image" style="width: 100%; display: block; filter: sepia(0.08) hue-rotate(5deg) contrast(0.95); padding: 15px 0;">
 
-                    <div class="map-dot" style="top: 48%; left: 58%;" onclick="showStory(0)"></div> <div class="map-dot" style="top: 36%; left: 61%;" onclick="showStory(1)"></div> <div class="map-dot" style="top: 67%; left: 34%;" onclick="showStory(2)"></div> <div class="map-dot" style="top: 42%; left: 69%;" onclick="showStory(3)"></div> <div class="map-dot" style="top: 47%; left: 48%;" onclick="showStory(4)"></div> </div>
-                <div class="map-dot" style="top: 46%; left: 69%;" onclick="showStory(3)"></div> <div class="map-dot" style="top: 47%; left: 48%;" onclick="showStory(4)"></div> </div>
+                    <div class="map-dot" style="position: absolute; transform: translate(-50%, -50%); top: 52%; left: 58.5%; cursor: pointer;" onclick="showStory(0)"></div> <div class="map-dot" style="position: absolute; transform: translate(-50%, -50%); top: 38%; left: 61%; cursor: pointer;" onclick="showStory(1)"></div>  <div class="map-dot" style="position: absolute; transform: translate(-50%, -50%); top: 67%; left: 34%; cursor: pointer;" onclick="showStory(2)"></div>  <div class="map-dot" style="position: absolute; transform: translate(-50%, -50%); top: 43%; left: 69%; cursor: pointer;" onclick="showStory(3)"></div>  <div class="map-dot" style="position: absolute; transform: translate(-50%, -50%); top: 48%; left: 48.5%; cursor: pointer;" onclick="showStory(4)"></div> </div>
+        
                 <div id="dynamic-story-box" class="story-panel hidden">
                     <h4 id="story-region"></h4>
                     <p id="story-text"></p>
                 </div>
-                <div id="map-placeholder-tip" class="map-tip">💡 請點擊地圖上的紅色動態圓點完成破關體驗</div>
+                <div id="map-placeholder-tip" class="map-tip" style="margin-top: 15px; font-size: 0.85rem; color: #B2ABA4; text-align: center;">💡 請點擊地圖上的紅色動態圓點完成破關體驗</div>
             </div>
         </div>
-
-    </div>
+        
 </section>
 
 <style>
