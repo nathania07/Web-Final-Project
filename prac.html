@@ -1,0 +1,559 @@
+<section id="thirty-hours" class="thirty-hours-section">
+    <div class="thirty-hours-container">
+
+        <div class="thirty-hours-header">
+            <h2 class="thirty-hours-title">⌛ 30 Hours for Change / 飢餓三十</h2>
+            <p class="thirty-hours-subtitle">Choose to set aside our own basic needs and experience the lives of vulnerable children through action</p>
+        </div>
+
+        <div class="hero-simulation-block">
+            <div class="simulation-badge">LIVE SIMULATION</div>
+            <h3 class="block-main-title">Virtual Hunger Simulator</h3>
+            <p class="block-sub-text">體驗飢餓對感官的真實衝擊。隨著停留時間增加，網頁色彩將逐漸褪去。</p>
+            
+            <div class="modern-timer-container">
+                <div class="display-box">
+                    <span id="time-display">00:00:00</span>
+                </div>
+                <div class="hunger-progress-wrapper">
+                    <div class="hunger-label">
+                        <span>💡 當前飢餓指數</span>
+                        <span><span id="hunger-display">0</span>%</span>
+                    </div>
+                    <div class="hunger-bar-bg">
+                        <div id="hunger-bar-fill" class="hunger-bar-fill"></div>
+                    </div>
+                </div>
+            </div>
+            <p class="simulation-note">* 網頁色彩將隨時間淡化 / 預設完全飢餓時間：30 分鐘</p>
+        </div>
+
+        <div class="scroll-indicator">
+            <p>Scroll down to explore & take action</p>
+            <div class="arrow-down">↓</div>
+        </div>
+
+        <div class="action-grid-section">
+            
+            <div class="action-column map-column">
+                <div class="column-header">
+                    <span class="column-icon">🌍</span>
+                    <h3>World Hunger Map</h3>
+                    <p>點擊地圖上的紅色警示點，聆聽來自前線災區的真實困境。</p>
+                </div>
+
+                <div class="map-card-wrapper">
+                    <div class="map-container">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg" alt="World Map" class="map-image">
+        
+                        <div class="map-dot" style="top: 53%; left: 58%;" onclick="showStory(0)"></div> <div class="map-dot" style="top: 36%; left: 55%;" onclick="showStory(1)"></div> <div class="map-dot" style="top: 65%; left: 33%;" onclick="showStory(2)"></div> <div class="map-dot" style="top: 45%; left: 68%;" onclick="showStory(3)"></div> <div class="map-dot" style="top: 50%; left: 48%;" onclick="showStory(4)"></div> </div>
+                    
+                    <div id="dynamic-story-box" class="story-panel hidden">
+                        <h4 id="story-region"></h4>
+                        <p id="story-text"></p>
+                    </div>
+                    <div id="map-placeholder-tip" class="map-tip">💡 請點擊地圖上的紅色動態圓點</div>
+                </div>
+            </div>
+
+            <div class="action-column donation-column">
+                <div class="column-header">
+                    <span class="column-icon">💰</span>
+                    <h3>Donation Impact</h3>
+                    <p>輸入預計資助的金額，即時看見這筆善款能為孩子帶來多少天的希望。</p>
+                </div>
+
+                <div class="donation-card-wrapper">
+                    <div class="input-group">
+                        <span class="currency-prefix">$</span>
+                        <input type="number" id="donation-amount" class="modern-input" placeholder="輸入資助金額 (USD)" min="0">
+                    </div>
+                    
+                    <div class="impact-result-box">
+                        <div class="result-title">成功轉化為</div>
+                        <div class="result-number"><span id="bread-count">0</span></div>
+                        <div class="result-unit">天生命的營養糧食</div>
+                    </div>
+
+                    <div id="celebration-msg"></div>
+
+                    <div class="donation-footer-info">
+                        <p class="card-note">每 3 USD（約新台幣 100 元）即可負擔一名脆弱孩童整日所需的關鍵營養補給與乾淨飲水。</p>
+                        <button class="thirty-hours-btn-submit">立即發動資助 →</button>
+                    </div>
+                </div>
+            </div>
+
+        </div> </div>
+</section>
+
+<style>
+    /* 基礎高質感環境 */
+    .thirty-hours-section {
+        background-color: #FAF6EE; /* 溫潤的永續燕麥白 */
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans TC', sans-serif;
+        padding: 100px 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .thirty-hours-container {
+        max-width: 1140px;
+        width: 100%;
+    }
+
+    /* 標題設定 */
+    .thirty-hours-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .thirty-hours-title {
+        color: #4A3319;
+        font-size: 2.8rem;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        margin-bottom: 16px;
+    }
+
+    .thirty-hours-subtitle {
+        color: #3B6630;
+        font-size: 1.15rem;
+        font-weight: 500;
+        max-width: 650px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    /* 第一屏：大器且聚焦的計時模擬器 */
+    .hero-simulation-block {
+        background: #FFFFFF;
+        border: 1px solid rgba(139, 90, 43, 0.08);
+        border-radius: 32px;
+        padding: 50px 40px;
+        box-shadow: 0 20px 50px rgba(74, 51, 25, 0.04);
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 40px auto;
+    }
+
+    .simulation-badge {
+        display: inline-block;
+        background: rgba(230, 95, 92, 0.1);
+        color: #E65F5C;
+        padding: 6px 16px;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+    }
+
+    .block-main-title {
+        color: #4A3319;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .block-sub-text {
+        color: #6B6661;
+        font-size: 1rem;
+        margin-bottom: 35px;
+    }
+
+    .modern-timer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    /* 電子墨水復古計時器 */
+    .display-box {
+        background: #1A1D1D;
+        color: #FFC048; /* 麥穗金 */
+        padding: 20px 45px;
+        border-radius: 20px;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: 800;
+        font-size: 2.6rem;
+        letter-spacing: 2px;
+        box-shadow: inset 0 4px 12px rgba(0,0,0,0.6), 0 10px 20px rgba(0,0,0,0.05);
+    }
+
+    /* 條狀飢餓進度條 */
+    .hunger-progress-wrapper {
+        width: 100%;
+        text-align: left;
+    }
+
+    .hunger-label {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #5C5651;
+        margin-bottom: 8px;
+    }
+
+    .hunger-bar-bg {
+        width: 100%;
+        height: 10px;
+        background: #EFEAE4;
+        border-radius: 50px;
+        overflow: hidden;
+    }
+
+    .hunger-bar-fill {
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(90deg, #FFC048, #E65F5C);
+        border-radius: 50px;
+        transition: width 1s linear;
+    }
+
+    .simulation-note {
+        font-size: 0.8rem;
+        color: #B2ABA4;
+        margin-top: 24px;
+    }
+
+    /* 下滑提示 */
+    .scroll-indicator {
+        text-align: center;
+        margin: 40px 0 60px 0;
+        color: #A66E38;
+        font-weight: 600;
+        font-size: 0.9rem;
+        animation: bounce 2s infinite;
+    }
+    .arrow-down {
+        font-size: 1.4rem;
+        margin-top: 5px;
+    }
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-8px); }
+        60% { transform: translateY(-4px); }
+    }
+
+    /* 第二屏：雙欄左右對稱平衡排版 */
+    .action-grid-section {
+        display: flex;
+        gap: 40px;
+        align-items: stretch; /* 讓左右兩高度強制造型等高，達成絕佳平衡 */
+        flex-wrap: wrap;
+    }
+
+    .action-column {
+        flex: 1;
+        min-width: 340px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .column-header {
+        text-align: left;
+        margin-bottom: 24px;
+        padding-left: 10px;
+    }
+
+    .column-icon {
+        font-size: 32px;
+        display: block;
+        margin-bottom: 12px;
+    }
+
+    .column-header h3 {
+        color: #4A3319;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0 0 8px 0;
+    }
+
+    .column-header p {
+        color: #7A736D;
+        font-size: 0.95rem;
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    /* 內層白底高級卡片 */
+    .map-card-wrapper, .donation-card-wrapper {
+        background: #FFFFFF;
+        border: 1px solid rgba(139, 90, 43, 0.06);
+        border-radius: 28px;
+        padding: 35px;
+        box-shadow: 0 16px 40px rgba(74, 51, 25, 0.03);
+        flex: 1; /* 自動撐滿容器高度 */
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 地圖元件細節 */
+    .map-container {
+        position: relative;
+        width: 100%;
+        border-radius: 18px;
+        overflow: hidden;
+        background: #EDF4F7; /* 質感海洋藍 */
+        box-shadow: inset 0 0 20px rgba(0,0,0,0.04);
+    }
+
+    .map-image {
+        width: 100%;
+        display: block;
+        filter: sepia(0.08) hue-rotate(5deg) contrast(0.95);
+        padding: 15px 0;
+    }
+
+    /* 地圖點與動畫外圈 */
+    .map-dot {
+        position: absolute;
+        width: 14px; height: 14px;
+        background-color: #E65F5C;
+        border-radius: 50%;
+        cursor: pointer;
+        transform: translate(-50%, -50%);
+        transition: transform 0.2s;
+    }
+    .map-dot:hover {
+        transform: translate(-50%, -50%) scale(1.3);
+        background-color: #D63031;
+    }
+    .map-dot::after {
+        content: '';
+        position: absolute;
+        top: -8px; left: -8px; right: -8px; bottom: -8px;
+        border-radius: 50%;
+        border: 2px solid #E65F5C;
+        opacity: 0;
+        animation: mapPulse 2.2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+    }
+    @keyframes mapPulse {
+        0% { transform: scale(0.5); opacity: 0.8; }
+        70% { opacity: 0; transform: scale(1.8); }
+        100% { opacity: 0; }
+    }
+
+    /* 地圖嵌入式故事看板 (Glassmorphism 特效) */
+    .story-panel {
+        margin-top: 20px;
+        background: rgba(253, 251, 247, 0.85);
+        backdrop-filter: blur(4px);
+        border-left: 4px solid #A66E38;
+        padding: 18px;
+        border-radius: 12px;
+        text-align: left;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        animation: panelFadeIn 0.4s ease-out forwards;
+    }
+    .story-panel h4 { margin: 0 0 6px 0; color: #4A3319; font-size: 1.05rem; font-weight: 700; }
+    .story-panel p { margin: 0; color: #6B6661; font-size: 0.9rem; line-height: 1.5; }
+    
+    .map-tip {
+        margin-top: 15px;
+        font-size: 0.85rem;
+        color: #B2ABA4;
+        text-align: center;
+    }
+    .hidden { display: none; }
+
+    @keyframes panelFadeIn {
+        from { opacity: 0; transform: translateY(5px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 捐款輸入與成果顯示架構 */
+    .input-group {
+        position: relative;
+        width: 100%;
+        margin-bottom: 25px;
+    }
+
+    .currency-prefix {
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #A09890;
+        font-weight: 700;
+        font-size: 1.1rem;
+    }
+
+    .modern-input {
+        width: 100%;
+        padding: 16px 20px 16px 45px;
+        border: 2px solid #EFEAE4;
+        border-radius: 16px;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: #4A3319;
+        outline: none;
+        box-sizing: border-box;
+        transition: all 0.3s;
+        background: #FDFDFD;
+    }
+
+    .modern-input:focus {
+        border-color: #8B5A2B;
+        background: #FFFFFF;
+        box-shadow: 0 4px 12px rgba(139, 90, 43, 0.05);
+    }
+
+    /* 量化成果看板 */
+    .impact-result-box {
+        background: #FDF9F3;
+        border: 1px dashed #E6D9CB;
+        border-radius: 20px;
+        padding: 25px 20px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .result-title {
+        font-size: 0.85rem;
+        color: #7A736D;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+
+    .result-number {
+        font-size: 3.2rem;
+        font-weight: 900;
+        color: #A66E38;
+        line-height: 1.1;
+        margin: 10px 0;
+    }
+
+    .result-unit {
+        font-size: 0.95rem;
+        color: #4A3319;
+        font-weight: 700;
+    }
+
+    #celebration-msg {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #427437;
+        text-align: center;
+        min-height: 1.5em;
+        margin-bottom: 15px;
+    }
+
+    .donation-footer-info {
+        margin-top: auto; /* 將按鈕與附註推至卡片最底部，確保對齊線乾淨 */
+    }
+
+    .thirty-hours-btn-submit {
+        background-color: #427437;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 16px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 15px;
+        transition: all 0.3s;
+        box-shadow: 0 6px 16px rgba(66, 116, 55, 0.15);
+    }
+
+    .thirty-hours-btn-submit:hover {
+        background-color: #335A2A;
+        box-shadow: 0 8px 24px rgba(66, 116, 55, 0.25);
+        transform: translateY(-1px);
+    }
+
+    /* 手機版 RWD 調校 */
+    @media (max-width: 768px) {
+        .thirty-hours-title { font-size: 2.2rem; }
+        .action-grid-section { flex-direction: column; gap: 30px; }
+        .hero-simulation-block { padding: 35px 20px; }
+        .display-box { font-size: 2rem; }
+    }
+</style>
+
+<script>
+    // 1. 虛擬飢餓模擬 (Virtual Hunger Simulation)
+    let totalSeconds = 0;
+    const timeDisplay = document.getElementById('time-display');
+    const hungerDisplay = document.getElementById('hunger-display');
+    const hungerBarFill = document.getElementById('hunger-bar-fill');
+    
+    function startHungerSimulation() {
+        setInterval(() => {
+            totalSeconds++;
+            
+            // 時間格式化碼
+            const hrs = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+            const mins = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+            const secs = String(totalSeconds % 60).padStart(2, '0');
+            timeDisplay.innerText = `${hrs}:${mins}:${secs}`;
+            
+            // 30分鐘 (1800秒) 達到 100% 飢餓
+            const hungerLevel = Math.min((totalSeconds / 1800) * 100, 100);
+            const currentHunger = Math.floor(hungerLevel);
+            
+            // 同步數據與進度條長度
+            hungerDisplay.innerText = currentHunger;
+            hungerBarFill.style.width = currentHunger + '%';
+            
+            // 頁面動態褪色效果
+            const grayscaleValue = hungerLevel / 100;
+            document.body.style.filter = `grayscale(${grayscaleValue})`;
+        }, 1000);
+    }
+
+    // 2. 動態募款換算 (Donation Converter)
+    const amountInput = document.getElementById('donation-amount');
+    const breadCount = document.getElementById('bread-count');
+    const celebrationMsg = document.getElementById('celebration-msg');
+
+    amountInput.addEventListener('input', function() {
+        const usdAmount = parseFloat(this.value) || 0;
+        const daysOfFood = Math.floor(usdAmount / 3);
+        
+        // 千分位格式化
+        breadCount.innerText = daysOfFood.toLocaleString();
+
+        if (daysOfFood >= 100) {
+            celebrationMsg.innerText = "🎉 卓越的力量！您已為脆弱孩童點亮超過 100 天的生存希望！";
+        } else if (daysOfFood > 0) {
+            celebrationMsg.innerText = "❤️ 感謝您的溫暖善舉，正為前線帶來實質性的改變！";
+        } else {
+            celebrationMsg.innerText = ""; 
+        }
+    });
+
+    // 3. 世界地圖小故事數據庫 (5大代表性糧荒災區)
+    const storyBox = document.getElementById('dynamic-story-box');
+    const placeholderTip = document.getElementById('map-placeholder-tip');
+    const storyRegion = document.getElementById('story-region');
+    const storyText = document.getElementById('story-text');
+
+    const mapStories = [
+        { region: "📍 East Africa (東非地區)", story: "持續的極端乾旱與反常洪澇，導致在地作物產量暴跌至正常水平的 20%，數百萬兒童正面臨嚴重的急性營養不良危險。" },
+        { region: "📍 Middle East (中東地區)", story: "地緣衝突重創了原本脆弱的供應鏈，造成當地的基本糧食與急救物資價格飆漲了將近 300%，兒童生存面臨空前挑戰。" },
+        { region: "📍 South America (南美高地)", story: "受到聖嬰現象帶來的異常氣候衝擊，偏遠山區的小農家庭生計面臨崩潰。學童們每天必須跋涉 2 小時路程，才能前往學校領取唯一的營養午餐。" },
+        { region: "📍 South Asia (南亞難民營)", story: "強烈季風引發的世紀洪災淹沒了大片農田，大規模的難民收容所正面臨糧食與乾淨飲水斷絕的雙重危機，阻礙兒童的身心發育。" },
+        { region: "📍 West Africa (西非薩赫爾)", story: "土地劇烈沙漠化再加上區域安全動盪，使得這個脆弱邊緣地帶的生存資源被掠奪殆盡，是目前全球急需國際人道救援介入的最前線。" }
+    ];
+
+    function showStory(index) {
+        const data = mapStories[index];
+        storyRegion.innerText = data.region;
+        storyText.innerText = data.story;
+        
+        // 切換顯示狀態
+        placeholderTip.classList.add('hidden');
+        storyBox.classList.remove('hidden');
+    }
+
+    // 初始化啟動
+    window.onload = startHungerSimulation;
+</script>
