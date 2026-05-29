@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>i珍食 Style Page · Near-expiry Food Guide</title>
+    <title>Last Call · Convenience Store Discount Guide</title>
     <style>
         * {
             margin: 0;
@@ -12,313 +12,282 @@
         }
 
         body {
-            background: #fef7e0;
-            font-family: system-ui, 'Segoe UI', -apple-system, 'Helvetica Neue', sans-serif;
-            padding: 2rem 1rem;
-            color: #2c221b;
+            background: #f5f3ef;
+            font-family: -apple-system, 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            padding: 2.5rem 1.5rem;
+            color: #1e1b18;
+            line-height: 1.4;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
         }
 
+        /* Header — minimal */
         .hero {
-            text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #e2ded7;
+            padding-bottom: 1.5rem;
         }
         .hero h1 {
-            font-size: 2.4rem;
-            background: linear-gradient(135deg, #b96f30, #e09d32);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
+            font-size: 1.8rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #2c241a;
         }
         .hero p {
-            font-size: 1.1rem;
-            color: #5c4b3a;
+            font-size: 0.95rem;
+            color: #6b6258;
             margin-top: 0.5rem;
         }
         .hero-badge {
             display: inline-block;
-            background: #e7e0d0;
-            padding: 0.3rem 1rem;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: #8b5a2b;
-            margin-top: 0.8rem;
+            font-size: 0.75rem;
+            color: #8b7a66;
+            margin-top: 0.75rem;
+            letter-spacing: 0.3px;
         }
 
-        /* NEW: Store Locator Panel */
+        /* Store Locator Panel — clean card */
         .locator-panel {
-            background: #fff3e2;
-            border-radius: 2rem;
+            background: #ffffff;
+            border: 1px solid #e9e5de;
             padding: 1.5rem;
-            margin-bottom: 2rem;
-            border: 1px solid #ffe0b5;
-            text-align: center;
+            margin-bottom: 3rem;
         }
         .locator-header {
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 0.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
         }
         .locator-header h3 {
-            color: #8b5a2b;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #2c241a;
+            letter-spacing: -0.2px;
         }
         .find-btn {
-            background: #d48d3b;
-            border: none;
-            padding: 0.8rem 1.8rem;
-            border-radius: 48px;
-            font-weight: 700;
-            color: white;
+            background: none;
+            border: 1px solid #cfc8bc;
+            padding: 0.6rem 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 450;
+            color: #2c241a;
             cursor: pointer;
-            transition: 0.2s;
-            font-size: 1rem;
-            margin-bottom: 1rem;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            margin-bottom: 1.25rem;
         }
         .find-btn:hover {
-            background: #b46a23;
-            transform: scale(0.98);
+            background: #f0ede8;
+            border-color: #b0a692;
         }
         .store-list {
-            margin-top: 1rem;
-            text-align: left;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-top: 0.5rem;
         }
         .store-item {
-            background: white;
-            border-radius: 1rem;
-            padding: 0.8rem 1rem;
-            margin-bottom: 0.8rem;
+            border-top: 1px solid #efebe4;
+            padding: 1rem 0;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            gap: 0.75rem;
+        }
+        .store-item:first-child {
+            border-top: none;
+            padding-top: 0;
         }
         .store-info {
             flex: 2;
         }
         .store-name {
-            font-weight: 700;
-            color: #4a2e1e;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: #1e1b18;
         }
         .store-dist {
             font-size: 0.75rem;
-            color: #888;
+            color: #8b7a66;
+            margin-top: 0.25rem;
         }
         .stock-badge {
-            padding: 0.3rem 0.8rem;
-            border-radius: 40px;
             font-size: 0.7rem;
-            font-weight: bold;
+            font-weight: 450;
+            padding: 0.2rem 0.6rem;
+            background: #f0ede8;
+            color: #4a4238;
+            letter-spacing: 0.2px;
         }
-        .stock-high { background: #d4edda; color: #155724; }
-        .stock-med { background: #fff3cd; color: #856404; }
-        .stock-low { background: #f8d7da; color: #721c24; }
+        .stock-high { background: #e9efe6; color: #2c5a2e; }
+        .stock-med { background: #fef1df; color: #a6641a; }
+        .stock-low { background: #f6eee9; color: #b1624b; }
         .location-note {
-            font-size: 0.75rem;
-            color: #a0866c;
+            font-size: 0.7rem;
+            color: #a0907e;
             margin-top: 1rem;
+            border-top: 1px solid #efebe4;
+            padding-top: 0.75rem;
         }
 
+        /* Store grid — cleaner, less playful */
         .store-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0 2rem;
         }
 
         .store-card {
-            background: white;
-            border-radius: 2rem;
-            overflow: hidden;
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
-            transition: all 0.2s ease;
-            border: 1px solid #f3e9d2;
+            background: #ffffff;
+            border: 1px solid #e9e5de;
+            transition: box-shadow 0.2s;
         }
         .store-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 28px -12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
         }
 
         .card-header {
-            padding: 1.2rem 1.5rem;
-            color: white;
-            font-weight: bold;
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid #efebe4;
             display: flex;
-            align-items: center;
-            gap: 0.8rem;
+            align-items: baseline;
+            gap: 0.5rem;
         }
         .card-header h2 {
-            font-size: 1.6rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: -0.3px;
         }
-        .family-header { background: #00734a; }
-        .seven-header { background: #e43f1f; }
-        .hilife-header { background: #004b8f; }
-        .ok-header { background: #3e8b48; }
+        .card-header span:first-child {
+            font-size: 1.1rem;
+            opacity: 0.7;
+        }
+
+        /* brand colors only on text/border, not overwhelming */
+        .family-header h2 { color: #1f6e4a; }
+        .seven-header h2 { color: #c63a1f; }
+        .hilife-header h2 { color: #1a5d9c; }
+        .ok-header h2 { color: #3b7a46; }
+        .pxmart-header h2 { color: #a6673c; }
 
         .card-body {
-            padding: 1.5rem;
+            padding: 1.25rem;
         }
 
         .discount-tag {
-            display: inline-block;
-            background: #fee2b5;
-            color: #b65f17;
-            border-radius: 40px;
-            padding: 0.3rem 1rem;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        .time-slot {
-            background: #f9f2e0;
-            border-left: 5px solid #e6b15c;
-            padding: 0.7rem 1rem;
-            border-radius: 16px;
-            margin: 1rem 0;
-            font-size: 0.9rem;
-        }
-        .time-slot strong {
-            color: #c1601a;
-        }
-        .inclusive-text {
-            font-size: 0.85rem;
-            color: #5d5a52;
-            margin-top: 0.5rem;
-        }
-        .btn-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: #f2eddf;
-            padding: 0.6rem 1.2rem;
-            border-radius: 40px;
-            text-decoration: none;
-            color: #4a2e1e;
+            font-size: 0.7rem;
             font-weight: 500;
-            margin-top: 0.8rem;
-            transition: 0.2s;
-            cursor: pointer;
-            border: none;
-            font-size: 0.9rem;
-        }
-        .btn-link:hover {
-            background: #e6dcc8;
-            gap: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: #f4f1ec;
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            margin-bottom: 1rem;
+            color: #5a4e3e;
         }
 
+        .time-slot {
+            font-size: 0.85rem;
+            margin: 0.9rem 0;
+            padding-left: 0.5rem;
+            border-left: 2px solid #ddd6cc;
+        }
+        .time-slot strong {
+            font-weight: 550;
+            color: #3a3228;
+        }
+        .discount-rate {
+            font-weight: 550;
+            color: #c0642c;
+            margin-left: 0.25rem;
+        }
+        .inclusive-text {
+            font-size: 0.75rem;
+            color: #7f6e5c;
+            margin-top: 0.6rem;
+            line-height: 1.4;
+        }
+
+        .btn-link {
+            display: inline-block;
+            background: none;
+            border: 1px solid #ddd3c6;
+            padding: 0.4rem 1rem;
+            font-size: 0.7rem;
+            font-weight: 450;
+            color: #4f463b;
+            cursor: pointer;
+            transition: 0.15s;
+            margin-top: 1rem;
+            font-family: inherit;
+            text-decoration: none;
+        }
+        .btn-link:hover {
+            background: #f8f6f2;
+            border-color: #bfb3a2;
+        }
+
+        /* Countdown section — minimal */
         .countdown-area {
-            background: #fff6ea;
-            border-radius: 2rem;
-            padding: 1.2rem 1.5rem;
+            background: #ffffff;
+            border: 1px solid #e9e5de;
+            padding: 1.25rem 1.5rem;
             margin: 2rem 0 1.5rem;
-            text-align: center;
-            border: 1px solid #ffe0b5;
+        }
+        .countdown-area > span {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #8b7a66;
+            display: block;
+            margin-bottom: 1rem;
         }
         .timer-grid {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
             gap: 2rem;
-            margin-top: 1rem;
         }
         .timer-item {
-            background: white;
-            border-radius: 2rem;
-            padding: 0.8rem 1.5rem;
-            min-width: 180px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            min-width: 160px;
         }
         .timer-label {
-            font-weight: 700;
-            color: #b96f30;
+            font-size: 0.7rem;
+            font-weight: 450;
+            color: #6b6258;
+            margin-bottom: 0.3rem;
         }
         .timer-clock {
-            font-size: 1.9rem;
-            font-family: monospace;
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: #2d2b26;
-        }
-
-        .calculator-panel {
-            background: #fff3e2;
-            border-radius: 1.8rem;
-            padding: 1.5rem;
-            margin-top: 2rem;
-            text-align: center;
-        }
-        .calc-input {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin: 1.2rem 0;
-        }
-        .price-input {
-            padding: 0.8rem 1rem;
-            font-size: 1rem;
-            border-radius: 48px;
-            border: 1px solid #e5cfaf;
-            width: 220px;
-            text-align: center;
-            background: white;
-        }
-        button {
-            background: #d48d3b;
-            border: none;
-            padding: 0 1.8rem;
-            border-radius: 48px;
-            font-weight: 700;
-            color: white;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        button:hover {
-            background: #b46a23;
-            transform: scale(0.96);
-        }
-        .result-discount {
-            background: #e7dcc8;
-            border-radius: 2rem;
-            padding: 1rem;
-            display: inline-block;
-            margin-top: 0.5rem;
-            font-weight: 500;
+            font-size: 1.5rem;
+            font-family: 'SF Mono', 'JetBrains Mono', monospace;
+            font-weight: 450;
+            letter-spacing: 1px;
+            color: #2c241a;
         }
 
         hr {
             margin: 2rem 0;
             border: 0;
-            height: 2px;
-            background: linear-gradient(to right, #ffe2b5, transparent);
+            border-top: 1px solid #e2ded7;
         }
         footer {
             text-align: center;
-            font-size: 0.75rem;
-            color: #978f80;
+            font-size: 0.7rem;
+            color: #9b8d7a;
             margin-top: 2rem;
         }
+
         @media (max-width: 700px) {
-            .timer-clock {
-                font-size: 1.4rem;
+            body {
+                padding: 1.5rem;
             }
-            .hero h1 {
-                font-size: 1.8rem;
+            .timer-clock {
+                font-size: 1.2rem;
             }
             .store-item {
                 flex-direction: column;
-                text-align: center;
             }
         }
     </style>
@@ -326,129 +295,161 @@
 <body>
 <div class="container">
     <div class="hero">
-        <h1>Last Call · i珍食 Style</h1>
-        <p>Save food, save money, reduce waste</p>
-        <div class="hero-badge">#SDG2 Zero Hunger | #Near-expiry Food Guide</div>
+        <h1>Last Call · 即期鲜食时段</h1>
+        <p>Convenience store discounted food hours — Taipei, Taiwan</p>
+        <div class="hero-badge">based on official discount periods · stock probability estimated from time</div>
     </div>
 
-    <!-- NEW: Store Locator Panel with Geolocation -->
+    <!-- Store locator panel (geolocation + simulated nearby stores) -->
     <div class="locator-panel">
         <div class="locator-header">
             <span>📍</span>
-            <h3>Find Discounted Food Near You</h3>
+            <h3>Find discounted food nearby</h3>
         </div>
-        <button id="findStoresBtn" class="find-btn"> Find Stores Near Me</button>
+        <button id="findStoresBtn" class="find-btn">Use my location →</button>
         <div id="nearbyStoresList" class="store-list">
-            <p style="color: #a0866c; text-align: center;">Click the button to see nearby convenience stores </p>
-        </div>
-        <div class="location-note">
-            * Stock probability is estimated based on current time and each store's discount schedule.
+            <div class="location-note" style="border: none; padding: 0;">Allow location to see nearest stores and live stock probability.</div>
         </div>
     </div>
 
-    <!-- Store Grid - 4 convenience stores -->
+    <!-- Store grid (4+1: PX Mart added from your image) -->
     <div class="store-grid">
-        <!-- FamilyMart -->
-        <div class="store-card">
-            <div class="card-header family-header">
-                <span></span><h2>FamilyMart</h2>
-            </div>
-            <div class="card-body">
-                <div class="discount-tag">Friendly Hours · 30% OFF</div>
-                <div class="time-slot">
-                    <strong>🕒 Period 1</strong> 10:00 ~ 17:00 (expires at 17:00)<br>
-                    <strong>🕒 Period 2</strong> 17:00 ~ 24:00 (expires at midnight)
-                </div>
-                <div class="inclusive-text">🔹 Meals, bento boxes, rice balls, sandwiches with "Friendly Hours" sticker</div>
-                <button class="btn-link" onclick="alert('FamilyMart near-expiry food: Check the discounted section in store or use the FamilyMart APP to see inventory.');">📱 Check Inventory →</button>
-            </div>
-        </div>
-
         <!-- 7-ELEVEN -->
         <div class="store-card">
             <div class="card-header seven-header">
-                <span></span><h2>7-ELEVEN</h2>
+                <span>🏪</span><h2>7-ELEVEN</h2>
             </div>
             <div class="card-body">
-                <div class="discount-tag"> i珍食 · 35% OFF</div>
+                <div class="discount-tag">i珍食</div>
                 <div class="time-slot">
-                    <strong>Period 1</strong> 10:00 ~ 17:00<br>
-                    <strong>Period 2</strong> 20:00 ~ 03:00 (expires at 3am next day)
+                    <strong>🕒 10:00 – 17:00</strong> 
+                    <span class="discount-rate">65折</span><br>
+                    <span class="inclusive-text" style="margin-top: 4px;">鲜食 · 便当 · 三角饭团 · 面食</span>
                 </div>
-                <div class="inclusive-text">🔹 Fresh food, bento boxes, sandwiches, noodles with "i珍食" sticker</div>
-                <button class="btn-link" onclick="alert('7-ELEVEN i珍食: Use the OPEN POINT APP to check the i珍食 map for nearby store inventory.');">🗺️ Check Inventory →</button>
+                <div class="time-slot">
+                    <strong>🕒 20:00 – 03:00</strong> 
+                    <span class="discount-rate">65折</span><br>
+                    <span class="inclusive-text" style="margin-top: 4px;">鲜食 · 饭团 · 三明治 · 面食</span>
+                </div>
+                <div class="time-slot">
+                    <strong>🕒 19:00 – 19:59</strong> 
+                    <span class="discount-rate">8折</span><br>
+                    <span class="inclusive-text" style="margin-top: 4px;">限时1小时 · 指定鲜食</span>
+                </div>
+                <button class="btn-link" onclick="alert('7-ELEVEN i珍食: OPEN POINT app shows nearest stock.')">Check inventory →</button>
+            </div>
+        </div>
+
+        <!-- FamilyMart -->
+        <div class="store-card">
+            <div class="card-header family-header">
+                <span>🏪</span><h2>FamilyMart</h2>
+            </div>
+            <div class="card-body">
+                <div class="discount-tag">友善食光</div>
+                <div class="time-slot">
+                    <strong>🕒 10:00 – 17:00</strong> 
+                    <span class="discount-rate">7折</span><br>
+                    <span class="inclusive-text">饭 · 寿司 · 手卷</span>
+                </div>
+                <div class="time-slot">
+                    <strong>🕒 17:00 – 00:00</strong> 
+                    <span class="discount-rate">7折</span><br>
+                    <span class="inclusive-text">各种鲜食 · 生鲜蔬果 · 便当</span>
+                </div>
+                <button class="btn-link" onclick="alert('FamilyMart: Look for 友善食光 sticker. App shows real stock.')">Check inventory →</button>
             </div>
         </div>
 
         <!-- Hi-Life -->
         <div class="store-card">
             <div class="card-header hilife-header">
-                <span></span><h2>Hi-Life</h2>
+                <span>🏪</span><h2>Hi‑Life</h2>
             </div>
             <div class="card-body">
-                <div class="discount-tag"> Cherish Food · 30% OFF</div>
+                <div class="discount-tag">惜福食堂</div>
                 <div class="time-slot">
-                    <strong> Discount Hours</strong> 18:00 ~ 24:00 (expires at midnight)
+                    <strong>🕒 18:00 – 00:00</strong> 
+                    <span class="discount-rate">7折</span><br>
+                    <span class="inclusive-text">饭团 · 面包 · 正餐 · 鲜食</span>
                 </div>
-                <div class="inclusive-text">🔹 Fresh food, desserts, snacks with "Cherish Food" sticker</div>
-                <button class="btn-link" onclick="alert('Hi-Life near-expiry food: Available after 6PM. Look for the Cherish Food sticker in the fresh food section.');">🥗 Check Inventory →</button>
+                <button class="btn-link" onclick="alert('Hi-Life 惜福食堂: from 6PM, up to 30% off.')">Check inventory →</button>
             </div>
         </div>
 
         <!-- OK Mart -->
         <div class="store-card">
             <div class="card-header ok-header">
-                <span></span><h2>OK Mart</h2>
+                <span>🏪</span><h2>OKmart</h2>
             </div>
             <div class="card-body">
-                <div class="discount-tag">🍙 Late Bird · 40% OFF</div>
+                <div class="discount-tag">OK late bird</div>
                 <div class="time-slot">
-                    <strong> Discount Hours</strong> 16:30 ~ 22:30
+                    <strong>🕒 16:30 – 22:30</strong> 
+                    <span class="discount-rate">6折</span><br>
+                    <span class="inclusive-text">鲜食 · 饭团 · 面包 · 糕点</span>
                 </div>
-                <div class="inclusive-text"> Rice balls, microwave meals, fresh food</div>
-                <button class="btn-link" onclick="alert('OK Mart near-expiry food: Starts at 4:30 PM daily. Ask staff about the discounted section.');">🍽️ Check Inventory →</button>
+                <button class="btn-link" onclick="alert('OKmart evening discount: 40% off 16:30–22:30.')">Check inventory →</button>
+            </div>
+        </div>
+
+        <!-- PX Mart (added from your image) -->
+        <div class="store-card">
+            <div class="card-header pxmart-header">
+                <span>🛒</span><h2>全聯 PX Mart</h2>
+            </div>
+            <div class="card-body">
+                <div class="discount-tag">惜食地图</div>
+                <div class="time-slot">
+                    <strong>🕒 08:00 – 16:00</strong> 
+                    <span class="discount-rate">8折</span><br>
+                    <span class="inclusive-text">面包 · 糕点 · 肉品 · 生鲜</span>
+                </div>
+                <div class="time-slot">
+                    <strong>🕒 16:00 以后</strong> 
+                    <span class="discount-rate">6折</span><br>
+                    <span class="inclusive-text">二次降价 · 生鲜 · 肉品 · 糕点</span>
+                </div>
+                <button class="btn-link" onclick="alert('全聯惜食地图: in-app map shows real availability.')">Check inventory →</button>
             </div>
         </div>
     </div>
 
-    <!-- Countdown Timer -->
+    <!-- Countdown timers (only for the most searched periods) -->
     <div class="countdown-area">
-        <span style="font-weight: 600;"> Time until next discount period</span>
+        <span>⏱️ Next discount window starts in</span>
         <div class="timer-grid">
             <div class="timer-item">
-                <div class="timer-label">7-ELEVEN i珍食 (Evening)</div>
+                <div class="timer-label">7‑ELEVEN · 20:00 (65折)</div>
                 <div class="timer-clock" id="sevenTimer">--:--:--</div>
             </div>
             <div class="timer-item">
-                <div class="timer-label">FamilyMart Friendly Hours (Evening)</div>
+                <div class="timer-label">FamilyMart · 17:00 (7折)</div>
                 <div class="timer-clock" id="familyTimer">--:--:--</div>
             </div>
+            <div class="timer-item">
+                <div class="timer-label">OKmart · 16:30 (6折)</div>
+                <div class="timer-clock" id="okTimer">--:--:--</div>
+            </div>
         </div>
-        <div class="inclusive-text" style="margin-top: 8px;">* Inventory varies by store. This shows when discount periods start.</div>
+        <div class="location-note" style="margin-top: 1rem; border: none; padding: 0;">* Stock probability updates based on current time · Actual inventory varies by store</div>
     </div>
 
-    <!-- Discount Calculator -->
-    <div class="calculator-panel">
-        <strong> Discount Calculator</strong> (30-35% OFF)
-        <div class="calc-input">
-            <input type="number" id="originPrice" class="price-input" placeholder="Enter original price (NT$)" value="100">
-            <button id="calcDiscountBtn">Calculate</button>
-        </div>
-        <div id="discountResult" class="result-discount"> Discounted price: NT$65 — 70</div>
-        <div class="inclusive-text" style="margin-top: 12px;"> 7-ELEVEN i珍食: 35% OFF · FamilyMart: 30% OFF</div>
-    </div>
     <hr>
     <footer>
-         Supporting SDG 2: Zero Hunger · Reduce Food Waste<br>
-         Real-time inventory depends on each store. This tool provides educational information.
+        SDG 2 / Zero Hunger · Reduce food waste — information compiled from official discount policies<br>
+        Real-time stock not available — use this as a guide for when to check your local store.
     </footer>
 </div>
 
 <script>
     (function() {
-        // ========== COUNTDOWN TIMERS (existing) ==========
+        // ------------------------------
+        // COUNTDOWN TIMERS
+        // ------------------------------
         const sevenTimerDiv = document.getElementById('sevenTimer');
         const familyTimerDiv = document.getElementById('familyTimer');
+        const okTimerDiv = document.getElementById('okTimer');
 
         function getNextTarget(hours, minutes) {
             const now = new Date();
@@ -474,125 +475,102 @@
             let diffSeven = targetSeven - new Date();
             let targetFamily = getNextTarget(17, 0);
             let diffFamily = targetFamily - new Date();
+            let targetOk = getNextTarget(16, 30);
+            let diffOk = targetOk - new Date();
 
             if (sevenTimerDiv) sevenTimerDiv.innerText = formatTimeDiff(diffSeven);
             if (familyTimerDiv) familyTimerDiv.innerText = formatTimeDiff(diffFamily);
+            if (okTimerDiv) okTimerDiv.innerText = formatTimeDiff(diffOk);
         }
-
         updateTimers();
         setInterval(updateTimers, 1000);
 
-        // ========== DISCOUNT CALCULATOR ==========
-        const calcBtn = document.getElementById('calcDiscountBtn');
-        const priceInput = document.getElementById('originPrice');
-        const resultBox = document.getElementById('discountResult');
-
-        function updateDiscount() {
-            let price = parseFloat(priceInput.value);
-            if (isNaN(price) || price <= 0) {
-                resultBox.innerHTML = 'Please enter a valid price';
-                return;
-            }
-            const price70 = price * 0.7;
-            const price65 = price * 0.65;
-            resultBox.innerHTML = `🍱 Discounted price: NT$${price65.toFixed(0)} ~ NT$${price70.toFixed(0)}<br><span style="font-size:0.75rem;">(7-ELEVEN: 35% OFF / FamilyMart: 30% OFF)</span>`;
-        }
-
-        calcBtn.addEventListener('click', updateDiscount);
-        priceInput.addEventListener('keypress', (e) => {
-            if(e.key === 'Enter') updateDiscount();
-        });
-        updateDiscount();
-
-        // ========== NEW: STOCK PROBABILITY HELPER ==========
+        // ------------------------------
+        // STOCK PROBABILITY (time-based)
+        // ------------------------------
         function getStockProbability(storeType) {
             const now = new Date();
             const currentHour = now.getHours();
-            const currentMinute = now.getMinutes();
-            const currentTime = currentHour + currentMinute/60;
-            
-            // Define discount windows (start and end hours)
+            const currentMin = now.getMinutes();
+            const currentTime = currentHour + currentMin / 60;
+
             const windows = {
-                '7-11': { start: 20, end: 27 }, // 8pm to 3am next day (27 = 3am)
-                'familymart': { start: 17, end: 24 },
-                'hilife': { start: 18, end: 24 },
-                'ok': { start: 16.5, end: 22.5 }
+                '7-11': [{ start: 20, end: 27 }, { start: 10, end: 17 }, { start: 19, end: 20 }],  // 19–20 for 80% but lower stock
+                'familymart': [{ start: 17, end: 24 }, { start: 10, end: 17 }],
+                'hilife': [{ start: 18, end: 24 }],
+                'ok': [{ start: 16.5, end: 22.5 }],
+                'pxmart': [{ start: 16, end: 24 }, { start: 8, end: 16 }]
             };
+            let typeKey = storeType;
+            if (storeType === 'pxmart') typeKey = 'pxmart';
+            const storeWindows = windows[typeKey] || windows['familymart'];
             
-            let win = windows[storeType];
-            if (!win) return 'medium';
-            
-            // Adjust for next day handling (3am for 7-11)
             let effectiveTime = currentTime;
-            if (storeType === '7-11' && currentHour < 3) {
-                effectiveTime = currentTime + 24;
+            let isActive = false;
+            for (let w of storeWindows) {
+                let start = w.start;
+                let end = w.end;
+                let timeCheck = currentTime;
+                if (end > 24) {
+                    if (currentHour < 3) timeCheck = currentTime + 24;
+                }
+                if (timeCheck >= start && timeCheck < end) {
+                    isActive = true;
+                    const duration = end - start;
+                    const timeInto = timeCheck - start;
+                    if (timeInto < duration * 0.35) return 'high';
+                    if (timeInto < duration * 0.7) return 'medium';
+                    return 'low';
+                }
             }
-            
-            const start = win.start;
-            const end = win.end;
-            const duration = end - start;
-            const timeInto = effectiveTime - start;
-            
-            if (effectiveTime < start) return 'low';      // Not started yet
-            if (effectiveTime > end) return 'low';       // Already ended
-            if (timeInto < duration * 0.3) return 'high'; // First 30% of period
-            if (timeInto < duration * 0.7) return 'medium';
-            return 'low';
+            if (!isActive) return 'low';
+            return 'medium';
         }
 
         function getBadgeText(prob) {
-            if (prob === 'high') return '🟢 High chance';
-            if (prob === 'medium') return '🟡 Medium chance';
-            return '🔴 Low chance';
+            if (prob === 'high') return '🟢 High chance now';
+            if (prob === 'medium') return '🟡 Some left';
+            return '🔴 Low / none now';
         }
-
         function getBadgeClass(prob) {
             if (prob === 'high') return 'stock-high';
             if (prob === 'medium') return 'stock-med';
             return 'stock-low';
         }
 
-        // ========== NEW: GEOLOCATION & STORE LIST ==========
-        const findBtn = document.getElementById('findStoresBtn');
-        const storesListDiv = document.getElementById('nearbyStoresList');
-        
-        // Mock store database (Taipei area coordinates)
+        // ------------------------------
+        // MOCK STORES + GEOLOCATION
+        // ------------------------------
         const mockStores = [
-            { name: "7-ELEVEN - Xinyi Rd", type: "7-11", lat: 25.0335, lng: 121.5654, address: "No. 200, Xinyi Rd, Da'an District" },
-            { name: "FamilyMart - Zhongxiao", type: "familymart", lat: 25.0412, lng: 121.5320, address: "No. 50, Section 4, Zhongxiao E Rd" },
-            { name: "7-ELEVEN - Taipei Main", type: "7-11", lat: 25.0477, lng: 121.5170, address: "Next to M1 Exit, Taipei Main Station" },
-            { name: "FamilyMart - MRT Ximen", type: "familymart", lat: 25.0422, lng: 121.5078, address: "No. 88, Section 1, Zhonghua Rd" },
-            { name: "Hi-Life - Shilin Night Market", type: "hilife", lat: 25.0928, lng: 121.5264, address: "No. 10, Lane 50, Danan Rd" },
-            { name: "OK Mart - NTU Area", type: "ok", lat: 25.0173, lng: 121.5397, address: "No. 24, Lane 45, Xinsheng S Rd" },
-            { name: "7-ELEVEN - Songshan", type: "7-11", lat: 25.0492, lng: 121.5775, address: "No. 100, Section 5, Nanjing E Rd" },
-            { name: "FamilyMart - Yongkang St", type: "familymart", lat: 25.0294, lng: 121.5290, address: "No. 10, Yongkang St, Da'an District" }
+            { name: "7-ELEVEN · Xinyi", type: "7-11", lat: 25.0335, lng: 121.5654, address: "信义路五段" },
+            { name: "FamilyMart · Zhongxiao", type: "familymart", lat: 25.0412, lng: 121.5320, address: "忠孝东路四段" },
+            { name: "7-ELEVEN · Main Station", type: "7-11", lat: 25.0477, lng: 121.5170, address: "台北车站M1出口" },
+            { name: "FamilyMart · Ximen", type: "familymart", lat: 25.0422, lng: 121.5078, address: "中华路一段" },
+            { name: "Hi-Life · Shilin", type: "hilife", lat: 25.0928, lng: 121.5264, address: "大南路夜市旁" },
+            { name: "OKmart · NTU", type: "ok", lat: 25.0173, lng: 121.5397, address: "新生南路三段" },
+            { name: "PX Mart · Yongkang", type: "pxmart", lat: 25.0302, lng: 121.5285, address: "永康街商圈" },
+            { name: "7-ELEVEN · Songshan", type: "7-11", lat: 25.0492, lng: 121.5775, address: "南京东路五段" }
         ];
-        
+
         function calculateDistance(lat1, lon1, lat2, lon2) {
-            const R = 6371; // km
+            const R = 6371;
             const dLat = (lat2 - lat1) * Math.PI / 180;
             const dLon = (lon2 - lon1) * Math.PI / 180;
-            const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-                      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-                      Math.sin(dLon/2) * Math.sin(dLon/2);
+            const a = Math.sin(dLat/2)**2 + Math.cos(lat1 * Math.PI/180) * Math.cos(lat2 * Math.PI/180) * Math.sin(dLon/2)**2;
             const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
             return R * c;
         }
-        
+
         function displayNearbyStores(userLat, userLng) {
-            // Calculate distances and sort
             const storesWithDist = mockStores.map(store => {
                 const dist = calculateDistance(userLat, userLng, store.lat, store.lng);
                 const prob = getStockProbability(store.type);
                 return { ...store, distance: dist, probability: prob };
             });
             storesWithDist.sort((a,b) => a.distance - b.distance);
-            
-            // Take top 5
             const topStores = storesWithDist.slice(0, 5);
             
-            // Generate HTML
-            let html = `<h4 style="margin-bottom: 1rem; text-align: center;"> Nearest Stores (${topStores.length} found)</h4>`;
+            let html = `<div style="margin: 0.25rem 0 0.75rem 0; font-size:0.75rem; color:#5f5546;">📍 Nearest stores with estimated stock</div>`;
             topStores.forEach(store => {
                 const badgeClass = getBadgeClass(store.probability);
                 const badgeText = getBadgeText(store.probability);
@@ -600,40 +578,42 @@
                     <div class="store-item">
                         <div class="store-info">
                             <div class="store-name">${store.name}</div>
-                            <div class="store-dist"> ${store.distance.toFixed(1)} km · ${store.address}</div>
+                            <div class="store-dist">${store.distance.toFixed(1)} km · ${store.address}</div>
                         </div>
                         <div class="stock-badge ${badgeClass}">${badgeText}</div>
                     </div>
                 `;
             });
-            html += `<div class="location-note"> Showing stores near your location. Stock probability based on current time (${new Date().toLocaleTimeString()}).</div>`;
-            storesListDiv.innerHTML = html;
+            html += `<div class="location-note">✅ Updated at ${new Date().toLocaleTimeString()} · probability based on current time</div>`;
+            document.getElementById('nearbyStoresList').innerHTML = html;
         }
-        
+
         function handleFindStores() {
-            storesListDiv.innerHTML = '<p style="text-align: center;"> Getting your location...</p>';
-            
+            const listDiv = document.getElementById('nearbyStoresList');
+            listDiv.innerHTML = '<div class="location-note" style="border:none;">📍 Requesting location...</div>';
             if (!navigator.geolocation) {
-                storesListDiv.innerHTML = '<p style="color: red;"> Geolocation is not supported by your browser. Using demo location (Taipei Main Station).</p>';
+                listDiv.innerHTML = '<div class="location-note">⚠️ Geolocation not supported. Showing demo (Taipei Main Station).</div>';
                 displayNearbyStores(25.0477, 121.5170);
                 return;
             }
-            
             navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    displayNearbyStores(position.coords.latitude, position.coords.longitude);
-                },
-                (error) => {
-                    console.warn("Geolocation error:", error);
-                    storesListDiv.innerHTML = '<p style="color: #856404;"> Location access denied. Showing demo stores near Taipei Main Station.</p>';
+                (pos) => displayNearbyStores(pos.coords.latitude, pos.coords.longitude),
+                () => {
+                    listDiv.innerHTML = '<div class="location-note">⚠️ Location denied. Showing demo near Taipei Main Station.</div>';
                     displayNearbyStores(25.0477, 121.5170);
                 }
             );
         }
-        
-        findBtn.addEventListener('click', handleFindStores);
-        
-        console.log("i珍食 page loaded with Nearby Store Finder");
+
+        const findBtn = document.getElementById('findStoresBtn');
+        if (findBtn) findBtn.addEventListener('click', handleFindStores);
+
+        // optional: load demo by default
+        setTimeout(() => {
+            if (document.getElementById('nearbyStoresList').innerHTML.includes("Allow location")) {
+                displayNearbyStores(25.0477, 121.5170);
+            }
+        }, 100);
     })();
 </script>
 </body>
