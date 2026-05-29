@@ -55,9 +55,6 @@
             margin-bottom: 3rem;
         }
         .locator-header {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
             margin-bottom: 1.25rem;
         }
         .locator-header h3 {
@@ -149,18 +146,11 @@
         .card-header {
             padding: 1rem 1.25rem;
             border-bottom: 1px solid #efebe4;
-            display: flex;
-            align-items: baseline;
-            gap: 0.5rem;
         }
         .card-header h2 {
             font-size: 1.2rem;
             font-weight: 500;
             letter-spacing: -0.3px;
-        }
-        .card-header span:first-child {
-            font-size: 1.1rem;
-            opacity: 0.7;
         }
 
         .family-header h2 { color: #1f6e4a; }
@@ -205,25 +195,6 @@
             color: #7f6e5c;
             margin-top: 0.6rem;
             line-height: 1.4;
-        }
-
-        .btn-link {
-            display: inline-block;
-            background: none;
-            border: 1px solid #ddd3c6;
-            padding: 0.4rem 1rem;
-            font-size: 0.7rem;
-            font-weight: 450;
-            color: #4f463b;
-            cursor: pointer;
-            transition: 0.15s;
-            margin-top: 1rem;
-            font-family: inherit;
-            text-decoration: none;
-        }
-        .btn-link:hover {
-            background: #f8f6f2;
-            border-color: #bfb3a2;
         }
 
         .countdown-area {
@@ -298,7 +269,6 @@
     <!-- Store locator panel with geolocation -->
     <div class="locator-panel">
         <div class="locator-header">
-            <span>📍</span>
             <h3>Find discounted food near you</h3>
         </div>
         <button id="findStoresBtn" class="find-btn">Use my location</button>
@@ -312,7 +282,7 @@
         <!-- 7-ELEVEN -->
         <div class="store-card">
             <div class="card-header seven-header">
-                <span>🏪</span><h2>7-ELEVEN</h2>
+                <h2>7-ELEVEN</h2>
             </div>
             <div class="card-body">
                 <div class="discount-tag">i珍食</div>
@@ -331,14 +301,13 @@
                     <span class="discount-rate">20% off</span><br>
                     <span class="inclusive-text">Limited 1 hour · select fresh food</span>
                 </div>
-                <button class="btn-link" onclick="alert('7-ELEVEN i珍食: Check OPEN POINT app for nearby store stock.')">Check inventory</button>
             </div>
         </div>
 
         <!-- FamilyMart -->
         <div class="store-card">
             <div class="card-header family-header">
-                <span>🏪</span><h2>FamilyMart</h2>
+                <h2>FamilyMart</h2>
             </div>
             <div class="card-body">
                 <div class="discount-tag">Friendly Hours</div>
@@ -350,16 +319,15 @@
                 <div class="time-slot">
                     <strong>17:00 – 00:00</strong> 
                     <span class="discount-rate">30% off</span><br>
-                    <span class="inclusive-text">All fresh food, fresh fruits & vegetables, bento boxes</span>
+                    <span class="inclusive-text">All fresh food, fresh fruits and vegetables, bento boxes</span>
                 </div>
-                <button class="btn-link" onclick="alert('FamilyMart: Look for Friendly Hours sticker. App shows real stock.')">Check inventory</button>
             </div>
         </div>
 
         <!-- Hi-Life -->
         <div class="store-card">
             <div class="card-header hilife-header">
-                <span>🏪</span><h2>Hi-Life</h2>
+                <h2>Hi-Life</h2>
             </div>
             <div class="card-body">
                 <div class="discount-tag">Cherish Food</div>
@@ -368,14 +336,13 @@
                     <span class="discount-rate">30% off</span><br>
                     <span class="inclusive-text">Rice balls, bread, meals, fresh food</span>
                 </div>
-                <button class="btn-link" onclick="alert('Hi-Life Cherish Food: Available after 6PM, up to 30% off.')">Check inventory</button>
             </div>
         </div>
 
         <!-- OK Mart -->
         <div class="store-card">
             <div class="card-header ok-header">
-                <span>🏪</span><h2>OK Mart</h2>
+                <h2>OK Mart</h2>
             </div>
             <div class="card-body">
                 <div class="discount-tag">Late Bird</div>
@@ -384,14 +351,13 @@
                     <span class="discount-rate">40% off</span><br>
                     <span class="inclusive-text">Fresh food, rice balls, bread, pastries</span>
                 </div>
-                <button class="btn-link" onclick="alert('OK Mart evening discount: 40% off 16:30–22:30.')">Check inventory</button>
             </div>
         </div>
 
         <!-- PX Mart -->
         <div class="store-card">
             <div class="card-header pxmart-header">
-                <span>🛒</span><h2>PX Mart</h2>
+                <h2>PX Mart</h2>
             </div>
             <div class="card-body">
                 <div class="discount-tag">Cherish Food Map</div>
@@ -405,7 +371,6 @@
                     <span class="discount-rate">40% off</span><br>
                     <span class="inclusive-text">Second price drop · fresh food, meat, pastries</span>
                 </div>
-                <button class="btn-link" onclick="alert('PX Mart Cherish Food Map: Check in-app map for real availability.')">Check inventory</button>
             </div>
         </div>
     </div>
@@ -526,7 +491,6 @@
         }
 
         // MOCK STORES ACROSS ALL OF TAIWAN
-        // Each major city and county represented
         const mockStores = [
             // Taipei City
             { name: "7-ELEVEN - Taipei Main Station", type: "7-11", lat: 25.0477, lng: 121.5170, city: "Taipei", address: "Zhongzheng District" },
@@ -584,10 +548,10 @@
             // Changhua County
             { name: "7-ELEVEN - Changhua Station", type: "7-11", lat: 24.0820, lng: 120.5434, city: "Changhua", address: "Changhua City" },
             
-            // Nantou County (Sun Moon Lake area)
+            // Nantou County
             { name: "FamilyMart - Sun Moon Lake", type: "familymart", lat: 23.8647, lng: 120.9142, city: "Nantou", address: "Yuchi Township" },
             
-            // Pingtung County (Kenting area)
+            // Pingtung County
             { name: "7-ELEVEN - Kenting Night Market", type: "7-11", lat: 21.9455, lng: 120.7981, city: "Pingtung", address: "Hengchun Township" }
         ];
 
@@ -652,7 +616,7 @@
         const findBtn = document.getElementById('findStoresBtn');
         if (findBtn) findBtn.addEventListener('click', handleFindStores);
 
-        // Default load: Taoyuan area (since you're in Taoyuan)
+        // Default load: Taoyuan area
         displayNearbyStores(25.0127, 121.2155, 'Taoyuan');
     })();
 </script>
