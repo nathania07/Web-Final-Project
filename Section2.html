@@ -1,355 +1,520 @@
-<!-- ========================================== -->
-<!-- SECTION 2: LAST CALL / i珍食               -->
-<!-- ========================================== -->
-<section id="i-zhen-shi" class="izhen-shi-section">
-    <div class="izhen-container">
-        
-        <!-- Section Header -->
-        <div class="izhen-header">
-            <h2 class="izhen-title">Last Call · Discounted Fresh Food</h2>
-            <p class="izhen-subtitle">Save food, save money, reduce waste</p>
-        </div>
-        
-        <!-- Three Feature Cards -->
-        <div class="izhen-cards">
-            
-            <!-- CARD 1: Link to Full Guide -->
-            <div class="izhen-card">
-                <div class="card-icon">🔍</div>
-                <h3>Find i珍食 Near You</h3>
-                <p>Check real-time discounted food availability and store locations near you</p>
-                <a href="izhenmap.html" class="izhen-btn izhen-btn-primary">
-                    More Information →
-                </a>
-                <p class="card-note">* Opens complete guide with store locator and discount hours</p>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Last Call · 即期鮮食 - 折扣計算與資訊</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f3ef;
+            font-family: -apple-system, 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            padding: 2rem 1.5rem;
+            color: #1e1b18;
+            line-height: 1.4;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* Language Toggle - same as izhenmap */
+        .lang-toggle {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 1rem;
+            gap: 0;
+        }
+        .lang-btn {
+            background: none;
+            border: 1px solid #cfc8bc;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 450;
+            color: #2c241a;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .lang-btn:first-child {
+            border-radius: 4px 0 0 4px;
+        }
+        .lang-btn:last-child {
+            border-radius: 0 4px 4px 0;
+            margin-left: -1px;
+        }
+        .lang-btn.active {
+            background: #e9e5de;
+            border-color: #a6673c;
+            color: #a6673c;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #e2ded7;
+            padding-bottom: 1rem;
+        }
+        .hero h1 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #2c241a;
+        }
+        .hero p {
+            font-size: 0.85rem;
+            color: #6b6258;
+            margin-top: 0.3rem;
+        }
+        .hero-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            color: #8b7a66;
+            margin-top: 0.5rem;
+        }
+
+        /* Link to izhenmap */
+        .guide-link {
+            margin-bottom: 1.5rem;
+        }
+        .guide-link a {
+            font-size: 0.8rem;
+            color: #8b7a66;
+            text-decoration: none;
+        }
+        .guide-link a:hover {
+            text-decoration: underline;
+            color: #a6673c;
+        }
+
+        /* Cards Grid - matching izhenmap style */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #e9e5de;
+            transition: box-shadow 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .card-header {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid #efebe4;
+        }
+        .card-header h2 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            color: #2c241a;
+        }
+
+        .card-body {
+            padding: 1.25rem;
+        }
+
+        .info-text {
+            font-size: 0.85rem;
+            color: #6b6258;
+            margin-bottom: 1.25rem;
+            line-height: 1.5;
+        }
+
+        /* Countdown Timer */
+        .timer-box {
+            background: #f4f1ec;
+            padding: 1rem;
+            text-align: center;
+            margin: 1rem 0;
+        }
+        .timer-clock {
+            font-size: 2rem;
+            font-family: 'SF Mono', 'JetBrains Mono', monospace;
+            font-weight: 450;
+            letter-spacing: 2px;
+            color: #2c241a;
+        }
+        .timer-label {
+            font-size: 0.7rem;
+            color: #8b7a66;
+            margin-top: 0.3rem;
+        }
+        .discount-note {
+            font-size: 0.7rem;
+            color: #a0907e;
+            margin-top: 1rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #efebe4;
+        }
+
+        /* Calculator */
+        .calculator-box {
+            margin-top: 0.5rem;
+        }
+        .price-input {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #ddd6cc;
+            font-size: 0.85rem;
+            font-family: inherit;
+            background: #ffffff;
+            margin-bottom: 1rem;
+        }
+        .price-input:focus {
+            outline: none;
+            border-color: #a6673c;
+        }
+        .calc-btn {
+            background: none;
+            border: 1px solid #cfc8bc;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 450;
+            color: #2c241a;
+            cursor: pointer;
+            font-family: inherit;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        .calc-btn:hover {
+            background: #f0ede8;
+            border-color: #b0a692;
+        }
+        .result-box {
+            background: #f4f1ec;
+            padding: 0.8rem;
+            font-size: 0.8rem;
+            color: #2c241a;
+            text-align: center;
+        }
+
+        /* Fact Banner */
+        .fact-banner {
+            background: #ffffff;
+            border: 1px solid #e9e5de;
+            padding: 1rem 1.25rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .fact-banner p {
+            font-size: 0.75rem;
+            color: #6b6258;
+        }
+
+        hr {
+            margin: 2rem 0;
+            border: 0;
+            border-top: 1px solid #e2ded7;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.65rem;
+            color: #9b8d7a;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem;
+            }
+            .timer-clock {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+        <button id="langZhBtn" class="lang-btn active">中文</button>
+        <button id="langEnBtn" class="lang-btn">English</button>
+    </div>
+
+    <!-- Link to Full Guide (izhenmap) -->
+    <div class="guide-link">
+        <a href="izhenmap.html" id="guideLink">查看完整商店指南 →</a>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1 id="mainTitle">Last Call · 即期鮮食</h1>
+        <p id="subtitle">折扣計算與時段資訊</p>
+        <div class="hero-badge" id="badge">30% off · 每日 17:00 開始</div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="cards-grid">
+        <!-- Card 1: Countdown Timer -->
+        <div class="card">
+            <div class="card-header">
+                <h2 id="card1Title">折扣倒數</h2>
             </div>
-            
-            <!-- CARD 2: Countdown Timer -->
-            <div class="izhen-card">
-                <div class="card-icon">⏰</div>
-                <h3>Discount Countdown</h3>
-                <p>i珍食 discount period starts daily at <strong>5:00 PM</strong></p>
-                <div class="timer-box" id="countdown-timer">
-                    -- : -- : --
+            <div class="card-body">
+                <div class="info-text" id="card1Text">i珍食折扣時段每日下午 5:00 開始</div>
+                <div class="timer-box">
+                    <div class="timer-clock" id="countdownTimer">--:--:--</div>
+                    <div class="timer-label" id="timerLabel">距離折扣開始</div>
                 </div>
-                <p class="timer-label">until discount begins</p>
-                <p class="discount-info">i珍食 offers 30% off near-expiry food</p>
+                <div class="discount-note" id="discountNote">i珍食提供即期鮮食 30% 折扣</div>
             </div>
-            
-            <!-- CARD 3: Discount Calculator -->
-            <div class="izhen-card">
-                <div class="card-icon">💰</div>
-                <h3>Discount Calculator</h3>
-                <p>Calculate how much you save with i珍食 30% discount</p>
-                
+        </div>
+
+        <!-- Card 2: Discount Calculator -->
+        <div class="card">
+            <div class="card-header">
+                <h2 id="card2Title">折扣計算機</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-text" id="card2Text">計算 i珍食 30% 折扣後的金額</div>
                 <div class="calculator-box">
-                    <input type="number" 
-                           id="original-price" 
-                           placeholder="Enter original price (NT$)"
-                           class="price-input">
-                    
-                    <button id="calculate-btn" class="izhen-btn izhen-btn-secondary">
-                        Calculate Discount
-                    </button>
-                    
-                    <div class="result-box" id="discount-result">
-                        Discounted price: NT$ --
+                    <input type="number" id="originalPrice" class="price-input" placeholder="輸入原價 (NT$)" value="100">
+                    <button id="calculateBtn" class="calc-btn" id="calcBtnText">計算折扣</button>
+                    <div class="result-box" id="resultBox">
+                        折扣後價格: NT$ --
                     </div>
                 </div>
             </div>
-            
         </div>
-        
-        <!-- Food Waste Fact Banner -->
-        <div class="waste-fact">
-            <p><strong>Did you know?</strong> One-third of all food produced globally is wasted — enough to feed every hungry person on Earth.</p>
+
+        <!-- Card 3: Information / Link -->
+        <div class="card">
+            <div class="card-header">
+                <h2 id="card3Title">即期鮮食資訊</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-text" id="card3Text">
+                    查看各大超商折扣時段、優惠比例，以及附近門市的即期鮮食庫存估計。
+                </div>
+                <button id="moreInfoBtn" class="calc-btn" id="moreInfoBtnText">更多資訊</button>
+            </div>
         </div>
-        
     </div>
-</section>
 
-<!-- ========================================== -->
-<!-- CSS STYLES FOR SECTION 2 ONLY              -->
-<!-- ========================================== -->
-<style>
-    /* SECTION 2: i珍食 Styles */
-    .izhen-shi-section {
-        background-color: #FFF8E7;
-        padding: 80px 20px;
-        font-family: 'Open Sans', 'Lato', sans-serif;
-    }
-    
-    .izhen-container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    
-    /* Header Styles */
-    .izhen-header {
-        text-align: center;
-        margin-bottom: 60px;
-    }
-    
-    .izhen-title {
-        font-size: 2.5rem;
-        color: #8B5A2B;
-        margin-bottom: 10px;
-    }
-    
-    .izhen-subtitle {
-        font-size: 1.2rem;
-        color: #5A8F4C;
-    }
-    
-    /* Cards Container */
-    .izhen-cards {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 30px;
-    }
-    
-    /* Individual Card */
-    .izhen-card {
-        background: white;
-        border-radius: 20px;
-        padding: 30px 25px;
-        width: 320px;
-        text-align: center;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .izhen-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    }
-    
-    /* Card Icon */
-    .card-icon {
-        font-size: 3rem;
-        margin-bottom: 15px;
-    }
-    
-    .izhen-card h3 {
-        font-size: 1.4rem;
-        color: #8B5A2B;
-        margin-bottom: 15px;
-    }
-    
-    .izhen-card p {
-        color: #666;
-        line-height: 1.6;
-        margin-bottom: 20px;
-    }
-    
-    /* Buttons */
-    .izhen-btn {
-        display: inline-block;
-        padding: 12px 24px;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: bold;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.3s, transform 0.2s;
-    }
-    
-    .izhen-btn-primary {
-        background-color: #F4C542;
-        color: #4A3728;
-    }
-    
-    .izhen-btn-primary:hover {
-        background-color: #E0B03B;
-        transform: scale(1.02);
-    }
-    
-    .izhen-btn-secondary {
-        background-color: #5A8F4C;
-        color: white;
-        width: 100%;
-    }
-    
-    .izhen-btn-secondary:hover {
-        background-color: #4A7A3C;
-        transform: scale(1.02);
-    }
-    
-    /* Timer Display */
-    .timer-box {
-        background-color: #2D2F36;
-        color: #F4C542;
-        font-size: 2rem;
-        font-family: monospace;
-        font-weight: bold;
-        padding: 15px;
-        border-radius: 12px;
-        margin: 15px 0;
-        text-align: center;
-        letter-spacing: 5px;
-    }
-    
-    .timer-label {
-        font-size: 0.8rem;
-        color: #999;
-        margin-top: -10px;
-    }
-    
-    .discount-info {
-        font-size: 0.85rem;
-        background-color: #F0EDE4;
-        padding: 8px;
-        border-radius: 20px;
-        margin-top: 15px;
-    }
-    
-    /* Calculator Styles */
-    .calculator-box {
-        margin-top: 10px;
-    }
-    
-    .price-input {
-        width: 100%;
-        padding: 12px;
-        border: 2px solid #E0D5C0;
-        border-radius: 8px;
-        font-size: 1rem;
-        text-align: center;
-        margin-bottom: 15px;
-        box-sizing: border-box;
-    }
-    
-    .price-input:focus {
-        outline: none;
-        border-color: #F4C542;
-    }
-    
-    .result-box {
-        margin-top: 15px;
-        padding: 12px;
-        background-color: #F0EDE4;
-        border-radius: 10px;
-        font-weight: bold;
-        color: #8B5A2B;
-        text-align: center;
-        font-size: 0.95rem;
-    }
-    
-    /* Card Note */
-    .card-note {
-        font-size: 0.7rem;
-        color: #bbb;
-        margin-top: 15px;
-    }
-    
-    /* Waste Fact Banner */
-    .waste-fact {
-        margin-top: 60px;
-        padding: 20px;
-        background: linear-gradient(135deg, #8B5A2B 0%, #5A8F4C 100%);
-        color: white;
-        text-align: center;
-        border-radius: 50px;
-        font-size: 1rem;
-    }
-    
-    .waste-fact p {
-        margin: 0;
-    }
-    
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        .izhen-title {
-            font-size: 2rem;
-        }
-        
-        .izhen-card {
-            width: 100%;
-            max-width: 350px;
-        }
-        
-        .timer-box {
-            font-size: 1.5rem;
-            letter-spacing: 3px;
-        }
-        
-        .waste-fact {
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-    }
-</style>
+    <!-- Fact Banner -->
+    <div class="fact-banner">
+        <p id="factText">🌍 你知道嗎？全球生產的食物有三分之一被浪費 — 足以餵飽地球上每一位飢餓的人。</p>
+    </div>
 
-<!-- ========================================== -->
-<!-- JAVASCRIPT FOR SECTION 2                   -->
-<!-- ========================================== -->
+    <hr>
+    <footer id="footer">
+        SDG 2 零飢餓 · 減少食物浪費<br>
+        實際庫存依各店為準 · 即期鮮食時段僅供參考
+    </footer>
+</div>
+
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+(function() {
+    // ========== LANGUAGE DATA ==========
+    const translations = {
+        zh: {
+            guideLink: "查看完整商店指南 →",
+            mainTitle: "Last Call · 即期鮮食",
+            subtitle: "折扣計算與時段資訊",
+            badge: "30% off · 每日 17:00 開始",
+            card1Title: "折扣倒數",
+            card1Text: "i珍食折扣時段每日下午 5:00 開始",
+            timerLabel: "距離折扣開始",
+            discountNote: "i珍食提供即期鮮食 30% 折扣",
+            card2Title: "折扣計算機",
+            card2Text: "計算 i珍食 30% 折扣後的金額",
+            calcBtnText: "計算折扣",
+            resultPrefix: "折扣後價格: NT$ ",
+            card3Title: "即期鮮食資訊",
+            card3Text: "查看各大超商折扣時段、優惠比例，以及附近門市的即期鮮食庫存估計。",
+            moreInfoBtnText: "更多資訊",
+            factText: "你知道嗎？全球生產的食物有三分之一被浪費 — 足以餵飽地球上每一位飢餓的人。",
+            footer: "SDG 2 零飢餓 · 減少食物浪費<br>實際庫存依各店為準 · 即期鮮食時段僅供參考"
+        },
+        en: {
+            guideLink: "View full store guide →",
+            mainTitle: "Last Call · Discounted Fresh Food",
+            subtitle: "Discount calculator & schedule",
+            badge: "30% off · Starts daily at 5:00 PM",
+            card1Title: "Discount Countdown",
+            card1Text: "i珍食 discount period starts daily at 5:00 PM",
+            timerLabel: "until discount begins",
+            discountNote: "i珍食 offers 30% off near-expiry food",
+            card2Title: "Discount Calculator",
+            card2Text: "Calculate 30% off discounted price",
+            calcBtnText: "Calculate Discount",
+            resultPrefix: "Discounted price: NT$ ",
+            card3Title: "About i珍食",
+            card3Text: "Check discount hours, rates, and estimated stock at stores near you.",
+            moreInfoBtnText: "More Information",
+            factText: "Did you know? One-third of all food produced globally is wasted — enough to feed every hungry person on Earth.",
+            footer: "SDG 2 / Zero Hunger · Reduce food waste<br>Real-time stock varies by store · Use as a timing guide"
+        }
+    };
+
+    let currentLang = 'zh';
+
+    // ========== COUNTDOWN TIMER ==========
+    const countdownTimer = document.getElementById('countdownTimer');
+
+    function getNextTarget(hours, minutes) {
+        const now = new Date();
+        let target = new Date();
+        target.setHours(hours, minutes, 0, 0);
+        if (now >= target) target.setDate(target.getDate() + 1);
+        return target;
+    }
+
+    function formatTimeDiff(ms) {
+        if (ms <= 0) return "00:00:00";
+        const sec = Math.floor(ms / 1000);
+        const h = Math.floor(sec / 3600);
+        const m = Math.floor((sec % 3600) / 60);
+        const s = sec % 60;
+        return `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+    }
+
+    function updateCountdown() {
+        if (countdownTimer) {
+            const target = getNextTarget(17, 0);
+            countdownTimer.innerText = formatTimeDiff(target - new Date());
+        }
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ========== DISCOUNT CALCULATOR ==========
+    const priceInput = document.getElementById('originalPrice');
+    const calculateBtn = document.getElementById('calculateBtn');
+    const resultBox = document.getElementById('resultBox');
+
+    function calculateDiscount() {
+        let price = parseFloat(priceInput.value);
+        if (isNaN(price) || price <= 0) {
+            resultBox.innerHTML = currentLang === 'zh' ? '請輸入有效價格' : 'Please enter a valid price';
+            return;
+        }
+        const discounted = price * 0.7;
+        const t = translations[currentLang];
+        resultBox.innerHTML = `${t.resultPrefix}${discounted.toFixed(0)}`;
+    }
+
+    if (calculateBtn) {
+        calculateBtn.addEventListener('click', calculateDiscount);
+    }
+    if (priceInput) {
+        priceInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') calculateDiscount();
+        });
+    }
+
+    // ========== MORE INFO BUTTON ==========
+    const moreInfoBtn = document.getElementById('moreInfoBtn');
+    if (moreInfoBtn) {
+        moreInfoBtn.addEventListener('click', function() {
+            window.location.href = 'izhenmap.html';
+        });
+    }
+
+    // ========== LANGUAGE SWITCH FUNCTION ==========
+    function updateLanguage(lang) {
+        currentLang = lang;
+        const t = translations[lang];
         
-        // COUNTDOWN TIMER (to 5:00 PM)
-        function updateCountdown() {
-            const now = new Date();
-            let targetTime = new Date();
-            targetTime.setHours(17, 0, 0, 0);
-            
-            if (now > targetTime) {
-                targetTime.setDate(targetTime.getDate() + 1);
+        // Update guide link
+        const guideLink = document.getElementById('guideLink');
+        if (guideLink) guideLink.innerHTML = t.guideLink;
+        
+        // Update hero
+        const mainTitle = document.getElementById('mainTitle');
+        const subtitle = document.getElementById('subtitle');
+        const badge = document.getElementById('badge');
+        if (mainTitle) mainTitle.innerHTML = t.mainTitle;
+        if (subtitle) subtitle.innerHTML = t.subtitle;
+        if (badge) badge.innerHTML = t.badge;
+        
+        // Update card 1
+        const card1Title = document.getElementById('card1Title');
+        const card1Text = document.getElementById('card1Text');
+        const timerLabel = document.getElementById('timerLabel');
+        const discountNote = document.getElementById('discountNote');
+        if (card1Title) card1Title.innerHTML = t.card1Title;
+        if (card1Text) card1Text.innerHTML = t.card1Text;
+        if (timerLabel) timerLabel.innerHTML = t.timerLabel;
+        if (discountNote) discountNote.innerHTML = t.discountNote;
+        
+        // Update card 2
+        const card2Title = document.getElementById('card2Title');
+        const card2Text = document.getElementById('card2Text');
+        const calcBtn = document.getElementById('calculateBtn');
+        if (card2Title) card2Title.innerHTML = t.card2Title;
+        if (card2Text) card2Text.innerHTML = t.card2Text;
+        if (calcBtn) calcBtn.innerHTML = t.calcBtnText;
+        
+        // Update card 3
+        const card3Title = document.getElementById('card3Title');
+        const card3Text = document.getElementById('card3Text');
+        const moreBtn = document.getElementById('moreInfoBtn');
+        if (card3Title) card3Title.innerHTML = t.card3Title;
+        if (card3Text) card3Text.innerHTML = t.card3Text;
+        if (moreBtn) moreBtn.innerHTML = t.moreInfoBtnText;
+        
+        // Update fact banner
+        const factText = document.getElementById('factText');
+        if (factText) factText.innerHTML = t.factText;
+        
+        // Update footer
+        const footer = document.getElementById('footer');
+        if (footer) footer.innerHTML = t.footer;
+        
+        // Update active button styles
+        const zhBtn = document.getElementById('langZhBtn');
+        const enBtn = document.getElementById('langEnBtn');
+        if (zhBtn && enBtn) {
+            if (lang === 'zh') {
+                zhBtn.classList.add('active');
+                enBtn.classList.remove('active');
+            } else {
+                zhBtn.classList.remove('active');
+                enBtn.classList.add('active');
             }
-            
-            const diff = targetTime - now;
-            const hours = Math.floor(diff / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-            const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            
-            const timerElement = document.getElementById('countdown-timer');
-            if (timerElement) {
-                timerElement.textContent = timeString;
-            }
         }
         
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-        
-        // DISCOUNT CALCULATOR
-        const calculateBtn = document.getElementById('calculate-btn');
-        
-        function calculateDiscount() {
-            const priceInput = document.getElementById('original-price');
-            const originalPrice = parseFloat(priceInput.value);
-            const resultBox = document.getElementById('discount-result');
-            
-            if (isNaN(originalPrice) || originalPrice <= 0) {
-                resultBox.innerHTML = 'Please enter a valid price (NT$)';
-                return;
-            }
-            
-            const discountRate = 0.30;
-            const discountAmount = originalPrice * discountRate;
-            const discountedPrice = originalPrice - discountAmount;
-            
-            resultBox.innerHTML = `
-                Original: NT$${originalPrice}<br>
-                30% OFF: -NT$${discountAmount.toFixed(0)}<br>
-                <strong>You pay: NT$${discountedPrice.toFixed(0)}</strong>
-                <br><br>
-                You save NT$${discountAmount.toFixed(0)}!
-            `;
+        // Re-run calculator display if there's a value
+        if (priceInput && priceInput.value && !isNaN(parseFloat(priceInput.value))) {
+            calculateDiscount();
+        } else if (resultBox) {
+            resultBox.innerHTML = currentLang === 'zh' ? '折扣後價格: NT$ --' : 'Discounted price: NT$ --';
         }
-        
-        if (calculateBtn) {
-            calculateBtn.addEventListener('click', calculateDiscount);
-        }
-        
-        const priceInput = document.getElementById('original-price');
-        if (priceInput) {
-            priceInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    calculateDiscount();
-                }
-            });
-        }
-        
-    });
+    }
+
+    // ========== LANGUAGE BUTTON EVENT LISTENERS ==========
+    const zhBtn = document.getElementById('langZhBtn');
+    const enBtn = document.getElementById('langEnBtn');
+    
+    if (zhBtn) {
+        zhBtn.addEventListener('click', function() {
+            updateLanguage('zh');
+        });
+    }
+    if (enBtn) {
+        enBtn.addEventListener('click', function() {
+            updateLanguage('en');
+        });
+    }
+    
+    // Initialize with Chinese
+    updateLanguage('zh');
+    
+    // Initialize calculator placeholder
+    calculateDiscount();
+})();
 </script>
+</body>
+</html>
