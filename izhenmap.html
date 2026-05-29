@@ -24,6 +24,7 @@
             margin: 0 auto;
         }
 
+        /* Language Toggle */
         .lang-toggle {
             display: flex;
             justify-content: flex-end;
@@ -330,7 +331,7 @@
         <div class="locator-header">
             <h3 id="locatorTitle">尋找附近即期美食</h3>
         </div>
-        <button id="findStoresBtn" class="find-btn">使用我的位置</button>
+        <button id="findStoresBtn" class="find-btn" id="findBtnText">使用我的位置</button>
         <div id="nearbyStoresList" class="store-list">
             <div class="location-note" style="border: none; padding: 0;" id="locationPrompt">允許位置權限以查看附近商店和庫存估計。</div>
         </div>
@@ -338,7 +339,6 @@
 
     <!-- Store grid -->
     <div class="store-grid">
-        <!-- 7-ELEVEN -->
         <div class="store-card">
             <div class="card-header seven-header">
                 <h2>7-ELEVEN</h2>
@@ -360,7 +360,6 @@
             </div>
         </div>
 
-        <!-- FamilyMart -->
         <div class="store-card">
             <div class="card-header family-header">
                 <h2>FamilyMart</h2>
@@ -378,7 +377,6 @@
             </div>
         </div>
 
-        <!-- Hi-Life -->
         <div class="store-card">
             <div class="card-header hilife-header">
                 <h2>Hi-Life</h2>
@@ -392,7 +390,6 @@
             </div>
         </div>
 
-        <!-- OK Mart -->
         <div class="store-card">
             <div class="card-header ok-header">
                 <h2>OK Mart</h2>
@@ -406,7 +403,6 @@
             </div>
         </div>
 
-        <!-- PX Mart -->
         <div class="store-card">
             <div class="card-header pxmart-header">
                 <h2>PX Mart</h2>
@@ -425,7 +421,6 @@
         </div>
     </div>
 
-    <!-- Countdown timers -->
     <div class="countdown-area">
         <span id="countdownTitle">下一檔折扣開始</span>
         <div class="timer-grid">
@@ -452,7 +447,7 @@
 </div>
 
 <script>
-// ========== FULL WORKING SCRIPT ==========
+// ========== COMPLETE WORKING SCRIPT ==========
 (function() {
     // ---------- TRANSLATIONS ----------
     const translations = {
@@ -514,70 +509,32 @@
 
     let currentLang = 'zh';
 
-    // Function to update all UI text
+    // ---------- UPDATE LANGUAGE FUNCTION ----------
     function updateLanguage(lang) {
         currentLang = lang;
         const t = translations[lang];
         
-        document.getElementById('backLink').innerHTML = t.backLink;
-        document.getElementById('mainTitle').innerHTML = t.mainTitle;
-        document.getElementById('subtitle').innerHTML = t.subtitle;
-        document.getElementById('badge').innerHTML = t.badge;
-        document.getElementById('locatorTitle').innerHTML = t.locatorTitle;
-        document.getElementById('findStoresBtn').innerHTML = t.findBtn;
-        document.getElementById('locationPrompt').innerHTML = t.locationPrompt;
+        // Update all elements with IDs
+        const elements = ['backLink', 'mainTitle', 'subtitle', 'badge', 'locatorTitle', 'findStoresBtn', 'locationPrompt',
+            'sevenTag', 'sevenTime1', 'sevenDiscount1', 'sevenItems1', 'sevenTime2', 'sevenDiscount2', 'sevenItems2',
+            'sevenTime3', 'sevenDiscount3', 'sevenItems3', 'familyTag', 'familyTime1', 'familyDiscount1', 'familyItems1',
+            'familyTime2', 'familyDiscount2', 'familyItems2', 'hilifeTag', 'hilifeTime1', 'hilifeDiscount1', 'hilifeItems1',
+            'okTag', 'okTime1', 'okDiscount1', 'okItems1', 'pxmartTag', 'pxmartTime1', 'pxmartDiscount1', 'pxmartItems1',
+            'pxmartTime2', 'pxmartDiscount2', 'pxmartItems2', 'countdownTitle', 'sevenTimerLabel', 'familyTimerLabel',
+            'okTimerLabel', 'footer'];
         
-        document.getElementById('sevenTag').innerHTML = t.sevenTag;
-        document.getElementById('sevenTime1').innerHTML = t.sevenTime1;
-        document.getElementById('sevenDiscount1').innerHTML = t.sevenDiscount1;
-        document.getElementById('sevenItems1').innerHTML = t.sevenItems1;
-        document.getElementById('sevenTime2').innerHTML = t.sevenTime2;
-        document.getElementById('sevenDiscount2').innerHTML = t.sevenDiscount2;
-        document.getElementById('sevenItems2').innerHTML = t.sevenItems2;
-        document.getElementById('sevenTime3').innerHTML = t.sevenTime3;
-        document.getElementById('sevenDiscount3').innerHTML = t.sevenDiscount3;
-        document.getElementById('sevenItems3').innerHTML = t.sevenItems3;
-        
-        document.getElementById('familyTag').innerHTML = t.familyTag;
-        document.getElementById('familyTime1').innerHTML = t.familyTime1;
-        document.getElementById('familyDiscount1').innerHTML = t.familyDiscount1;
-        document.getElementById('familyItems1').innerHTML = t.familyItems1;
-        document.getElementById('familyTime2').innerHTML = t.familyTime2;
-        document.getElementById('familyDiscount2').innerHTML = t.familyDiscount2;
-        document.getElementById('familyItems2').innerHTML = t.familyItems2;
-        
-        document.getElementById('hilifeTag').innerHTML = t.hilifeTag;
-        document.getElementById('hilifeTime1').innerHTML = t.hilifeTime1;
-        document.getElementById('hilifeDiscount1').innerHTML = t.hilifeDiscount1;
-        document.getElementById('hilifeItems1').innerHTML = t.hilifeItems1;
-        
-        document.getElementById('okTag').innerHTML = t.okTag;
-        document.getElementById('okTime1').innerHTML = t.okTime1;
-        document.getElementById('okDiscount1').innerHTML = t.okDiscount1;
-        document.getElementById('okItems1').innerHTML = t.okItems1;
-        
-        document.getElementById('pxmartTag').innerHTML = t.pxmartTag;
-        document.getElementById('pxmartTime1').innerHTML = t.pxmartTime1;
-        document.getElementById('pxmartDiscount1').innerHTML = t.pxmartDiscount1;
-        document.getElementById('pxmartItems1').innerHTML = t.pxmartItems1;
-        document.getElementById('pxmartTime2').innerHTML = t.pxmartTime2;
-        document.getElementById('pxmartDiscount2').innerHTML = t.pxmartDiscount2;
-        document.getElementById('pxmartItems2').innerHTML = t.pxmartItems2;
-        
-        document.getElementById('countdownTitle').innerHTML = t.countdownTitle;
-        document.getElementById('sevenTimerLabel').innerHTML = t.sevenTimerLabel;
-        document.getElementById('familyTimerLabel').innerHTML = t.familyTimerLabel;
-        document.getElementById('okTimerLabel').innerHTML = t.okTimerLabel;
-        
-        document.getElementById('footer').innerHTML = t.footer;
+        elements.forEach(id => {
+            const el = document.getElementById(id);
+            if (el && t[id]) el.innerHTML = t[id];
+        });
         
         // Update button styles
         document.getElementById('langZhBtn').classList.toggle('active', lang === 'zh');
         document.getElementById('langEnBtn').classList.toggle('active', lang === 'en');
         
-        // Refresh store list with new language
-        if (window.lastLocation) {
-            displayNearbyStores(window.lastLocation.lat, window.lastLocation.lng);
+        // Refresh store list
+        if (window.lastUserLat && window.lastUserLng) {
+            displayNearbyStores(window.lastUserLat, window.lastUserLng);
         } else {
             displayNearbyStores(25.0127, 121.2155);
         }
@@ -665,26 +622,27 @@
         return 'stock-low';
     }
 
-    // ---------- GOOGLE MAPS LINK (working) ----------
-    function getGoogleMapsLink(storeName, lat, lng) {
-        const encodedName = encodeURIComponent(storeName);
-        return `https://www.google.com/maps/search/?api=1&query=${encodedName}&center=${lat},${lng}`;
+    // ========== IMPROVED GOOGLE MAPS LINK - SEARCHES FOR STORE NAME ==========
+    // This creates a Google Maps search URL that will show the actual store page
+    function getGoogleMapsLink(storeName, address) {
+        // Search query with store name and address to get the specific store
+        const searchQuery = encodeURIComponent(`${storeName} ${address || ''}`);
+        return `https://www.google.com/maps/search/?api=1&query=${searchQuery}`;
     }
 
-    // ---------- MOCK STORES (Taoyuan focused) ----------
+    // ========== MOCK STORES ==========
     const mockStores = [
-        { name: "7-ELEVEN 高鐵桃園站", type: "7-11", lat: 25.0127, lng: 121.2155, city: "Taoyuan", address: "中壢區高鐵站" },
-        { name: "全家便利商店 高鐵桃園店", type: "familymart", lat: 25.0130, lng: 121.2160, city: "Taoyuan", address: "中壢區高鐵站" },
-        { name: "7-ELEVEN 青埔門市", type: "7-11", lat: 25.0150, lng: 121.2100, city: "Taoyuan", address: "青埔路一段" },
-        { name: "全家便利商店 領航北店", type: "familymart", lat: 25.0165, lng: 121.2120, city: "Taoyuan", address: "領航北路" },
-        { name: "萊爾富便利商店 青埔店", type: "hilife", lat: 25.0140, lng: 121.2130, city: "Taoyuan", address: "青埔路二段" },
-        { name: "7-ELEVEN 中壢站前門市", type: "7-11", lat: 24.9562, lng: 121.2259, city: "Taoyuan", address: "中壢火車站前" },
-        { name: "OK便利商店 中壢九和店", type: "ok", lat: 24.9545, lng: 121.2230, city: "Taoyuan", address: "九和路" },
-        { name: "全家便利商店 平鎮新明店", type: "familymart", lat: 24.9600, lng: 121.2300, city: "Taoyuan", address: "新明路" },
-        { name: "7-ELEVEN 桃園站前門市", type: "7-11", lat: 24.9890, lng: 121.3130, city: "Taoyuan", address: "桃園火車站前" },
-        { name: "全家便利商店 桃園站前店", type: "familymart", lat: 24.9900, lng: 121.3140, city: "Taoyuan", address: "桃園火車站前" },
-        { name: "7-ELEVEN 南平門市", type: "7-11", lat: 25.0050, lng: 121.2900, city: "Taoyuan", address: "南平路" },
-        { name: "全家便利商店 大有大業店", type: "familymart", lat: 25.0000, lng: 121.3000, city: "Taoyuan", address: "大有路" }
+        // Pingzhen District (your location from the image - 24.945000, 121.215000)
+        { name: "全家便利商店 平鎮富民店", type: "familymart", lat: 24.9529, lng: 121.2031, address: "桃園市平鎮區" },
+        { name: "7-ELEVEN 平鎮新光門市", type: "7-11", lat: 24.9450, lng: 121.2150, address: "桃園市平鎮區新光路" },
+        { name: "全家便利商店 平鎮新明店", type: "familymart", lat: 24.9600, lng: 121.2300, address: "桃園市平鎮區新明路" },
+        { name: "7-ELEVEN 平鎮振興門市", type: "7-11", lat: 24.9480, lng: 121.2200, address: "桃園市平鎮區振興路" },
+        { name: "萊爾富便利商店 平鎮和平店", type: "hilife", lat: 24.9500, lng: 121.2100, address: "桃園市平鎮區和平路" },
+        { name: "OK便利商店 平鎮育達店", type: "ok", lat: 24.9550, lng: 121.2250, address: "桃園市平鎮區育達路" },
+        { name: "全家便利商店 中壢龍凱店", type: "familymart", lat: 24.9646, lng: 121.1909, address: "桃園市中壢區龍凱街" },
+        { name: "7-ELEVEN 中壢站前門市", type: "7-11", lat: 24.9562, lng: 121.2259, address: "桃園市中壢區" },
+        { name: "全家便利商店 高鐵桃園店", type: "familymart", lat: 25.0130, lng: 121.2160, address: "桃園市中壢區高鐵站" },
+        { name: "7-ELEVEN 高鐵桃園站", type: "7-11", lat: 25.0127, lng: 121.2155, address: "桃園市中壢區高鐵站" }
     ];
 
     function calculateDistance(lat1, lon1, lat2, lon2) {
@@ -696,6 +654,9 @@
     }
 
     function displayNearbyStores(userLat, userLng) {
+        window.lastUserLat = userLat;
+        window.lastUserLng = userLng;
+        
         const storesWithDist = mockStores.map(store => {
             const dist = calculateDistance(userLat, userLng, store.lat, store.lng);
             const prob = getStockProbability(store.type);
@@ -705,24 +666,63 @@
         storesWithDist.sort((a,b) => a.distance - b.distance);
         const topStores = storesWithDist.slice(0, 6);
         
+        const t = translations[currentLang];
         let html = `<div style="margin-bottom: 0.5rem; font-size:0.7rem; color:#6b6258;">附近商店</div>`;
         
         topStores.forEach(store => {
             const badgeClass = getBadgeClass(store.probability);
             const badgeText = getBadgeText(store.probability);
-            const mapsLink = getGoogleMapsLink(store.name, store.lat, store.lng);
-            const mapLinkText = translations[currentLang].mapLinkText;
+            const mapsLink = getGoogleMapsLink(store.name, store.address);
             
             html += `
                 <div class="store-item">
                     <div class="store-info">
                         <div class="store-name">${store.name}</div>
                         <div class="store-dist">${store.distance.toFixed(2)} km · ${store.address}</div>
-                        <div class="store-link"><a href="${mapsLink}" target="_blank" rel="noopener noreferrer">${mapLinkText}</a></div>
+                        <div class="store-link"><a href="${mapsLink}" target="_blank" rel="noopener noreferrer">${t.mapLinkText}</a></div>
                     </div>
                     <div class="stock-badge ${badgeClass}">${badgeText}</div>
                 </div>
             `;
         });
         
-        html += `<div class="location-note">更新時間 ${
+        html += `<div class="location-note">更新時間 ${new Date().toLocaleTimeString()} · 庫存估計基於當前折扣時段</div>`;
+        document.getElementById('nearbyStoresList').innerHTML = html;
+    }
+
+    function handleFindStores() {
+        const listDiv = document.getElementById('nearbyStoresList');
+        const t = translations[currentLang];
+        listDiv.innerHTML = `<div class="location-note" style="border:none;">${currentLang === 'zh' ? '正在獲取您的位置...' : 'Requesting your location...'}</div>`;
+        
+        if (!navigator.geolocation) {
+            listDiv.innerHTML = `<div class="location-note">${currentLang === 'zh' ? '瀏覽器不支援定位。顯示平鎮區商店。' : 'Geolocation not supported. Showing Pingzhen stores.'}</div>`;
+            displayNearbyStores(24.9450, 121.2150);
+            return;
+        }
+        
+        navigator.geolocation.getCurrentPosition(
+            (pos) => displayNearbyStores(pos.coords.latitude, pos.coords.longitude),
+            (error) => {
+                console.warn("Geolocation error:", error.message);
+                listDiv.innerHTML = `<div class="location-note">${currentLang === 'zh' ? '無法獲取位置。顯示平鎮區商店。' : 'Location access denied. Showing Pingzhen stores.'}</div>`;
+                displayNearbyStores(24.9450, 121.2150);
+            }
+        );
+    }
+
+    // ---------- EVENT LISTENERS ----------
+    const findBtn = document.getElementById('findStoresBtn');
+    if (findBtn) findBtn.addEventListener('click', handleFindStores);
+    
+    const zhBtn = document.getElementById('langZhBtn');
+    const enBtn = document.getElementById('langEnBtn');
+    if (zhBtn) zhBtn.addEventListener('click', () => updateLanguage('zh'));
+    if (enBtn) enBtn.addEventListener('click', () => updateLanguage('en'));
+    
+    // Default load: Pingzhen area (your location from the image)
+    displayNearbyStores(24.9450, 121.2150);
+})();
+</script>
+</body>
+</html>
