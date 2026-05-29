@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Last Call · Convenience Store Discount Guide</title>
+    <title>Last Call · Convenience Store Discount Guide - Taiwan</title>
     <style>
         * {
             margin: 0;
@@ -24,7 +24,6 @@
             margin: 0 auto;
         }
 
-        /* Header — minimal */
         .hero {
             margin-bottom: 3rem;
             border-bottom: 1px solid #e2ded7;
@@ -49,7 +48,6 @@
             letter-spacing: 0.3px;
         }
 
-        /* Store Locator Panel — clean card */
         .locator-panel {
             background: #ffffff;
             border: 1px solid #e9e5de;
@@ -132,7 +130,6 @@
             padding-top: 0.75rem;
         }
 
-        /* Store grid — cleaner, less playful */
         .store-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -166,7 +163,6 @@
             opacity: 0.7;
         }
 
-        /* brand colors only on text/border, not overwhelming */
         .family-header h2 { color: #1f6e4a; }
         .seven-header h2 { color: #c63a1f; }
         .hilife-header h2 { color: #1a5d9c; }
@@ -230,7 +226,6 @@
             border-color: #bfb3a2;
         }
 
-        /* Countdown section — minimal */
         .countdown-area {
             background: #ffffff;
             border: 1px solid #e9e5de;
@@ -295,24 +290,24 @@
 <body>
 <div class="container">
     <div class="hero">
-        <h1>Last Call · 即期鲜食时段</h1>
-        <p>Convenience store discounted food hours — Taipei, Taiwan</p>
-        <div class="hero-badge">based on official discount periods · stock probability estimated from time</div>
+        <h1>Last Call · Discounted Fresh Food Guide</h1>
+        <p>Convenience store discount hours - Taiwan</p>
+        <div class="hero-badge">Based on official discount periods · Stock probability estimated from current time</div>
     </div>
 
-    <!-- Store locator panel (geolocation + simulated nearby stores) -->
+    <!-- Store locator panel with geolocation -->
     <div class="locator-panel">
         <div class="locator-header">
             <span>📍</span>
-            <h3>Find discounted food nearby</h3>
+            <h3>Find discounted food near you</h3>
         </div>
-        <button id="findStoresBtn" class="find-btn">Use my location →</button>
+        <button id="findStoresBtn" class="find-btn">Use my location</button>
         <div id="nearbyStoresList" class="store-list">
-            <div class="location-note" style="border: none; padding: 0;">Allow location to see nearest stores and live stock probability.</div>
+            <div class="location-note" style="border: none; padding: 0;">Allow location access to see nearest stores and estimated stock availability.</div>
         </div>
     </div>
 
-    <!-- Store grid (4+1: PX Mart added from your image) -->
+    <!-- Store grid - all chains -->
     <div class="store-grid">
         <!-- 7-ELEVEN -->
         <div class="store-card">
@@ -322,21 +317,21 @@
             <div class="card-body">
                 <div class="discount-tag">i珍食</div>
                 <div class="time-slot">
-                    <strong>🕒 10:00 – 17:00</strong> 
-                    <span class="discount-rate">65折</span><br>
-                    <span class="inclusive-text" style="margin-top: 4px;">鲜食 · 便当 · 三角饭团 · 面食</span>
+                    <strong>10:00 – 17:00</strong> 
+                    <span class="discount-rate">35% off</span><br>
+                    <span class="inclusive-text">Fresh food, bento boxes, rice balls, noodles</span>
                 </div>
                 <div class="time-slot">
-                    <strong>🕒 20:00 – 03:00</strong> 
-                    <span class="discount-rate">65折</span><br>
-                    <span class="inclusive-text" style="margin-top: 4px;">鲜食 · 饭团 · 三明治 · 面食</span>
+                    <strong>20:00 – 03:00</strong> 
+                    <span class="discount-rate">35% off</span><br>
+                    <span class="inclusive-text">Fresh food, rice balls, sandwiches, noodles</span>
                 </div>
                 <div class="time-slot">
-                    <strong>🕒 19:00 – 19:59</strong> 
-                    <span class="discount-rate">8折</span><br>
-                    <span class="inclusive-text" style="margin-top: 4px;">限时1小时 · 指定鲜食</span>
+                    <strong>19:00 – 19:59</strong> 
+                    <span class="discount-rate">20% off</span><br>
+                    <span class="inclusive-text">Limited 1 hour · select fresh food</span>
                 </div>
-                <button class="btn-link" onclick="alert('7-ELEVEN i珍食: OPEN POINT app shows nearest stock.')">Check inventory →</button>
+                <button class="btn-link" onclick="alert('7-ELEVEN i珍食: Check OPEN POINT app for nearby store stock.')">Check inventory</button>
             </div>
         </div>
 
@@ -346,107 +341,105 @@
                 <span>🏪</span><h2>FamilyMart</h2>
             </div>
             <div class="card-body">
-                <div class="discount-tag">友善食光</div>
+                <div class="discount-tag">Friendly Hours</div>
                 <div class="time-slot">
-                    <strong>🕒 10:00 – 17:00</strong> 
-                    <span class="discount-rate">7折</span><br>
-                    <span class="inclusive-text">饭 · 寿司 · 手卷</span>
+                    <strong>10:00 – 17:00</strong> 
+                    <span class="discount-rate">30% off</span><br>
+                    <span class="inclusive-text">Rice, sushi, hand rolls</span>
                 </div>
                 <div class="time-slot">
-                    <strong>🕒 17:00 – 00:00</strong> 
-                    <span class="discount-rate">7折</span><br>
-                    <span class="inclusive-text">各种鲜食 · 生鲜蔬果 · 便当</span>
+                    <strong>17:00 – 00:00</strong> 
+                    <span class="discount-rate">30% off</span><br>
+                    <span class="inclusive-text">All fresh food, fresh fruits & vegetables, bento boxes</span>
                 </div>
-                <button class="btn-link" onclick="alert('FamilyMart: Look for 友善食光 sticker. App shows real stock.')">Check inventory →</button>
+                <button class="btn-link" onclick="alert('FamilyMart: Look for Friendly Hours sticker. App shows real stock.')">Check inventory</button>
             </div>
         </div>
 
         <!-- Hi-Life -->
         <div class="store-card">
             <div class="card-header hilife-header">
-                <span>🏪</span><h2>Hi‑Life</h2>
+                <span>🏪</span><h2>Hi-Life</h2>
             </div>
             <div class="card-body">
-                <div class="discount-tag">惜福食堂</div>
+                <div class="discount-tag">Cherish Food</div>
                 <div class="time-slot">
-                    <strong>🕒 18:00 – 00:00</strong> 
-                    <span class="discount-rate">7折</span><br>
-                    <span class="inclusive-text">饭团 · 面包 · 正餐 · 鲜食</span>
+                    <strong>18:00 – 00:00</strong> 
+                    <span class="discount-rate">30% off</span><br>
+                    <span class="inclusive-text">Rice balls, bread, meals, fresh food</span>
                 </div>
-                <button class="btn-link" onclick="alert('Hi-Life 惜福食堂: from 6PM, up to 30% off.')">Check inventory →</button>
+                <button class="btn-link" onclick="alert('Hi-Life Cherish Food: Available after 6PM, up to 30% off.')">Check inventory</button>
             </div>
         </div>
 
         <!-- OK Mart -->
         <div class="store-card">
             <div class="card-header ok-header">
-                <span>🏪</span><h2>OKmart</h2>
+                <span>🏪</span><h2>OK Mart</h2>
             </div>
             <div class="card-body">
-                <div class="discount-tag">OK late bird</div>
+                <div class="discount-tag">Late Bird</div>
                 <div class="time-slot">
-                    <strong>🕒 16:30 – 22:30</strong> 
-                    <span class="discount-rate">6折</span><br>
-                    <span class="inclusive-text">鲜食 · 饭团 · 面包 · 糕点</span>
+                    <strong>16:30 – 22:30</strong> 
+                    <span class="discount-rate">40% off</span><br>
+                    <span class="inclusive-text">Fresh food, rice balls, bread, pastries</span>
                 </div>
-                <button class="btn-link" onclick="alert('OKmart evening discount: 40% off 16:30–22:30.')">Check inventory →</button>
+                <button class="btn-link" onclick="alert('OK Mart evening discount: 40% off 16:30–22:30.')">Check inventory</button>
             </div>
         </div>
 
-        <!-- PX Mart (added from your image) -->
+        <!-- PX Mart -->
         <div class="store-card">
             <div class="card-header pxmart-header">
-                <span>🛒</span><h2>全聯 PX Mart</h2>
+                <span>🛒</span><h2>PX Mart</h2>
             </div>
             <div class="card-body">
-                <div class="discount-tag">惜食地图</div>
+                <div class="discount-tag">Cherish Food Map</div>
                 <div class="time-slot">
-                    <strong>🕒 08:00 – 16:00</strong> 
-                    <span class="discount-rate">8折</span><br>
-                    <span class="inclusive-text">面包 · 糕点 · 肉品 · 生鲜</span>
+                    <strong>08:00 – 16:00</strong> 
+                    <span class="discount-rate">20% off</span><br>
+                    <span class="inclusive-text">Bread, pastries, meat, fresh food</span>
                 </div>
                 <div class="time-slot">
-                    <strong>🕒 16:00 以后</strong> 
-                    <span class="discount-rate">6折</span><br>
-                    <span class="inclusive-text">二次降价 · 生鲜 · 肉品 · 糕点</span>
+                    <strong>After 16:00</strong> 
+                    <span class="discount-rate">40% off</span><br>
+                    <span class="inclusive-text">Second price drop · fresh food, meat, pastries</span>
                 </div>
-                <button class="btn-link" onclick="alert('全聯惜食地图: in-app map shows real availability.')">Check inventory →</button>
+                <button class="btn-link" onclick="alert('PX Mart Cherish Food Map: Check in-app map for real availability.')">Check inventory</button>
             </div>
         </div>
     </div>
 
-    <!-- Countdown timers (only for the most searched periods) -->
+    <!-- Countdown timers -->
     <div class="countdown-area">
-        <span>⏱️ Next discount window starts in</span>
+        <span>Next discount window starts in</span>
         <div class="timer-grid">
             <div class="timer-item">
-                <div class="timer-label">7‑ELEVEN · 20:00 (65折)</div>
+                <div class="timer-label">7-ELEVEN · 20:00 (35% off)</div>
                 <div class="timer-clock" id="sevenTimer">--:--:--</div>
             </div>
             <div class="timer-item">
-                <div class="timer-label">FamilyMart · 17:00 (7折)</div>
+                <div class="timer-label">FamilyMart · 17:00 (30% off)</div>
                 <div class="timer-clock" id="familyTimer">--:--:--</div>
             </div>
             <div class="timer-item">
-                <div class="timer-label">OKmart · 16:30 (6折)</div>
+                <div class="timer-label">OK Mart · 16:30 (40% off)</div>
                 <div class="timer-clock" id="okTimer">--:--:--</div>
             </div>
         </div>
-        <div class="location-note" style="margin-top: 1rem; border: none; padding: 0;">* Stock probability updates based on current time · Actual inventory varies by store</div>
+        <div class="location-note" style="margin-top: 1rem; border: none; padding: 0;">Stock probability updates based on current time · Actual inventory varies by store</div>
     </div>
 
     <hr>
     <footer>
         SDG 2 / Zero Hunger · Reduce food waste — information compiled from official discount policies<br>
-        Real-time stock not available — use this as a guide for when to check your local store.
+        Real-time stock not available · Use this as a guide for when to check your local store.
     </footer>
 </div>
 
 <script>
     (function() {
-        // ------------------------------
         // COUNTDOWN TIMERS
-        // ------------------------------
         const sevenTimerDiv = document.getElementById('sevenTimer');
         const familyTimerDiv = document.getElementById('familyTimer');
         const okTimerDiv = document.getElementById('okTimer');
@@ -485,9 +478,7 @@
         updateTimers();
         setInterval(updateTimers, 1000);
 
-        // ------------------------------
         // STOCK PROBABILITY (time-based)
-        // ------------------------------
         function getStockProbability(storeType) {
             const now = new Date();
             const currentHour = now.getHours();
@@ -495,18 +486,15 @@
             const currentTime = currentHour + currentMin / 60;
 
             const windows = {
-                '7-11': [{ start: 20, end: 27 }, { start: 10, end: 17 }, { start: 19, end: 20 }],  // 19–20 for 80% but lower stock
+                '7-11': [{ start: 20, end: 27 }, { start: 10, end: 17 }, { start: 19, end: 20 }],
                 'familymart': [{ start: 17, end: 24 }, { start: 10, end: 17 }],
                 'hilife': [{ start: 18, end: 24 }],
                 'ok': [{ start: 16.5, end: 22.5 }],
                 'pxmart': [{ start: 16, end: 24 }, { start: 8, end: 16 }]
             };
-            let typeKey = storeType;
-            if (storeType === 'pxmart') typeKey = 'pxmart';
-            const storeWindows = windows[typeKey] || windows['familymart'];
             
-            let effectiveTime = currentTime;
-            let isActive = false;
+            let storeWindows = windows[storeType] || windows['familymart'];
+            
             for (let w of storeWindows) {
                 let start = w.start;
                 let end = w.end;
@@ -515,7 +503,6 @@
                     if (currentHour < 3) timeCheck = currentTime + 24;
                 }
                 if (timeCheck >= start && timeCheck < end) {
-                    isActive = true;
                     const duration = end - start;
                     const timeInto = timeCheck - start;
                     if (timeInto < duration * 0.35) return 'high';
@@ -523,33 +510,85 @@
                     return 'low';
                 }
             }
-            if (!isActive) return 'low';
-            return 'medium';
+            return 'low';
         }
 
         function getBadgeText(prob) {
-            if (prob === 'high') return '🟢 High chance now';
-            if (prob === 'medium') return '🟡 Some left';
-            return '🔴 Low / none now';
+            if (prob === 'high') return 'High chance now';
+            if (prob === 'medium') return 'Some left';
+            return 'Low / none now';
         }
+        
         function getBadgeClass(prob) {
             if (prob === 'high') return 'stock-high';
             if (prob === 'medium') return 'stock-med';
             return 'stock-low';
         }
 
-        // ------------------------------
-        // MOCK STORES + GEOLOCATION
-        // ------------------------------
+        // MOCK STORES ACROSS ALL OF TAIWAN
+        // Each major city and county represented
         const mockStores = [
-            { name: "7-ELEVEN · Xinyi", type: "7-11", lat: 25.0335, lng: 121.5654, address: "信义路五段" },
-            { name: "FamilyMart · Zhongxiao", type: "familymart", lat: 25.0412, lng: 121.5320, address: "忠孝东路四段" },
-            { name: "7-ELEVEN · Main Station", type: "7-11", lat: 25.0477, lng: 121.5170, address: "台北车站M1出口" },
-            { name: "FamilyMart · Ximen", type: "familymart", lat: 25.0422, lng: 121.5078, address: "中华路一段" },
-            { name: "Hi-Life · Shilin", type: "hilife", lat: 25.0928, lng: 121.5264, address: "大南路夜市旁" },
-            { name: "OKmart · NTU", type: "ok", lat: 25.0173, lng: 121.5397, address: "新生南路三段" },
-            { name: "PX Mart · Yongkang", type: "pxmart", lat: 25.0302, lng: 121.5285, address: "永康街商圈" },
-            { name: "7-ELEVEN · Songshan", type: "7-11", lat: 25.0492, lng: 121.5775, address: "南京东路五段" }
+            // Taipei City
+            { name: "7-ELEVEN - Taipei Main Station", type: "7-11", lat: 25.0477, lng: 121.5170, city: "Taipei", address: "Zhongzheng District" },
+            { name: "FamilyMart - Xinyi District", type: "familymart", lat: 25.0335, lng: 121.5654, city: "Taipei", address: "Xinyi Road Section 5" },
+            { name: "Hi-Life - Shilin Night Market", type: "hilife", lat: 25.0928, lng: 121.5264, city: "Taipei", address: "Danan Road" },
+            
+            // New Taipei City
+            { name: "7-ELEVEN - Banqiao Station", type: "7-11", lat: 25.0148, lng: 121.4646, city: "New Taipei", address: "Banqiao District" },
+            { name: "FamilyMart - Xindian", type: "familymart", lat: 24.9579, lng: 121.5396, city: "New Taipei", address: "Beixin Road" },
+            
+            // Taoyuan City
+            { name: "7-ELEVEN - Taoyuan HSR Station", type: "7-11", lat: 25.0127, lng: 121.2155, city: "Taoyuan", address: "Zhongli District" },
+            { name: "FamilyMart - Taoyuan Night Market", type: "familymart", lat: 24.9934, lng: 121.3102, city: "Taoyuan", address: "Zhongzheng Road" },
+            { name: "OK Mart - Zhongli Train Station", type: "ok", lat: 24.9562, lng: 121.2259, city: "Taoyuan", address: "Zhongli District" },
+            
+            // Taichung City
+            { name: "7-ELEVEN - Taichung Station", type: "7-11", lat: 24.1375, lng: 120.6846, city: "Taichung", address: "East District" },
+            { name: "FamilyMart - Fengjia Night Market", type: "familymart", lat: 24.1750, lng: 120.6462, city: "Taichung", address: "Xitun District" },
+            { name: "Hi-Life - Yizhong Street", type: "hilife", lat: 24.1518, lng: 120.6834, city: "Taichung", address: "North District" },
+            
+            // Tainan City
+            { name: "7-ELEVEN - Tainan Station", type: "7-11", lat: 22.9972, lng: 120.2123, city: "Tainan", address: "East District" },
+            { name: "FamilyMart - Guohua Street", type: "familymart", lat: 22.9934, lng: 120.2038, city: "Tainan", address: "West Central District" },
+            { name: "OK Mart - Anping", type: "ok", lat: 23.0008, lng: 120.1636, city: "Tainan", address: "Anping District" },
+            
+            // Kaohsiung City
+            { name: "7-ELEVEN - Kaohsiung Main Station", type: "7-11", lat: 22.6384, lng: 120.3037, city: "Kaohsiung", address: "Sanmin District" },
+            { name: "FamilyMart - Liuhe Night Market", type: "familymart", lat: 22.6280, lng: 120.3018, city: "Kaohsiung", address: "Xinxing District" },
+            { name: "Hi-Life - Pier-2 Art Center", type: "hilife", lat: 22.6196, lng: 120.2912, city: "Kaohsiung", address: "Yancheng District" },
+            
+            // Hsinchu City
+            { name: "7-ELEVEN - Hsinchu Station", type: "7-11", lat: 24.8039, lng: 120.9708, city: "Hsinchu", address: "East District" },
+            { name: "FamilyMart - Hsinchu Science Park", type: "familymart", lat: 24.7822, lng: 121.0034, city: "Hsinchu", address: "East District" },
+            
+            // Chiayi City
+            { name: "7-ELEVEN - Chiayi Station", type: "7-11", lat: 23.4795, lng: 120.4417, city: "Chiayi", address: "West District" },
+            { name: "FamilyMart - Wenhua Road Night Market", type: "familymart", lat: 23.4810, lng: 120.4510, city: "Chiayi", address: "East District" },
+            
+            // Yilan County
+            { name: "7-ELEVEN - Yilan Station", type: "7-11", lat: 24.7525, lng: 121.7547, city: "Yilan", address: "Yilan City" },
+            { name: "FamilyMart - Jiaoxi Hot Spring", type: "familymart", lat: 24.8318, lng: 121.7645, city: "Yilan", address: "Jiaoxi Township" },
+            
+            // Hualien County
+            { name: "7-ELEVEN - Hualien Station", type: "7-11", lat: 23.9929, lng: 121.6018, city: "Hualien", address: "Hualien City" },
+            { name: "FamilyMart - Dongdamen Night Market", type: "familymart", lat: 23.9734, lng: 121.6108, city: "Hualien", address: "Hualien City" },
+            
+            // Taitung County
+            { name: "7-ELEVEN - Taitung Station", type: "7-11", lat: 22.7915, lng: 121.1217, city: "Taitung", address: "Taitung City" },
+            { name: "FamilyMart - Taitung Night Market", type: "familymart", lat: 22.7587, lng: 121.1458, city: "Taitung", address: "Taitung City" },
+            
+            // Keelung City
+            { name: "7-ELEVEN - Keelung Station", type: "7-11", lat: 25.1308, lng: 121.7419, city: "Keelung", address: "Ren'ai District" },
+            { name: "FamilyMart - Miaokou Night Market", type: "familymart", lat: 25.1280, lng: 121.7445, city: "Keelung", address: "Ren'ai District" },
+            
+            // Changhua County
+            { name: "7-ELEVEN - Changhua Station", type: "7-11", lat: 24.0820, lng: 120.5434, city: "Changhua", address: "Changhua City" },
+            
+            // Nantou County (Sun Moon Lake area)
+            { name: "FamilyMart - Sun Moon Lake", type: "familymart", lat: 23.8647, lng: 120.9142, city: "Nantou", address: "Yuchi Township" },
+            
+            // Pingtung County (Kenting area)
+            { name: "7-ELEVEN - Kenting Night Market", type: "7-11", lat: 21.9455, lng: 120.7981, city: "Pingtung", address: "Hengchun Township" }
         ];
 
         function calculateDistance(lat1, lon1, lat2, lon2) {
@@ -561,16 +600,18 @@
             return R * c;
         }
 
-        function displayNearbyStores(userLat, userLng) {
+        function displayNearbyStores(userLat, userLng, userCity = null) {
             const storesWithDist = mockStores.map(store => {
                 const dist = calculateDistance(userLat, userLng, store.lat, store.lng);
                 const prob = getStockProbability(store.type);
                 return { ...store, distance: dist, probability: prob };
             });
             storesWithDist.sort((a,b) => a.distance - b.distance);
-            const topStores = storesWithDist.slice(0, 5);
+            const topStores = storesWithDist.slice(0, 6);
             
-            let html = `<div style="margin: 0.25rem 0 0.75rem 0; font-size:0.75rem; color:#5f5546;">📍 Nearest stores with estimated stock</div>`;
+            let locationText = userCity ? `near ${userCity}` : 'near your location';
+            let html = `<div style="margin: 0.25rem 0 0.75rem 0; font-size:0.75rem; color:#5f5546;">Nearest stores ${locationText} with estimated stock</div>`;
+            
             topStores.forEach(store => {
                 const badgeClass = getBadgeClass(store.probability);
                 const badgeText = getBadgeText(store.probability);
@@ -578,29 +619,32 @@
                     <div class="store-item">
                         <div class="store-info">
                             <div class="store-name">${store.name}</div>
-                            <div class="store-dist">${store.distance.toFixed(1)} km · ${store.address}</div>
+                            <div class="store-dist">${store.distance.toFixed(1)} km · ${store.city} · ${store.address}</div>
                         </div>
                         <div class="stock-badge ${badgeClass}">${badgeText}</div>
                     </div>
                 `;
             });
-            html += `<div class="location-note">✅ Updated at ${new Date().toLocaleTimeString()} · probability based on current time</div>`;
+            html += `<div class="location-note">Updated at ${new Date().toLocaleTimeString()} · Stock probability based on current time and discount schedule</div>`;
             document.getElementById('nearbyStoresList').innerHTML = html;
         }
 
         function handleFindStores() {
             const listDiv = document.getElementById('nearbyStoresList');
-            listDiv.innerHTML = '<div class="location-note" style="border:none;">📍 Requesting location...</div>';
+            listDiv.innerHTML = '<div class="location-note" style="border:none;">Requesting your location...</div>';
+            
             if (!navigator.geolocation) {
-                listDiv.innerHTML = '<div class="location-note">⚠️ Geolocation not supported. Showing demo (Taipei Main Station).</div>';
-                displayNearbyStores(25.0477, 121.5170);
+                listDiv.innerHTML = '<div class="location-note">Geolocation not supported. Showing Taoyuan area stores as default.</div>';
+                displayNearbyStores(25.0127, 121.2155, 'Taoyuan');
                 return;
             }
+            
             navigator.geolocation.getCurrentPosition(
                 (pos) => displayNearbyStores(pos.coords.latitude, pos.coords.longitude),
-                () => {
-                    listDiv.innerHTML = '<div class="location-note">⚠️ Location denied. Showing demo near Taipei Main Station.</div>';
-                    displayNearbyStores(25.0477, 121.5170);
+                (error) => {
+                    console.warn("Geolocation error:", error);
+                    listDiv.innerHTML = '<div class="location-note">Location access denied. Showing Taoyuan area stores as default.</div>';
+                    displayNearbyStores(25.0127, 121.2155, 'Taoyuan');
                 }
             );
         }
@@ -608,12 +652,8 @@
         const findBtn = document.getElementById('findStoresBtn');
         if (findBtn) findBtn.addEventListener('click', handleFindStores);
 
-        // optional: load demo by default
-        setTimeout(() => {
-            if (document.getElementById('nearbyStoresList').innerHTML.includes("Allow location")) {
-                displayNearbyStores(25.0477, 121.5170);
-            }
-        }, 100);
+        // Default load: Taoyuan area (since you're in Taoyuan)
+        displayNearbyStores(25.0127, 121.2155, 'Taoyuan');
     })();
 </script>
 </body>
