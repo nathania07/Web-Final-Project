@@ -6,41 +6,39 @@
         
         <!-- Section Header -->
         <div class="izhen-header">
-            <h2 class="izhen-title">Last Call / i珍食</h2>
-            <p class="izhen-subtitle">Save food, save money, save the planet</p>
+            <h2 class="izhen-title">Last Call · Discounted Fresh Food</h2>
+            <p class="izhen-subtitle">Save food, save money, reduce waste</p>
         </div>
         
         <!-- Three Feature Cards -->
         <div class="izhen-cards">
             
-            <!-- CARD 1: i珍食 Nearby Store Mock (REPLACED) -->
+            <!-- CARD 1: Link to Full Guide -->
             <div class="izhen-card">
                 <div class="card-icon">🔍</div>
-                <h3>Find i珍食 Near Me</h3>
-                <p>Check simulated discounted food availability near your location</p>
-                <button id="nearbyStockBtn" class="izhen-btn izhen-btn-primary">
-                     Check Nearby Stock (Demo) →
-                </button>
-                <div id="nearbyStockResult" style="margin-top: 15px; font-size: 0.85rem; text-align: left; background: #f9f2e0; border-radius: 12px; padding: 10px; display: none;">
-                </div>
-                <p class="card-note">* Demo mode: shows mock stock based on current time</p>
+                <h3>Find i珍食 Near You</h3>
+                <p>Check real-time discounted food availability and store locations near you</p>
+                <a href="izhenmap.html" class="izhen-btn izhen-btn-primary">
+                    More Information →
+                </a>
+                <p class="card-note">* Opens complete guide with store locator and discount hours</p>
             </div>
             
-            <!-- CARD 2: Countdown Timer (unchanged) -->
+            <!-- CARD 2: Countdown Timer -->
             <div class="izhen-card">
-                <div class="card-icon"></div>
+                <div class="card-icon">⏰</div>
                 <h3>Discount Countdown</h3>
                 <p>i珍食 discount period starts daily at <strong>5:00 PM</strong></p>
                 <div class="timer-box" id="countdown-timer">
                     -- : -- : --
                 </div>
                 <p class="timer-label">until discount begins</p>
-                <p class="discount-info"> i珍食 offers 30% off near-expiry food</p>
+                <p class="discount-info">i珍食 offers 30% off near-expiry food</p>
             </div>
             
-            <!-- CARD 3: Discount Calculator (unchanged) -->
+            <!-- CARD 3: Discount Calculator -->
             <div class="izhen-card">
-                <div class="card-icon"></div>
+                <div class="card-icon">💰</div>
                 <h3>Discount Calculator</h3>
                 <p>Calculate how much you save with i珍食 30% discount</p>
                 
@@ -55,7 +53,7 @@
                     </button>
                     
                     <div class="result-box" id="discount-result">
-                         Discounted price: NT$ --
+                        Discounted price: NT$ --
                     </div>
                 </div>
             </div>
@@ -64,7 +62,7 @@
         
         <!-- Food Waste Fact Banner -->
         <div class="waste-fact">
-            <p> <strong>Did you know?</strong> One-third of all food produced globally is wasted — enough to feed every hungry person on Earth.</p>
+            <p><strong>Did you know?</strong> One-third of all food produced globally is wasted — enough to feed every hungry person on Earth.</p>
         </div>
         
     </div>
@@ -74,7 +72,7 @@
 <!-- CSS STYLES FOR SECTION 2 ONLY              -->
 <!-- ========================================== -->
 <style>
-    /* SECTION 2: i珍食 Styles (keep all existing styles, just add one more) */
+    /* SECTION 2: i珍食 Styles */
     .izhen-shi-section {
         background-color: #FFF8E7;
         padding: 80px 20px;
@@ -214,4 +212,144 @@
     .price-input {
         width: 100%;
         padding: 12px;
-        border: 2px solid #E0
+        border: 2px solid #E0D5C0;
+        border-radius: 8px;
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+    }
+    
+    .price-input:focus {
+        outline: none;
+        border-color: #F4C542;
+    }
+    
+    .result-box {
+        margin-top: 15px;
+        padding: 12px;
+        background-color: #F0EDE4;
+        border-radius: 10px;
+        font-weight: bold;
+        color: #8B5A2B;
+        text-align: center;
+        font-size: 0.95rem;
+    }
+    
+    /* Card Note */
+    .card-note {
+        font-size: 0.7rem;
+        color: #bbb;
+        margin-top: 15px;
+    }
+    
+    /* Waste Fact Banner */
+    .waste-fact {
+        margin-top: 60px;
+        padding: 20px;
+        background: linear-gradient(135deg, #8B5A2B 0%, #5A8F4C 100%);
+        color: white;
+        text-align: center;
+        border-radius: 50px;
+        font-size: 1rem;
+    }
+    
+    .waste-fact p {
+        margin: 0;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .izhen-title {
+            font-size: 2rem;
+        }
+        
+        .izhen-card {
+            width: 100%;
+            max-width: 350px;
+        }
+        
+        .timer-box {
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+        }
+        
+        .waste-fact {
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+    }
+</style>
+
+<!-- ========================================== -->
+<!-- JAVASCRIPT FOR SECTION 2                   -->
+<!-- ========================================== -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // COUNTDOWN TIMER (to 5:00 PM)
+        function updateCountdown() {
+            const now = new Date();
+            let targetTime = new Date();
+            targetTime.setHours(17, 0, 0, 0);
+            
+            if (now > targetTime) {
+                targetTime.setDate(targetTime.getDate() + 1);
+            }
+            
+            const diff = targetTime - now;
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            const timerElement = document.getElementById('countdown-timer');
+            if (timerElement) {
+                timerElement.textContent = timeString;
+            }
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // DISCOUNT CALCULATOR
+        const calculateBtn = document.getElementById('calculate-btn');
+        
+        function calculateDiscount() {
+            const priceInput = document.getElementById('original-price');
+            const originalPrice = parseFloat(priceInput.value);
+            const resultBox = document.getElementById('discount-result');
+            
+            if (isNaN(originalPrice) || originalPrice <= 0) {
+                resultBox.innerHTML = 'Please enter a valid price (NT$)';
+                return;
+            }
+            
+            const discountRate = 0.30;
+            const discountAmount = originalPrice * discountRate;
+            const discountedPrice = originalPrice - discountAmount;
+            
+            resultBox.innerHTML = `
+                Original: NT$${originalPrice}<br>
+                30% OFF: -NT$${discountAmount.toFixed(0)}<br>
+                <strong>You pay: NT$${discountedPrice.toFixed(0)}</strong>
+                <br><br>
+                You save NT$${discountAmount.toFixed(0)}!
+            `;
+        }
+        
+        if (calculateBtn) {
+            calculateBtn.addEventListener('click', calculateDiscount);
+        }
+        
+        const priceInput = document.getElementById('original-price');
+        if (priceInput) {
+            priceInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    calculateDiscount();
+                }
+            });
+        }
+        
+    });
+</script>
