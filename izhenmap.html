@@ -28,6 +28,7 @@
             display: flex;
             justify-content: flex-end;
             margin-bottom: 1rem;
+            gap: 0;
         }
         .lang-btn {
             background: none;
@@ -512,66 +513,133 @@
 
     let currentLang = 'zh';
 
+    // Function to update all text based on language
     function updateLanguage(lang) {
         currentLang = lang;
         const t = translations[lang];
         
-        document.getElementById('backLink').innerHTML = t.backLink;
-        document.getElementById('mainTitle').innerHTML = t.mainTitle;
-        document.getElementById('subtitle').innerHTML = t.subtitle;
-        document.getElementById('badge').innerHTML = t.badge;
-        document.getElementById('locatorTitle').innerHTML = t.locatorTitle;
-        document.getElementById('findStoresBtn').innerHTML = t.findBtn;
-        document.getElementById('locationPrompt').innerHTML = t.locationPrompt;
+        // Update back link
+        const backLink = document.getElementById('backLink');
+        if (backLink) backLink.innerHTML = t.backLink;
         
-        document.getElementById('sevenTag').innerHTML = t.sevenTag;
-        document.getElementById('sevenTime1').innerHTML = t.sevenTime1;
-        document.getElementById('sevenDiscount1').innerHTML = t.sevenDiscount1;
-        document.getElementById('sevenItems1').innerHTML = t.sevenItems1;
-        document.getElementById('sevenTime2').innerHTML = t.sevenTime2;
-        document.getElementById('sevenDiscount2').innerHTML = t.sevenDiscount2;
-        document.getElementById('sevenItems2').innerHTML = t.sevenItems2;
-        document.getElementById('sevenTime3').innerHTML = t.sevenTime3;
-        document.getElementById('sevenDiscount3').innerHTML = t.sevenDiscount3;
-        document.getElementById('sevenItems3').innerHTML = t.sevenItems3;
+        // Update hero section
+        const mainTitle = document.getElementById('mainTitle');
+        const subtitle = document.getElementById('subtitle');
+        const badge = document.getElementById('badge');
+        if (mainTitle) mainTitle.innerHTML = t.mainTitle;
+        if (subtitle) subtitle.innerHTML = t.subtitle;
+        if (badge) badge.innerHTML = t.badge;
         
-        document.getElementById('familyTag').innerHTML = t.familyTag;
-        document.getElementById('familyTime1').innerHTML = t.familyTime1;
-        document.getElementById('familyDiscount1').innerHTML = t.familyDiscount1;
-        document.getElementById('familyItems1').innerHTML = t.familyItems1;
-        document.getElementById('familyTime2').innerHTML = t.familyTime2;
-        document.getElementById('familyDiscount2').innerHTML = t.familyDiscount2;
-        document.getElementById('familyItems2').innerHTML = t.familyItems2;
+        // Update locator panel
+        const locatorTitle = document.getElementById('locatorTitle');
+        const findBtn = document.getElementById('findStoresBtn');
+        const locationPrompt = document.getElementById('locationPrompt');
+        if (locatorTitle) locatorTitle.innerHTML = t.locatorTitle;
+        if (findBtn) findBtn.innerHTML = t.findBtn;
+        if (locationPrompt) locationPrompt.innerHTML = t.locationPrompt;
         
-        document.getElementById('hilifeTag').innerHTML = t.hilifeTag;
-        document.getElementById('hilifeTime1').innerHTML = t.hilifeTime1;
-        document.getElementById('hilifeDiscount1').innerHTML = t.hilifeDiscount1;
-        document.getElementById('hilifeItems1').innerHTML = t.hilifeItems1;
+        // Update 7-ELEVEN
+        const sevenTag = document.getElementById('sevenTag');
+        const sevenTime1 = document.getElementById('sevenTime1');
+        const sevenDiscount1 = document.getElementById('sevenDiscount1');
+        const sevenItems1 = document.getElementById('sevenItems1');
+        const sevenTime2 = document.getElementById('sevenTime2');
+        const sevenDiscount2 = document.getElementById('sevenDiscount2');
+        const sevenItems2 = document.getElementById('sevenItems2');
+        const sevenTime3 = document.getElementById('sevenTime3');
+        const sevenDiscount3 = document.getElementById('sevenDiscount3');
+        const sevenItems3 = document.getElementById('sevenItems3');
+        if (sevenTag) sevenTag.innerHTML = t.sevenTag;
+        if (sevenTime1) sevenTime1.innerHTML = t.sevenTime1;
+        if (sevenDiscount1) sevenDiscount1.innerHTML = t.sevenDiscount1;
+        if (sevenItems1) sevenItems1.innerHTML = t.sevenItems1;
+        if (sevenTime2) sevenTime2.innerHTML = t.sevenTime2;
+        if (sevenDiscount2) sevenDiscount2.innerHTML = t.sevenDiscount2;
+        if (sevenItems2) sevenItems2.innerHTML = t.sevenItems2;
+        if (sevenTime3) sevenTime3.innerHTML = t.sevenTime3;
+        if (sevenDiscount3) sevenDiscount3.innerHTML = t.sevenDiscount3;
+        if (sevenItems3) sevenItems3.innerHTML = t.sevenItems3;
         
-        document.getElementById('okTag').innerHTML = t.okTag;
-        document.getElementById('okTime1').innerHTML = t.okTime1;
-        document.getElementById('okDiscount1').innerHTML = t.okDiscount1;
-        document.getElementById('okItems1').innerHTML = t.okItems1;
+        // Update FamilyMart
+        const familyTag = document.getElementById('familyTag');
+        const familyTime1 = document.getElementById('familyTime1');
+        const familyDiscount1 = document.getElementById('familyDiscount1');
+        const familyItems1 = document.getElementById('familyItems1');
+        const familyTime2 = document.getElementById('familyTime2');
+        const familyDiscount2 = document.getElementById('familyDiscount2');
+        const familyItems2 = document.getElementById('familyItems2');
+        if (familyTag) familyTag.innerHTML = t.familyTag;
+        if (familyTime1) familyTime1.innerHTML = t.familyTime1;
+        if (familyDiscount1) familyDiscount1.innerHTML = t.familyDiscount1;
+        if (familyItems1) familyItems1.innerHTML = t.familyItems1;
+        if (familyTime2) familyTime2.innerHTML = t.familyTime2;
+        if (familyDiscount2) familyDiscount2.innerHTML = t.familyDiscount2;
+        if (familyItems2) familyItems2.innerHTML = t.familyItems2;
         
-        document.getElementById('pxmartTag').innerHTML = t.pxmartTag;
-        document.getElementById('pxmartTime1').innerHTML = t.pxmartTime1;
-        document.getElementById('pxmartDiscount1').innerHTML = t.pxmartDiscount1;
-        document.getElementById('pxmartItems1').innerHTML = t.pxmartItems1;
-        document.getElementById('pxmartTime2').innerHTML = t.pxmartTime2;
-        document.getElementById('pxmartDiscount2').innerHTML = t.pxmartDiscount2;
-        document.getElementById('pxmartItems2').innerHTML = t.pxmartItems2;
+        // Update Hi-Life
+        const hilifeTag = document.getElementById('hilifeTag');
+        const hilifeTime1 = document.getElementById('hilifeTime1');
+        const hilifeDiscount1 = document.getElementById('hilifeDiscount1');
+        const hilifeItems1 = document.getElementById('hilifeItems1');
+        if (hilifeTag) hilifeTag.innerHTML = t.hilifeTag;
+        if (hilifeTime1) hilifeTime1.innerHTML = t.hilifeTime1;
+        if (hilifeDiscount1) hilifeDiscount1.innerHTML = t.hilifeDiscount1;
+        if (hilifeItems1) hilifeItems1.innerHTML = t.hilifeItems1;
         
-        document.getElementById('countdownTitle').innerHTML = t.countdownTitle;
-        document.getElementById('sevenTimerLabel').innerHTML = t.sevenTimerLabel;
-        document.getElementById('familyTimerLabel').innerHTML = t.familyTimerLabel;
-        document.getElementById('okTimerLabel').innerHTML = t.okTimerLabel;
+        // Update OK Mart
+        const okTag = document.getElementById('okTag');
+        const okTime1 = document.getElementById('okTime1');
+        const okDiscount1 = document.getElementById('okDiscount1');
+        const okItems1 = document.getElementById('okItems1');
+        if (okTag) okTag.innerHTML = t.okTag;
+        if (okTime1) okTime1.innerHTML = t.okTime1;
+        if (okDiscount1) okDiscount1.innerHTML = t.okDiscount1;
+        if (okItems1) okItems1.innerHTML = t.okItems1;
         
-        document.getElementById('footer').innerHTML = t.footer;
+        // Update PX Mart
+        const pxmartTag = document.getElementById('pxmartTag');
+        const pxmartTime1 = document.getElementById('pxmartTime1');
+        const pxmartDiscount1 = document.getElementById('pxmartDiscount1');
+        const pxmartItems1 = document.getElementById('pxmartItems1');
+        const pxmartTime2 = document.getElementById('pxmartTime2');
+        const pxmartDiscount2 = document.getElementById('pxmartDiscount2');
+        const pxmartItems2 = document.getElementById('pxmartItems2');
+        if (pxmartTag) pxmartTag.innerHTML = t.pxmartTag;
+        if (pxmartTime1) pxmartTime1.innerHTML = t.pxmartTime1;
+        if (pxmartDiscount1) pxmartDiscount1.innerHTML = t.pxmartDiscount1;
+        if (pxmartItems1) pxmartItems1.innerHTML = t.pxmartItems1;
+        if (pxmartTime2) pxmartTime2.innerHTML = t.pxmartTime2;
+        if (pxmartDiscount2) pxmartDiscount2.innerHTML = t.pxmartDiscount2;
+        if (pxmartItems2) pxmartItems2.innerHTML = t.pxmartItems2;
         
-        document.getElementById('langZhBtn').classList.toggle('active', lang === 'zh');
-        document.getElementById('langEnBtn').classList.toggle('active', lang === 'en');
+        // Update countdown
+        const countdownTitle = document.getElementById('countdownTitle');
+        const sevenTimerLabel = document.getElementById('sevenTimerLabel');
+        const familyTimerLabel = document.getElementById('familyTimerLabel');
+        const okTimerLabel = document.getElementById('okTimerLabel');
+        if (countdownTitle) countdownTitle.innerHTML = t.countdownTitle;
+        if (sevenTimerLabel) sevenTimerLabel.innerHTML = t.sevenTimerLabel;
+        if (familyTimerLabel) familyTimerLabel.innerHTML = t.familyTimerLabel;
+        if (okTimerLabel) okTimerLabel.innerHTML = t.okTimerLabel;
         
-        // Refresh store list to update badge texts and map links
+        // Update footer
+        const footer = document.getElementById('footer');
+        if (footer) footer.innerHTML = t.footer;
+        
+        // Update active button styles
+        const zhBtn = document.getElementById('langZhBtn');
+        const enBtn = document.getElementById('langEnBtn');
+        if (zhBtn && enBtn) {
+            if (lang === 'zh') {
+                zhBtn.classList.add('active');
+                enBtn.classList.remove('active');
+            } else {
+                zhBtn.classList.remove('active');
+                enBtn.classList.add('active');
+            }
+        }
+        
+        // Refresh the store list to update badge texts and map links
         if (window.lastLocation) {
             displayNearbyStores(window.lastLocation.lat, window.lastLocation.lng, window.lastLocation.city);
         } else if (window.defaultLocation) {
@@ -661,43 +729,20 @@
         return 'stock-low';
     }
 
-    // ========== IMPROVED GOOGLE MAPS LINK ==========
-    // This creates a search URL that will show the store name in Google Maps
+    // ========== GOOGLE MAPS LINK - searches for store name ==========
     function getGoogleMapsLink(storeName, lat, lng) {
-        // Encode the store name for URL
         const encodedName = encodeURIComponent(storeName);
-        // Use Google Maps search with query (store name near coordinates)
-        // This gives the full store page like the example you shared
-        return `https://www.google.com/maps/search/?api=1&query=${encodedName}&query_place_id=${encodedName}&center=${lat},${lng}&zoom=16`;
+        return `https://www.google.com/maps/search/?api=1&query=${encodedName}&center=${lat},${lng}&zoom=16`;
     }
 
     // ========== MOCK STORES ==========
     const mockStores = [
-        // Taoyuan
-        { name: "7-ELEVEN - Taoyuan HSR Station 7-11高鐵桃園站", type: "7-11", lat: 25.0127, lng: 121.2155, city: "Taoyuan", address: "HSR Station, Zhongli District" },
-        { name: "FamilyMart - HSR Taoyuan 全家高鐵桃園店", type: "familymart", lat: 25.0130, lng: 121.2160, city: "Taoyuan", address: "Near HSR Station" },
-        { name: "7-ELEVEN - Qingpu 7-11青埔門市", type: "7-11", lat: 25.0150, lng: 121.2100, city: "Taoyuan", address: "Qingpu Road" },
-        { name: "FamilyMart - Linghang North 全家領航北店", type: "familymart", lat: 25.0165, lng: 121.2120, city: "Taoyuan", address: "Linghang North Road" },
-        { name: "Hi-Life - Qingpu 萊爾富青埔店", type: "hilife", lat: 25.0140, lng: 121.2130, city: "Taoyuan", address: "Qingpu Road Section 2" },
-        { name: "7-ELEVEN - Zhongli Station 7-11中壢站前門市", type: "7-11", lat: 24.9562, lng: 121.2259, city: "Taoyuan", address: "Zhongli Train Station" },
-        { name: "OK Mart - Zhongli OK中壢九和店", type: "ok", lat: 24.9545, lng: 121.2230, city: "Taoyuan", address: "Jiuhe Road" },
-        { name: "FamilyMart - Zhongli Night Market 全家平鎮新明店", type: "familymart", lat: 24.9600, lng: 121.2300, city: "Taoyuan", address: "Xinming Road" },
-        { name: "7-ELEVEN - Taoyuan Station 7-11桃園站前門市", type: "7-11", lat: 24.9890, lng: 121.3130, city: "Taoyuan", address: "Taoyuan Train Station" },
-        // Taipei
-        { name: "7-ELEVEN - Taipei Main Station 7-11台北車站門市", type: "7-11", lat: 25.0477, lng: 121.5170, city: "Taipei", address: "Zhongzheng District" },
-        { name: "FamilyMart - Ximen 全家西門店", type: "familymart", lat: 25.0422, lng: 121.5078, city: "Taipei", address: "Wanhua District" },
-        // New Taipei
-        { name: "7-ELEVEN - Banqiao Station 7-11板橋站前門市", type: "7-11", lat: 25.0148, lng: 121.4646, city: "New Taipei", address: "Banqiao District" },
-        // Taichung
-        { name: "7-ELEVEN - Taichung Station 7-11台中站前門市", type: "7-11", lat: 24.1375, lng: 120.6846, city: "Taichung", address: "East District" },
-        // Tainan
-        { name: "7-ELEVEN - Tainan Station 7-11台南站前門市", type: "7-11", lat: 22.9972, lng: 120.2123, city: "Tainan", address: "East District" },
-        // Kaohsiung
-        { name: "7-ELEVEN - Kaohsiung Main Station 7-11高雄站前門市", type: "7-11", lat: 22.6384, lng: 120.3037, city: "Kaohsiung", address: "Sanmin District" }
-    ];
-
-    function calculateDistance(lat1, lon1, lat2, lon2) {
-        const R = 6371;
-        const dLat = (lat2 - lat1) * Math.PI / 180;
-        const dLon = (lon2 - lon1) * Math.PI / 180;
-        const a = Math.sin(dLat/2)**2 + Math.cos(lat1 * Math.PI/180) * Math.cos(lat2 * Math.PI/180) * Math.sin
+        { name: "7-ELEVEN 高鐵桃園站", type: "7-11", lat: 25.0127, lng: 121.2155, city: "Taoyuan", address: "HSR Station, Zhongli District" },
+        { name: "全家便利商店 高鐵桃園店", type: "familymart", lat: 25.0130, lng: 121.2160, city: "Taoyuan", address: "Near HSR Station" },
+        { name: "7-ELEVEN 青埔門市", type: "7-11", lat: 25.0150, lng: 121.2100, city: "Taoyuan", address: "Qingpu Road" },
+        { name: "全家便利商店 領航北店", type: "familymart", lat: 25.0165, lng: 121.2120, city: "Taoyuan", address: "Linghang North Road" },
+        { name: "萊爾富便利商店 青埔店", type: "hilife", lat: 25.0140, lng: 121.2130, city: "Taoyuan", address: "Qingpu Road Section 2" },
+        { name: "7-ELEVEN 中壢站前門市", type: "7-11", lat: 24.9562, lng: 121.2259, city: "Taoyuan", address: "Zhongli Train Station" },
+        { name: "OK便利商店 中壢九和店", type: "ok", lat: 24.9545, lng: 121.2230, city: "Taoyuan", address: "Jiuhe Road" },
+        { name: "全家便利商店 平鎮新明店", type: "familymart", lat: 24.9600, lng: 121.2300, city: "Taoyuan", address: "Xinming Road" },
+        { name: "7-ELEVEN 桃園站前門
