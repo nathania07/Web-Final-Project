@@ -24,7 +24,6 @@
             margin: 0 auto;
         }
 
-        /* Language Toggle Button */
         .lang-toggle {
             display: flex;
             justify-content: flex-end;
@@ -39,11 +38,13 @@
             color: #2c241a;
             cursor: pointer;
             font-family: inherit;
-            transition: all 0.2s ease;
         }
-        .lang-btn:hover {
-            background: #f0ede8;
-            border-color: #b0a692;
+        .lang-btn:first-child {
+            border-radius: 4px 0 0 4px;
+        }
+        .lang-btn:last-child {
+            border-radius: 0 4px 4px 0;
+            margin-left: -1px;
         }
         .lang-btn.active {
             background: #e9e5de;
@@ -328,7 +329,7 @@
         <div class="locator-header">
             <h3 id="locatorTitle">尋找附近即期美食</h3>
         </div>
-        <button id="findStoresBtn" class="find-btn" id="findBtnText">使用我的位置</button>
+        <button id="findStoresBtn" class="find-btn">使用我的位置</button>
         <div id="nearbyStoresList" class="store-list">
             <div class="location-note" style="border: none; padding: 0;" id="locationPrompt">允許位置權限以查看附近商店和庫存估計。</div>
         </div>
@@ -344,15 +345,15 @@
             <div class="card-body">
                 <div class="discount-tag" id="sevenTag">i珍食</div>
                 <div class="time-slot">
-                    <strong id="sevenTime1">10:00 – 17:00</strong> <span class="discount-rate" id="sevenDiscount1">35% off</span>
+                    <strong id="sevenTime1">10:00 – 17:00</strong> <span class="discount-rate" id="sevenDiscount1">65折</span>
                     <div class="inclusive-text" id="sevenItems1">鮮食、便當、飯糰</div>
                 </div>
                 <div class="time-slot">
-                    <strong id="sevenTime2">20:00 – 03:00</strong> <span class="discount-rate" id="sevenDiscount2">35% off</span>
+                    <strong id="sevenTime2">20:00 – 03:00</strong> <span class="discount-rate" id="sevenDiscount2">65折</span>
                     <div class="inclusive-text" id="sevenItems2">鮮食、三明治、麵食</div>
                 </div>
                 <div class="time-slot">
-                    <strong id="sevenTime3">19:00 – 19:59</strong> <span class="discount-rate" id="sevenDiscount3">20% off</span>
+                    <strong id="sevenTime3">19:00 – 19:59</strong> <span class="discount-rate" id="sevenDiscount3">8折</span>
                     <div class="inclusive-text" id="sevenItems3">限時1小時</div>
                 </div>
             </div>
@@ -366,11 +367,11 @@
             <div class="card-body">
                 <div class="discount-tag" id="familyTag">友善食光</div>
                 <div class="time-slot">
-                    <strong id="familyTime1">10:00 – 17:00</strong> <span class="discount-rate" id="familyDiscount1">30% off</span>
+                    <strong id="familyTime1">10:00 – 17:00</strong> <span class="discount-rate" id="familyDiscount1">7折</span>
                     <div class="inclusive-text" id="familyItems1">飯、壽司、手卷</div>
                 </div>
                 <div class="time-slot">
-                    <strong id="familyTime2">17:00 – 00:00</strong> <span class="discount-rate" id="familyDiscount2">30% off</span>
+                    <strong id="familyTime2">17:00 – 00:00</strong> <span class="discount-rate" id="familyDiscount2">7折</span>
                     <div class="inclusive-text" id="familyItems2">各式鮮食、便當、生鮮蔬果</div>
                 </div>
             </div>
@@ -384,7 +385,7 @@
             <div class="card-body">
                 <div class="discount-tag" id="hilifeTag">惜福食堂</div>
                 <div class="time-slot">
-                    <strong id="hilifeTime1">18:00 – 00:00</strong> <span class="discount-rate" id="hilifeDiscount1">30% off</span>
+                    <strong id="hilifeTime1">18:00 – 00:00</strong> <span class="discount-rate" id="hilifeDiscount1">7折</span>
                     <div class="inclusive-text" id="hilifeItems1">飯糰、麵包、正餐</div>
                 </div>
             </div>
@@ -398,7 +399,7 @@
             <div class="card-body">
                 <div class="discount-tag" id="okTag">晚鳥優惠</div>
                 <div class="time-slot">
-                    <strong id="okTime1">16:30 – 22:30</strong> <span class="discount-rate" id="okDiscount1">40% off</span>
+                    <strong id="okTime1">16:30 – 22:30</strong> <span class="discount-rate" id="okDiscount1">6折</span>
                     <div class="inclusive-text" id="okItems1">鮮食、飯糰、糕點</div>
                 </div>
             </div>
@@ -412,11 +413,11 @@
             <div class="card-body">
                 <div class="discount-tag" id="pxmartTag">惜食地圖</div>
                 <div class="time-slot">
-                    <strong id="pxmartTime1">08:00 – 16:00</strong> <span class="discount-rate" id="pxmartDiscount1">20% off</span>
+                    <strong id="pxmartTime1">08:00 – 16:00</strong> <span class="discount-rate" id="pxmartDiscount1">8折</span>
                     <div class="inclusive-text" id="pxmartItems1">麵包、糕點、肉品</div>
                 </div>
                 <div class="time-slot">
-                    <strong id="pxmartTime2">16:00 後</strong> <span class="discount-rate" id="pxmartDiscount2">40% off</span>
+                    <strong id="pxmartTime2">16:00 後</strong> <span class="discount-rate" id="pxmartDiscount2">6折</span>
                     <div class="inclusive-text" id="pxmartItems2">二次降價</div>
                 </div>
             </div>
@@ -428,15 +429,15 @@
         <span id="countdownTitle">下一檔折扣開始</span>
         <div class="timer-grid">
             <div class="timer-item">
-                <div class="timer-label" id="sevenTimerLabel">7-ELEVEN · 20:00 (35% off)</div>
+                <div class="timer-label" id="sevenTimerLabel">7-ELEVEN · 20:00 (65折)</div>
                 <div class="timer-clock" id="sevenTimer">--:--:--</div>
             </div>
             <div class="timer-item">
-                <div class="timer-label" id="familyTimerLabel">FamilyMart · 17:00 (30% off)</div>
+                <div class="timer-label" id="familyTimerLabel">FamilyMart · 17:00 (7折)</div>
                 <div class="timer-clock" id="familyTimer">--:--:--</div>
             </div>
             <div class="timer-item">
-                <div class="timer-label" id="okTimerLabel">OK Mart · 16:30 (40% off)</div>
+                <div class="timer-label" id="okTimerLabel">OK Mart · 16:30 (6折)</div>
                 <div class="timer-clock" id="okTimer">--:--:--</div>
             </div>
         </div>
@@ -454,67 +455,31 @@
     // ========== LANGUAGE DATA ==========
     const translations = {
         zh: {
-            // Back link
             backLink: "← 返回折扣計算機",
-            // Hero
             mainTitle: "Last Call · 即期鮮食指南",
             subtitle: "台灣便利商店折扣時段",
             badge: "官方折扣時段 · 即時庫存估計",
-            // Locator
             locatorTitle: "尋找附近即期美食",
             findBtn: "使用我的位置",
             locationPrompt: "允許位置權限以查看附近商店和庫存估計。",
-            // Stock badge texts (will be handled in JS)
+            mapLinkText: "在 Google 地圖中開啟 →",
             stockHigh: "機會高",
             stockMed: "尚有庫存",
             stockLow: "少量/無",
-            // Store names remain in English/Chinese mixed
-            // 7-ELEVEN
-            sevenTag: "i珍食",
-            sevenTime1: "10:00 – 17:00",
-            sevenDiscount1: "65折",
-            sevenItems1: "鮮食、便當、飯糰",
-            sevenTime2: "20:00 – 03:00",
-            sevenDiscount2: "65折",
-            sevenItems2: "鮮食、三明治、麵食",
-            sevenTime3: "19:00 – 19:59",
-            sevenDiscount3: "8折",
-            sevenItems3: "限時1小時",
-            // FamilyMart
-            familyTag: "友善食光",
-            familyTime1: "10:00 – 17:00",
-            familyDiscount1: "7折",
-            familyItems1: "飯、壽司、手卷",
-            familyTime2: "17:00 – 00:00",
-            familyDiscount2: "7折",
-            familyItems2: "各式鮮食、便當、生鮮蔬果",
-            // Hi-Life
-            hilifeTag: "惜福食堂",
-            hilifeTime1: "18:00 – 00:00",
-            hilifeDiscount1: "7折",
-            hilifeItems1: "飯糰、麵包、正餐",
-            // OK Mart
-            okTag: "晚鳥優惠",
-            okTime1: "16:30 – 22:30",
-            okDiscount1: "6折",
-            okItems1: "鮮食、飯糰、糕點",
-            // PX Mart
-            pxmartTag: "惜食地圖",
-            pxmartTime1: "08:00 – 16:00",
-            pxmartDiscount1: "8折",
-            pxmartItems1: "麵包、糕點、肉品",
-            pxmartTime2: "16:00 後",
-            pxmartDiscount2: "6折",
-            pxmartItems2: "二次降價",
-            // Countdown
+            sevenTag: "i珍食", sevenTime1: "10:00 – 17:00", sevenDiscount1: "65折", sevenItems1: "鮮食、便當、飯糰",
+            sevenTime2: "20:00 – 03:00", sevenDiscount2: "65折", sevenItems2: "鮮食、三明治、麵食",
+            sevenTime3: "19:00 – 19:59", sevenDiscount3: "8折", sevenItems3: "限時1小時",
+            familyTag: "友善食光", familyTime1: "10:00 – 17:00", familyDiscount1: "7折", familyItems1: "飯、壽司、手卷",
+            familyTime2: "17:00 – 00:00", familyDiscount2: "7折", familyItems2: "各式鮮食、便當、生鮮蔬果",
+            hilifeTag: "惜福食堂", hilifeTime1: "18:00 – 00:00", hilifeDiscount1: "7折", hilifeItems1: "飯糰、麵包、正餐",
+            okTag: "晚鳥優惠", okTime1: "16:30 – 22:30", okDiscount1: "6折", okItems1: "鮮食、飯糰、糕點",
+            pxmartTag: "惜食地圖", pxmartTime1: "08:00 – 16:00", pxmartDiscount1: "8折", pxmartItems1: "麵包、糕點、肉品",
+            pxmartTime2: "16:00 後", pxmartDiscount2: "6折", pxmartItems2: "二次降價",
             countdownTitle: "下一檔折扣開始",
             sevenTimerLabel: "7-ELEVEN · 20:00 (65折)",
             familyTimerLabel: "FamilyMart · 17:00 (7折)",
             okTimerLabel: "OK Mart · 16:30 (6折)",
-            // Footer
-            footer: "SDG 2 零飢餓 · 減少食物浪費<br>實際庫存依各店為準 · 請作為時段參考",
-            // Map link text
-            mapLinkText: "在 Google 地圖中開啟 →"
+            footer: "SDG 2 零飢餓 · 減少食物浪費<br>實際庫存依各店為準 · 請作為時段參考"
         },
         en: {
             backLink: "← Back to discount calculator",
@@ -524,71 +489,41 @@
             locatorTitle: "Find discounted food near you",
             findBtn: "Use my location",
             locationPrompt: "Allow location access to see nearest stores and estimated stock.",
+            mapLinkText: "Open in Google Maps →",
             stockHigh: "Good chance",
             stockMed: "Some available",
             stockLow: "Limited stock",
-            sevenTag: "i珍食",
-            sevenTime1: "10:00 – 17:00",
-            sevenDiscount1: "35% off",
-            sevenItems1: "Fresh food, bento, rice balls",
-            sevenTime2: "20:00 – 03:00",
-            sevenDiscount2: "35% off",
-            sevenItems2: "Fresh food, sandwiches, noodles",
-            sevenTime3: "19:00 – 19:59",
-            sevenDiscount3: "20% off",
-            sevenItems3: "Limited 1 hour",
-            familyTag: "Friendly Hours",
-            familyTime1: "10:00 – 17:00",
-            familyDiscount1: "30% off",
-            familyItems1: "Rice, sushi, hand rolls",
-            familyTime2: "17:00 – 00:00",
-            familyDiscount2: "30% off",
-            familyItems2: "All fresh food, bento, vegetables",
-            hilifeTag: "Cherish Food",
-            hilifeTime1: "18:00 – 00:00",
-            hilifeDiscount1: "30% off",
-            hilifeItems1: "Rice balls, bread, meals",
-            okTag: "Late Bird",
-            okTime1: "16:30 – 22:30",
-            okDiscount1: "40% off",
-            okItems1: "Fresh food, rice balls, pastries",
-            pxmartTag: "Cherish Food Map",
-            pxmartTime1: "08:00 – 16:00",
-            pxmartDiscount1: "20% off",
-            pxmartItems1: "Bread, pastries, meat",
-            pxmartTime2: "After 16:00",
-            pxmartDiscount2: "40% off",
-            pxmartItems2: "Second price drop",
+            sevenTag: "i珍食", sevenTime1: "10:00 – 17:00", sevenDiscount1: "35% off", sevenItems1: "Fresh food, bento, rice balls",
+            sevenTime2: "20:00 – 03:00", sevenDiscount2: "35% off", sevenItems2: "Fresh food, sandwiches, noodles",
+            sevenTime3: "19:00 – 19:59", sevenDiscount3: "20% off", sevenItems3: "Limited 1 hour",
+            familyTag: "Friendly Hours", familyTime1: "10:00 – 17:00", familyDiscount1: "30% off", familyItems1: "Rice, sushi, hand rolls",
+            familyTime2: "17:00 – 00:00", familyDiscount2: "30% off", familyItems2: "All fresh food, bento, vegetables",
+            hilifeTag: "Cherish Food", hilifeTime1: "18:00 – 00:00", hilifeDiscount1: "30% off", hilifeItems1: "Rice balls, bread, meals",
+            okTag: "Late Bird", okTime1: "16:30 – 22:30", okDiscount1: "40% off", okItems1: "Fresh food, rice balls, pastries",
+            pxmartTag: "Cherish Food Map", pxmartTime1: "08:00 – 16:00", pxmartDiscount1: "20% off", pxmartItems1: "Bread, pastries, meat",
+            pxmartTime2: "After 16:00", pxmartDiscount2: "40% off", pxmartItems2: "Second price drop",
             countdownTitle: "Next discount window starts in",
             sevenTimerLabel: "7-ELEVEN · 20:00 (35% off)",
             familyTimerLabel: "FamilyMart · 17:00 (30% off)",
             okTimerLabel: "OK Mart · 16:30 (40% off)",
-            footer: "SDG 2 / Zero Hunger · Reduce food waste<br>Real-time stock varies by store · Use as a timing guide",
-            mapLinkText: "Open in Google Maps →"
+            footer: "SDG 2 / Zero Hunger · Reduce food waste<br>Real-time stock varies by store · Use as a timing guide"
         }
     };
 
     let currentLang = 'zh';
 
-    // Function to update all text based on language
     function updateLanguage(lang) {
         currentLang = lang;
         const t = translations[lang];
         
-        // Update back link
         document.getElementById('backLink').innerHTML = t.backLink;
-        
-        // Update hero
         document.getElementById('mainTitle').innerHTML = t.mainTitle;
         document.getElementById('subtitle').innerHTML = t.subtitle;
         document.getElementById('badge').innerHTML = t.badge;
-        
-        // Update locator panel
         document.getElementById('locatorTitle').innerHTML = t.locatorTitle;
         document.getElementById('findStoresBtn').innerHTML = t.findBtn;
         document.getElementById('locationPrompt').innerHTML = t.locationPrompt;
         
-        // Update 7-ELEVEN
         document.getElementById('sevenTag').innerHTML = t.sevenTag;
         document.getElementById('sevenTime1').innerHTML = t.sevenTime1;
         document.getElementById('sevenDiscount1').innerHTML = t.sevenDiscount1;
@@ -600,7 +535,6 @@
         document.getElementById('sevenDiscount3').innerHTML = t.sevenDiscount3;
         document.getElementById('sevenItems3').innerHTML = t.sevenItems3;
         
-        // Update FamilyMart
         document.getElementById('familyTag').innerHTML = t.familyTag;
         document.getElementById('familyTime1').innerHTML = t.familyTime1;
         document.getElementById('familyDiscount1').innerHTML = t.familyDiscount1;
@@ -609,19 +543,16 @@
         document.getElementById('familyDiscount2').innerHTML = t.familyDiscount2;
         document.getElementById('familyItems2').innerHTML = t.familyItems2;
         
-        // Update Hi-Life
         document.getElementById('hilifeTag').innerHTML = t.hilifeTag;
         document.getElementById('hilifeTime1').innerHTML = t.hilifeTime1;
         document.getElementById('hilifeDiscount1').innerHTML = t.hilifeDiscount1;
         document.getElementById('hilifeItems1').innerHTML = t.hilifeItems1;
         
-        // Update OK Mart
         document.getElementById('okTag').innerHTML = t.okTag;
         document.getElementById('okTime1').innerHTML = t.okTime1;
         document.getElementById('okDiscount1').innerHTML = t.okDiscount1;
         document.getElementById('okItems1').innerHTML = t.okItems1;
         
-        // Update PX Mart
         document.getElementById('pxmartTag').innerHTML = t.pxmartTag;
         document.getElementById('pxmartTime1').innerHTML = t.pxmartTime1;
         document.getElementById('pxmartDiscount1').innerHTML = t.pxmartDiscount1;
@@ -630,22 +561,19 @@
         document.getElementById('pxmartDiscount2').innerHTML = t.pxmartDiscount2;
         document.getElementById('pxmartItems2').innerHTML = t.pxmartItems2;
         
-        // Update countdown
         document.getElementById('countdownTitle').innerHTML = t.countdownTitle;
         document.getElementById('sevenTimerLabel').innerHTML = t.sevenTimerLabel;
         document.getElementById('familyTimerLabel').innerHTML = t.familyTimerLabel;
         document.getElementById('okTimerLabel').innerHTML = t.okTimerLabel;
         
-        // Update footer
         document.getElementById('footer').innerHTML = t.footer;
         
-        // Update active button style
         document.getElementById('langZhBtn').classList.toggle('active', lang === 'zh');
         document.getElementById('langEnBtn').classList.toggle('active', lang === 'en');
         
-        // Refresh the store list to update badge texts and map links
-        if (window.currentLocation) {
-            displayNearbyStores(window.currentLocation.lat, window.currentLocation.lng, window.currentLocation.city);
+        // Refresh store list to update badge texts and map links
+        if (window.lastLocation) {
+            displayNearbyStores(window.lastLocation.lat, window.lastLocation.lng, window.lastLocation.city);
         } else if (window.defaultLocation) {
             displayNearbyStores(window.defaultLocation.lat, window.defaultLocation.lng, window.defaultLocation.city);
         }
@@ -717,26 +645,14 @@
                 return 'low';
             }
         }
-        
-        for (let w of storeWindows) {
-            let start = w[0];
-            if (start > 24) start = start - 24;
-            let diff = start - current;
-            if (diff > 0 && diff < 1) return 'medium';
-        }
         return 'low';
     }
 
     function getBadgeText(prob) {
-        if (currentLang === 'zh') {
-            if (prob === 'high') return '機會高';
-            if (prob === 'medium') return '尚有庫存';
-            return '少量/無';
-        } else {
-            if (prob === 'high') return 'Good chance';
-            if (prob === 'medium') return 'Some available';
-            return 'Limited stock';
-        }
+        const t = translations[currentLang];
+        if (prob === 'high') return t.stockHigh;
+        if (prob === 'medium') return t.stockMed;
+        return t.stockLow;
     }
     
     function getBadgeClass(prob) {
@@ -745,38 +661,43 @@
         return 'stock-low';
     }
 
+    // ========== IMPROVED GOOGLE MAPS LINK ==========
+    // This creates a search URL that will show the store name in Google Maps
     function getGoogleMapsLink(storeName, lat, lng) {
-        return `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+        // Encode the store name for URL
+        const encodedName = encodeURIComponent(storeName);
+        // Use Google Maps search with query (store name near coordinates)
+        // This gives the full store page like the example you shared
+        return `https://www.google.com/maps/search/?api=1&query=${encodedName}&query_place_id=${encodedName}&center=${lat},${lng}&zoom=16`;
     }
 
     // ========== MOCK STORES ==========
     const mockStores = [
         // Taoyuan
-        { name: "7-ELEVEN - Taoyuan HSR Station", type: "7-11", lat: 25.0127, lng: 121.2155, city: "Taoyuan", address: "HSR Station, Zhongli District" },
-        { name: "FamilyMart - HSR Taoyuan", type: "familymart", lat: 25.0130, lng: 121.2160, city: "Taoyuan", address: "Near HSR Station" },
-        { name: "7-ELEVEN - Qingpu", type: "7-11", lat: 25.0150, lng: 121.2100, city: "Taoyuan", address: "Qingpu Road" },
-        { name: "FamilyMart - Linghang North", type: "familymart", lat: 25.0165, lng: 121.2120, city: "Taoyuan", address: "Linghang North Road" },
-        { name: "Hi-Life - Qingpu", type: "hilife", lat: 25.0140, lng: 121.2130, city: "Taoyuan", address: "Qingpu Road Section 2" },
-        { name: "7-ELEVEN - Zhongli Station", type: "7-11", lat: 24.9562, lng: 121.2259, city: "Taoyuan", address: "Zhongli Train Station" },
-        { name: "OK Mart - Zhongli", type: "ok", lat: 24.9545, lng: 121.2230, city: "Taoyuan", address: "Jiuhe Road" },
-        { name: "FamilyMart - Zhongli Night Market", type: "familymart", lat: 24.9600, lng: 121.2300, city: "Taoyuan", address: "Xinming Road" },
-        { name: "7-ELEVEN - Taoyuan Station", type: "7-11", lat: 24.9890, lng: 121.3130, city: "Taoyuan", address: "Taoyuan Train Station" },
+        { name: "7-ELEVEN - Taoyuan HSR Station 7-11高鐵桃園站", type: "7-11", lat: 25.0127, lng: 121.2155, city: "Taoyuan", address: "HSR Station, Zhongli District" },
+        { name: "FamilyMart - HSR Taoyuan 全家高鐵桃園店", type: "familymart", lat: 25.0130, lng: 121.2160, city: "Taoyuan", address: "Near HSR Station" },
+        { name: "7-ELEVEN - Qingpu 7-11青埔門市", type: "7-11", lat: 25.0150, lng: 121.2100, city: "Taoyuan", address: "Qingpu Road" },
+        { name: "FamilyMart - Linghang North 全家領航北店", type: "familymart", lat: 25.0165, lng: 121.2120, city: "Taoyuan", address: "Linghang North Road" },
+        { name: "Hi-Life - Qingpu 萊爾富青埔店", type: "hilife", lat: 25.0140, lng: 121.2130, city: "Taoyuan", address: "Qingpu Road Section 2" },
+        { name: "7-ELEVEN - Zhongli Station 7-11中壢站前門市", type: "7-11", lat: 24.9562, lng: 121.2259, city: "Taoyuan", address: "Zhongli Train Station" },
+        { name: "OK Mart - Zhongli OK中壢九和店", type: "ok", lat: 24.9545, lng: 121.2230, city: "Taoyuan", address: "Jiuhe Road" },
+        { name: "FamilyMart - Zhongli Night Market 全家平鎮新明店", type: "familymart", lat: 24.9600, lng: 121.2300, city: "Taoyuan", address: "Xinming Road" },
+        { name: "7-ELEVEN - Taoyuan Station 7-11桃園站前門市", type: "7-11", lat: 24.9890, lng: 121.3130, city: "Taoyuan", address: "Taoyuan Train Station" },
         // Taipei
-        { name: "7-ELEVEN - Taipei Main Station", type: "7-11", lat: 25.0477, lng: 121.5170, city: "Taipei", address: "Zhongzheng District" },
-        { name: "FamilyMart - Ximen", type: "familymart", lat: 25.0422, lng: 121.5078, city: "Taipei", address: "Wanhua District" },
+        { name: "7-ELEVEN - Taipei Main Station 7-11台北車站門市", type: "7-11", lat: 25.0477, lng: 121.5170, city: "Taipei", address: "Zhongzheng District" },
+        { name: "FamilyMart - Ximen 全家西門店", type: "familymart", lat: 25.0422, lng: 121.5078, city: "Taipei", address: "Wanhua District" },
         // New Taipei
-        { name: "7-ELEVEN - Banqiao Station", type: "7-11", lat: 25.0148, lng: 121.4646, city: "New Taipei", address: "Banqiao District" },
+        { name: "7-ELEVEN - Banqiao Station 7-11板橋站前門市", type: "7-11", lat: 25.0148, lng: 121.4646, city: "New Taipei", address: "Banqiao District" },
         // Taichung
-        { name: "7-ELEVEN - Taichung Station", type: "7-11", lat: 24.1375, lng: 120.6846, city: "Taichung", address: "East District" },
+        { name: "7-ELEVEN - Taichung Station 7-11台中站前門市", type: "7-11", lat: 24.1375, lng: 120.6846, city: "Taichung", address: "East District" },
         // Tainan
-        { name: "7-ELEVEN - Tainan Station", type: "7-11", lat: 22.9972, lng: 120.2123, city: "Tainan", address: "East District" },
+        { name: "7-ELEVEN - Tainan Station 7-11台南站前門市", type: "7-11", lat: 22.9972, lng: 120.2123, city: "Tainan", address: "East District" },
         // Kaohsiung
-        { name: "7-ELEVEN - Kaohsiung Main Station", type: "7-11", lat: 22.6384, lng: 120.3037, city: "Kaohsiung", address: "Sanmin District" }
+        { name: "7-ELEVEN - Kaohsiung Main Station 7-11高雄站前門市", type: "7-11", lat: 22.6384, lng: 120.3037, city: "Kaohsiung", address: "Sanmin District" }
     ];
 
     function calculateDistance(lat1, lon1, lat2, lon2) {
         const R = 6371;
         const dLat = (lat2 - lat1) * Math.PI / 180;
         const dLon = (lon2 - lon1) * Math.PI / 180;
-        const a = Math.sin(dLat/2)**2 + Math.cos(lat1 * Math.PI/180) * Math.cos(lat2 * Math.PI/180) * Math.sin(dLon/2)**2;
-        return R * 2 *
+        const a = Math.sin(dLat/2)**2 + Math.cos(lat1 * Math.PI/180) * Math.cos(lat2 * Math.PI/180) * Math.sin
