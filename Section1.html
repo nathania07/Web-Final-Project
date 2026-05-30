@@ -1,11 +1,8 @@
-<!-- ============================================= -->
-<!-- SECTION 1: 30 HOURS FOR CHANGE / 飢餓三十       -->
-<!-- ============================================= -->
 <nav class="sticky-navbar">
     <div class="navbar-brand">
-        <h2 id="nav-title" class="thirty-hours-title">⌛ 30 Hours for Change-飢餓三十 </h2>
+        <h2 id="nav-title" class="thirty-hours-title">⌛ 30 Hours for Change / 飢餓三十</h2>
     </div>
-    <div class="lang-switch-group">
+    <div class="lang-toggle">
         <button id="lang-zh" class="lang-btn active" onclick="switchLanguage('zh')">中文</button>
         <button id="lang-en" class="lang-btn" onclick="switchLanguage('en')">English</button>
     </div>
@@ -96,17 +93,17 @@
 </section>
 
 <style>
-    /* 新增：頂部固定導覽列樣式 */
+    /* 頂部固定導覽列樣式 */
     .sticky-navbar {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 70px;
-        background-color: rgba(250, 246, 232, 0.95); /* 配合原本網頁背景底色，並帶有微透 */
+        background-color: rgba(250, 246, 238, 0.95);
         backdrop-filter: blur(10px);
         box-shadow: 0 2px 15px rgba(74, 51, 25, 0.05);
-        z-index: 1000; /* 確保在最上層 */
+        z-index: 1000;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -119,49 +116,53 @@
         align-items: center;
     }
 
-    /* 調整原本標題的樣式以融入導覽列 */
     .thirty-hours-title {
         color: #4A3319;
-        font-size: 1.5rem; /* 稍微縮小以配合導覽列高度 */
-        font-weight: 800;
+        font-size: 1.4rem;
+        font-weight: 500; /* 與組員的 hero h1 一致 */
+        letter-spacing: -0.02em;
         margin: 0;
     }
 
-    /* 語系切換按鈕組 */
-    .lang-switch-group {
+    /* 語系切換按鈕組 - 完全同步組員 .lang-toggle 樣式基準 */
+    .lang-toggle {
         display: flex;
+        justify-content: flex-end;
         gap: 0;
-        border: 1px solid #E6D9CB;
-        border-radius: 8px;
-        overflow: hidden;
     }
-
+    
     .lang-btn {
-        background: #FFFFFF;
-        border: none;
-        color: #6B6661;
-        padding: 8px 16px;
-        font-size: 0.85rem;
-        font-weight: 600;
+        background: none;
+        border: 1px solid #cfc8bc;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+        font-weight: 450;
+        color: #2c241a;
         cursor: pointer;
-        transition: all 0.3s;
+        font-family: inherit;
+        transition: all 0.2s;
     }
-
-    .lang-btn:hover {
-        background: #FDF9F3;
-        color: #4A3319;
+    
+    .lang-btn:first-child {
+        border-radius: 4px 0 0 4px;
     }
-
+    
+    .lang-btn:last-child {
+        border-radius: 0 4px 4px 0;
+        margin-left: -1px;
+    }
+    
     .lang-btn.active {
-        background: #A66E38;
-        color: #FFFFFF;
+        background: #e9e5de;
+        border-color: #a6673c;
+        color: #a6673c;
     }
 
-    /* 調整原本區塊的內邊距，避免內容被頂部固定導覽列遮擋 */
+    /* 網頁主體區塊 - 字體同步組員 body */
     .thirty-hours-section {
         background-color: #FAF6EE;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans TC', sans-serif;
-        padding: 130px 20px 100px 20px; /* 上方內邊距增加到 130px */
+        font-family: -apple-system, 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        padding: 130px 20px 100px 20px; /* 預留頂部固定列高度空間 */
         display: flex;
         justify-content: center;
     }
@@ -273,8 +274,8 @@
         color: #FFC048;
         padding: 20px 45px;
         border-radius: 20px;
-        font-family: 'Courier New', Courier, monospace;
-        font-weight: 800;
+        font-family: 'SF Mono', 'JetBrains Mono', 'Courier New', Courier, monospace; /* 融入組員計時字體 */
+        font-weight: 450;
         font-size: 2.6rem;
         letter-spacing: 2px;
         box-shadow: inset 0 4px 12px rgba(0,0,0,0.6);
@@ -297,6 +298,7 @@
         cursor: pointer;
         transition: all 0.3s;
         box-shadow: 0 6px 16px rgba(66, 116, 55, 0.15);
+        font-family: inherit;
     }
     .thirty-hours-btn-primary:hover:not(.btn-disabled) {
         background-color: #335A2A;
@@ -317,7 +319,7 @@
     }
     .input-group { position: relative; width: 100%; margin-bottom: 25px; }
     .currency-prefix { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: #A09890; font-weight: 700; font-size: 1.1rem; }
-    .modern-input { width: 100%; padding: 16px 20px 16px 45px; border: 2px solid #EFEAE4; border-radius: 16px; font-size: 1.05rem; font-weight: 600; color: #4A3319; outline: none; box-sizing: border-box; transition: all 0.3s; background: #FDFDFD; text-align: center;}
+    .modern-input { width: 100%; padding: 16px 20px 16px 45px; border: 2px solid #EFEAE4; border-radius: 16px; font-size: 1.05rem; font-weight: 600; color: #4A3319; outline: none; box-sizing: border-box; transition: all 0.3s; background: #FDFDFD; text-align: center; font-family: inherit;}
     .modern-input:focus { border-color: #8B5A2B; background: #FFFFFF; }
 
     .impact-result-box { background: #FDF9F3; border: 1px dashed #E6D9CB; border-radius: 20px; padding: 25px 20px; text-align: center; margin-bottom: 15px; }
@@ -429,7 +431,7 @@
     function switchLanguage(lang) {
         currentLang = lang;
         
-        // 切換按鈕高亮狀態
+        // 切換按鈕高亮狀態 (完全同步組員 class 命名樣式)
         document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
         document.getElementById('lang-en').classList.toggle('active', lang === 'en');
         
@@ -560,7 +562,6 @@
     const storyText = document.getElementById('story-text');
 
     function showStory(index) {
-        // 根據當前語系抓取故事內容
         const data = mapStories[currentLang][index];
         storyRegion.innerText = data.region;
         storyText.innerText = data.story;
