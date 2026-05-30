@@ -1,15 +1,24 @@
+<nav class="sticky-navbar">
+    <div class="navbar-brand">
+        <h2 id="nav-title" class="thirty-hours-title">⌛ 30 Hours for Change / 飢餓三十</h2>
+    </div>
+    <div class="lang-switch-group">
+        <button id="lang-zh" class="lang-btn active" onclick="switchLanguage('zh')">中文</button>
+        <button id="lang-en" class="lang-btn" onclick="switchLanguage('en')">English</button>
+    </div>
+</nav>
+
 <section id="thirty-hours" class="thirty-hours-section">
     <div class="thirty-hours-container">
 
         <div class="thirty-hours-header">
-            <h2 class="thirty-hours-title">⌛ 30 Hours for Change / 飢餓三十</h2>
-            <p class="thirty-hours-subtitle">挑戰自我極限，解鎖三個關卡，一同走入脆弱孩童的現實世界</p>
+            <p id="text-subtitle" class="thirty-hours-subtitle">挑戰自我極限，解鎖三個關卡，一同走入脆弱孩童的現實世界</p>
         </div>
 
         <div id="stage-1" class="gamified-stage stage-active">
             <div class="stage-badge">STAGE 01</div>
-            <h3 class="block-main-title">第一關：感官覺醒</h3>
-            <p class="block-sub-text">體驗飢餓對身體的真實衝擊。隨著時間流逝，網頁色彩將逐漸褪去。</p>
+            <h3 id="text-stage1-title" class="block-main-title">第一關：感官覺醒</h3>
+            <p id="text-stage1-desc" class="block-sub-text">體驗飢餓對身體的真實衝擊。隨著時間流逝，網頁色彩將逐漸褪去。</p>
             
             <div class="modern-timer-container">
                 <div class="display-box">
@@ -17,7 +26,7 @@
                 </div>
                 <div class="hunger-progress-wrapper">
                     <div class="hunger-label">
-                        <span>💡 當前體驗飢餓指數</span>
+                        <span id="text-hunger-label">💡 當前體驗飢餓指數</span>
                         <span><span id="hunger-display">0</span>%</span>
                     </div>
                     <div class="hunger-bar-bg">
@@ -32,10 +41,10 @@
         </div>
 
         <div id="stage-2" class="gamified-stage stage-locked">
-            <div class="lock-overlay">🔒 達成第一關後解鎖</div>
+            <div id="text-lock-overlay-2" class="lock-overlay">🔒 達成第一關後解鎖</div>
             <div class="stage-badge">STAGE 02</div>
-            <h3 class="block-main-title">第二關：行動的力量</h3>
-            <p class="block-sub-text">輸入資助金額，親眼見證微小的一步能轉化為孩子幾天的生命希望。</p>
+            <h3 id="text-stage2-title" class="block-main-title">第二關：行動的力量</h3>
+            <p id="text-stage2-desc" class="block-sub-text">輸入資助金額，親眼見證微小的一步能轉化為孩子幾天的生命希望。</p>
             
             <div class="donation-game-box">
                 <div class="input-group">
@@ -44,9 +53,9 @@
                 </div>
                 
                 <div class="impact-result-box">
-                    <div class="result-title">成功轉化為</div>
+                    <div id="text-result-title" class="result-title">成功轉化為</div>
                     <div class="result-number"><span id="bread-count">0</span></div>
-                    <div class="result-unit">天生命的營養糧食</div>
+                    <div id="text-result-unit" class="result-unit">天生命的營養糧食</div>
                 </div>
                 <div id="celebration-msg"></div>
             </div>
@@ -55,30 +64,23 @@
                 請先輸入資助金額以開啟第三關 ↓
             </button>
         </div>
+
         <div id="stage-3" class="gamified-stage stage-locked">
-            <div class="lock-overlay">🔒 達成第二關後解鎖</div>
+            <div id="text-lock-overlay-3" class="lock-overlay">🔒 達成第二關後解鎖</div>
             <div class="stage-badge">STAGE 03</div>
-            <h3 class="block-main-title">第三關：看見世界</h3>
-            <p class="block-sub-text">恭喜抵達最終章。點擊地圖上的紅色警示點，聆聽來自全球前線災區的真實聲音。</p>
+            <h3 id="text-stage3-title" class="block-main-title">第三關：看見世界</h3>
+            <p id="text-stage3-desc" class="block-sub-text">恭喜抵達最終章。點擊地圖上的紅色警示點，聆聽來自全球前線災區的真實聲音。</p>
     
             <div class="map-game-box">
                 <div class="map-container" style="position: relative; width: 100%; border-radius: 18px; overflow: hidden; background: #EDF4F7;">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg" alt="World Map" class="map-image" style="width: 100%; display: block; filter: sepia(0.08) hue-rotate(5deg) contrast(0.95); padding: 15px 0;">
 
                     <div class="map-dot" style="position: absolute; transform: translate(-50%, -50%); top: 43%; left: 48.5%; cursor: pointer;" onclick="showStory(4)"></div>
-                    <!-- West Africa 西非薩赫爾 -->
-
                     <div class="map-dot" style="position: absolute; transform: translate(-50%, -50%); top: 38%; left: 61%; cursor: pointer;" onclick="showStory(1)"></div>
-                    <!-- Middle East 中東 -->
-
                     <div class="map-dot" style="position: absolute; transform: translate(-50%, -50%); top: 47%; left: 57%; cursor: pointer;" onclick="showStory(0)"></div>
-                    <!-- East Africa 東非 -->
-
                     <div class="map-dot" style="position: absolute; transform: translate(-50%, -50%); top: 43%; left: 69%; cursor: pointer;" onclick="showStory(3)"></div>
-                    <!-- South Asia 南亞 -->
-
                     <div class="map-dot" style="position: absolute; transform: translate(-50%, -50%); top: 67%; left: 34%; cursor: pointer;" onclick="showStory(2)"></div>
-                    <!-- South America 南美 -->
+                    </div>
                 <div id="dynamic-story-box" class="story-panel hidden">
                     <h4 id="story-region"></h4>
                     <p id="story-text"></p>
@@ -87,38 +89,95 @@
             </div>
         </div>
         
+    </div>
 </section>
 
 <style>
+    /* 新增：頂部固定導覽列樣式 */
+    .sticky-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        background-color: rgba(250, 246, 232, 0.95); /* 配合原本網頁背景底色，並帶有微透 */
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 15px rgba(74, 51, 25, 0.05);
+        z-index: 1000; /* 確保在最上層 */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 40px;
+        box-sizing: border-box;
+    }
+
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+    }
+
+    /* 調整原本標題的樣式以融入導覽列 */
+    .thirty-hours-title {
+        color: #4A3319;
+        font-size: 1.5rem; /* 稍微縮小以配合導覽列高度 */
+        font-weight: 800;
+        margin: 0;
+    }
+
+    /* 語系切換按鈕組 */
+    .lang-switch-group {
+        display: flex;
+        gap: 0;
+        border: 1px solid #E6D9CB;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .lang-btn {
+        background: #FFFFFF;
+        border: none;
+        color: #6B6661;
+        padding: 8px 16px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .lang-btn:hover {
+        background: #FDF9F3;
+        color: #4A3319;
+    }
+
+    .lang-btn.active {
+        background: #A66E38;
+        color: #FFFFFF;
+    }
+
+    /* 調整原本區塊的內邊距，避免內容被頂部固定導覽列遮擋 */
     .thirty-hours-section {
         background-color: #FAF6EE;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans TC', sans-serif;
-        padding: 100px 20px;
+        padding: 130px 20px 100px 20px; /* 上方內邊距增加到 130px */
         display: flex;
         justify-content: center;
     }
 
     .thirty-hours-container {
-        max-width: 800px; /* 線性單欄排版，最適瀏覽寬度 */
+        max-width: 800px;
         width: 100%;
     }
 
     .thirty-hours-header {
         text-align: center;
-        margin-bottom: 60px;
-    }
-
-    .thirty-hours-title {
-        color: #4A3319;
-        font-size: 2.8rem;
-        font-weight: 800;
-        margin-bottom: 16px;
+        margin-bottom: 40px;
     }
 
     .thirty-hours-subtitle {
         color: #3B6630;
         font-size: 1.15rem;
         font-weight: 500;
+        margin: 0;
     }
 
     /* 關卡通用外殼卡片 */
@@ -137,7 +196,7 @@
     /* 鎖定狀態樣式 */
     .stage-locked {
         opacity: 0.3;
-        pointer-events: none; /* 鎖定時無法點擊內部 */
+        pointer-events: none;
         transform: scale(0.96);
         filter: blur(1px);
     }
@@ -285,13 +344,123 @@
     @keyframes panelFadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
     @media (max-width: 768px) {
-        .thirty-hours-title { font-size: 2.2rem; }
+        .sticky-navbar { padding: 0 20px; height: 60px; }
+        .thirty-hours-title { font-size: 1.1rem; }
+        .thirty-hours-section { padding-top: 100px; }
         .gamified-stage { padding: 35px 20px; }
         .display-box { font-size: 2rem; }
     }
 </style>
 
 <script>
+    // 全域語系變數
+    let currentLang = 'zh';
+
+    // 雙語文字資料庫
+    const i18n = {
+        zh: {
+            navTitle: "⌛ 30 Hours for Change / 飢餓三十",
+            subtitle: "挑戰自我極限，解鎖三個關卡，一同走入脆弱孩童的現實世界",
+            stage1Title: "第一關：感官覺醒",
+            stage1Desc: "體驗飢餓對身體的真實衝擊。隨著時間流逝，網頁色彩將逐漸褪去。",
+            hungerLabel: "💡 當前體驗飢餓指數",
+            btnStage1: "接受挑戰，進入下一關 ↓",
+            lockOverlay2: "🔒 達成第一關後解鎖",
+            stage2Title: "第二關：行動的力量",
+            stage2Desc: "輸入資助金額，親眼見證微小的一步能轉化為孩子幾天的生命希望。",
+            inputPlaceholder: "輸入資助金額 (USD)",
+            resultTitle: "成功轉化為",
+            resultUnit: "天生命的營養糧食",
+            btnStage2Locked: "請先輸入資助金額以開啟第三關 ↓",
+            btnStage2Active: "成功啟動愛心！解鎖最終地圖關卡 ↓",
+            celebrationNormal: "❤️ 感謝您的善舉，點擊下方按鈕前往世界前線。",
+            celebrationGreat: "🎉 卓越的力量！您已為脆弱孩童點亮超過 100 天的生存希望！",
+            lockOverlay3: "🔒 達成第二關後解鎖",
+            stage3Title: "第三關：看見世界",
+            stage3Desc: "恭喜抵達最終章。點擊地圖上的紅色警示點，聆聽來自全球前線災區的真實聲音。",
+            mapTip: "💡 請點擊地圖上的紅色動態圓點完成破關體驗"
+        },
+        en: {
+            navTitle: "⌛ 30 Hours for Change",
+            subtitle: "Challenge your limits, unlock 3 stages, and step into the reality of vulnerable children.",
+            stage1Title: "Stage 1: Sensory Awakening",
+            stage1Desc: "Experience the real impact of hunger. As time passes, the webpage color will gradually fade.",
+            hungerLabel: "💡 Current Hunger Index",
+            btnStage1: "Accept Challenge & Next Stage ↓",
+            lockOverlay2: "🔒 Complete Stage 1 to Unlock",
+            stage2Title: "Stage 2: Power of Action",
+            stage2Desc: "Enter a donation amount and see how a small step transforms into days of life-saving hope.",
+            inputPlaceholder: "Enter donation amount (USD)",
+            resultTitle: "Transformed Into",
+            resultUnit: "Days of Nutritional Food",
+            btnStage2Locked: "Please enter donation amount to unlock Stage 3 ↓",
+            btnStage2Active: "Love Activated! Unlock the Final Map Stage ↓",
+            celebrationNormal: "❤️ Thank you for your kindness. Click the button below to visit the global frontlines.",
+            celebrationGreat: "🎉 Amazing Power! You have brought over 100 days of hope to vulnerable children!",
+            lockOverlay3: "🔒 Complete Stage 2 to Unlock",
+            stage3Title: "Stage 3: See the World",
+            stage3Desc: "Welcome to the final chapter. Click the red warning dots on the map to hear real voices from the frontlines.",
+            mapTip: "💡 Please click the red dynamic dots on the map to complete the experience"
+        }
+    };
+
+    // 第三關：世界地圖核心資料庫（雙語化）
+    const mapStories = {
+        zh: [
+            { region: "📍 East Africa (東非地區)", story: "持續的極端乾旱與反常洪澇，導致在地作物產量暴跌至正常水平的 20%，數百萬兒童正面臨嚴重的急性營養不良危險。" },
+            { region: "📍 Middle East (中東地區)", story: "地緣衝突重創了原本脆弱的供應鏈，造成當地的基本糧食與急救物資價格飆漲了將近 300%，兒童生存面臨空前挑戰。" },
+            { region: "📍 South America (南美高地)", story: "受到聖嬰現象帶來的異常氣候衝擊，偏遠山區的小農家庭生計面臨崩潰。學童們每天必須跋涉 2 小時路程，才能前往學校領取唯一的營養午餐。" },
+            { region: "📍 South Asia (南亞難民營)", story: "強烈季風引發的世紀洪災淹沒了大片農田，大規模的難民收容所正面臨糧食與乾淨飲水斷絕的雙重危機，阻礙兒童的身心發育。" },
+            { region: "📍 West Africa (西非薩赫爾)", story: "土地劇烈沙漠化再加上區域安全動盪，使得這個脆弱邊緣地帶的生存資源被掠奪殆盡，是目前全球急需國際人道救援介入的最前線。" }
+        ],
+        en: [
+            { region: "📍 East Africa", story: "Prolonged droughts and abnormal floods have caused local crop yields to plunge to 20% of normal levels. Millions of children face severe acute malnutrition." },
+            { region: "📍 Middle East", story: "Geopolitical conflicts have severely hit fragile supply chains, causing basic food and emergency aid prices to soar by nearly 300%. Children's survival faces unprecedented challenges." },
+            { region: "📍 South America", story: "Impacted by abnormal weather from El Niño, livelihoods of smallholder families in remote mountains are collapsing. Students must walk 2 hours daily to get their only nutritious school lunch." },
+            { region: "📍 South Asia", story: "Monsoon-triggered historic floods submerged vast farmlands. Large-scale refugee camps face dual crises of food and clean water shortage, hindering children's development." },
+            { region: "📍 West Africa", story: "Severe desertification coupled with regional instability has depleted survival resources in this fragile margin. It is currently the most urgent frontline for international humanitarian intervention." }
+        ]
+    };
+
+    // 語系切換執行函式
+    function switchLanguage(lang) {
+        currentLang = lang;
+        
+        // 切換按鈕高亮狀態
+        document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+        document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+        
+        // 更新 UI 文字
+        document.getElementById('nav-title').innerText = i18n[lang].navTitle;
+        document.getElementById('text-subtitle').innerText = i18n[lang].subtitle;
+        
+        document.getElementById('text-stage1-title').innerText = i18n[lang].stage1Title;
+        document.getElementById('text-stage1-desc').innerText = i18n[lang].stage1Desc;
+        document.getElementById('text-hunger-label').innerText = i18n[lang].hungerLabel;
+        
+        // 第一關按鈕文字
+        document.getElementById('btn-pass-stage-1').innerText = i18n[lang].btnStage1;
+        
+        document.getElementById('text-lock-overlay-2').innerText = i18n[lang].lockOverlay2;
+        document.getElementById('text-stage2-title').innerText = i18n[lang].stage2Title;
+        document.getElementById('text-stage2-desc').innerText = i18n[lang].stage2Desc;
+        document.getElementById('donation-amount').placeholder = i18n[lang].inputPlaceholder;
+        document.getElementById('text-result-title').innerText = i18n[lang].resultTitle;
+        document.getElementById('text-result-unit').innerText = i18n[lang].resultUnit;
+        
+        document.getElementById('text-lock-overlay-3').innerText = i18n[lang].lockOverlay3;
+        document.getElementById('text-stage3-title').innerText = i18n[lang].stage3Title;
+        document.getElementById('text-stage3-desc').innerText = i18n[lang].stage3Desc;
+        document.getElementById('map-placeholder-tip').innerText = i18n[lang].mapTip;
+
+        // 重新整理第二關按鈕與提示訊息語系
+        triggerDonationInputUpdate();
+
+        // 隱藏目前開啟的故事面板，避免語系錯亂
+        document.getElementById('dynamic-story-box').classList.add('hidden');
+        document.getElementById('map-placeholder-tip').classList.remove('hidden');
+    }
+
     // 1. 虛擬飢餓模擬核心引擎
     let totalSeconds = 0;
     const timeDisplay = document.getElementById('time-display');
@@ -332,8 +501,10 @@
         stage2.classList.remove('stage-locked');
         stage2.classList.add('stage-active');
         
-        // 平滑滑動到第二關視野
-        stage2.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // 平滑滑動到第二關視野（扣除導覽列高度以免蓋住標題）
+        const yOffset = -80; 
+        const y = stage2.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({top: y, behavior: 'smooth'});
     };
 
     // 監聽第二關輸入
@@ -341,64 +512,59 @@
     const breadCount = document.getElementById('bread-count');
     const celebrationMsg = document.getElementById('celebration-msg');
 
-    amountInput.addEventListener('input', function() {
-        const usdAmount = parseFloat(this.value) || 0;
+    function triggerDonationInputUpdate() {
+        const usdAmount = parseFloat(amountInput.value) || 0;
         const daysOfFood = Math.floor(usdAmount / 3);
         
         breadCount.innerText = daysOfFood.toLocaleString();
 
         if (daysOfFood > 0) {
-            // 活化破關按鈕
             btnPassStage2.removeAttribute('disabled');
             btnPassStage2.classList.remove('btn-disabled');
-            btnPassStage2.innerText = "成功啟動愛心！解鎖最終地圖關卡 ↓";
+            btnPassStage2.innerText = i18n[currentLang].btnStage2Active;
             
             if (daysOfFood >= 100) {
-                celebrationMsg.innerText = "🎉 卓越的力量！您已為脆弱孩童點亮超過 100 天的生存希望！";
+                celebrationMsg.innerText = i18n[currentLang].celebrationGreat;
             } else {
-                celebrationMsg.innerText = "❤️ 感謝您的善舉，點擊下方按鈕前往世界前線。";
+                celebrationMsg.innerText = i18n[currentLang].celebrationNormal;
             }
         } else {
-            // 金額被清空時重新鎖定按鈕
             btnPassStage2.setAttribute('disabled', 'true');
             btnPassStage2.classList.add('btn-disabled');
-            btnPassStage2.innerText = "請先輸入資助金額以開啟第三關 ↓";
+            btnPassStage2.innerText = i18n[currentLang].btnStage2Locked;
             celebrationMsg.innerText = "";
         }
-    });
+    }
+
+    amountInput.addEventListener('input', triggerDonationInputUpdate);
 
     // 點擊第二關按鈕 -> 解鎖第三關（地圖）
     btnPassStage2.onclick = () => {
         if(parseFloat(amountInput.value) > 0) {
             stage3.classList.remove('stage-locked');
             stage3.classList.add('stage-active');
-            stage3.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            const yOffset = -80; 
+            const y = stage3.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({top: y, behavior: 'smooth'});
         }
     };
 
-    // 3. 第三關：世界地圖核心資料庫
+    // 3. 第三關：世界地圖核心資料庫展示
     const storyBox = document.getElementById('dynamic-story-box');
     const placeholderTip = document.getElementById('map-placeholder-tip');
     const storyRegion = document.getElementById('story-region');
     const storyText = document.getElementById('story-text');
 
-    const mapStories = [
-        { region: "📍 East Africa (東非地區)", story: "持續的極端乾旱與反常洪澇，導致在地作物產量暴跌至正常水平的 20%，數百萬兒童正面臨嚴重的急性營養不良危險。" },
-        { region: "📍 Middle East (中東地區)", story: "地緣衝突重創了原本脆弱的供應鏈，造成當地的基本糧食與急救物資價格飆漲了將近 300%，兒童生存面臨空前挑戰。" },
-        { region: "📍 South America (南美高地)", story: "受到聖嬰現象帶來的異常氣候衝擊，偏遠山區的小農家庭生計面臨崩潰。學童們每天必須跋涉 2 小時路程，才能前往學校領取唯一的營養午餐。" },
-        { region: "📍 South Asia (南亞難民營)", story: "強烈季風引發的世紀洪災淹沒了大片農田，大規模的難民收容所正面臨糧食與乾淨飲水斷絕的雙重危機，阻礙兒童的身心發育。" },
-        { region: "📍 West Africa (西非薩赫爾)", story: "土地劇烈沙漠化再加上區域安全動盪，使得這個脆弱邊緣地帶的生存資源被掠奪殆盡，是目前全球急需國際人道救援介入的最前線。" }
-    ];
-
     function showStory(index) {
-        const data = mapStories[index];
+        // 根據當前語系抓取故事內容
+        const data = mapStories[currentLang][index];
         storyRegion.innerText = data.region;
         storyText.innerText = data.story;
         
         placeholderTip.classList.add('hidden');
         storyBox.classList.remove('hidden');
         
-        // 點擊故事後，頁面稍微向下對齊，確保故事框完整呈現
         storyBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
