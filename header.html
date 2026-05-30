@@ -4,400 +4,472 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FoodBridge – Food Rescue Mission</title>
-
-  <!-- Google Fonts: loads the Open Sans font from the internet -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- controls how everything looks -->
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --wheat:       #F4C542;
+      --wheat-light: #fad96a;
+      --brown:       #8B5A2B;
+      --brown-dark:  #6B3F18;
+      --green:       #5A8F4C;
+      --green-dark:  #3d6634;
+      --cream:       #FFF8E7;
     }
 
-    /* base styles for the whole page */
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: 'Open Sans', sans-serif;
-      background-color: #FFF8E7;
-      color: #8B5A2B;
+      font-family: 'Open Sans', 'Noto Sans TC', sans-serif;
+      background: var(--cream);
+      color: var(--brown);
+      overflow-x: hidden;
     }
 
-    /* A simple bar across the top of the page */
-    .header {
-      background-color: #8B5A2B;
-      padding: 14px 30px;
+    /* ─────────────── HEADER ─────────────── */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: var(--brown);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 62px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
+    .logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+    .logo-svg { width: 36px; height: 36px; flex-shrink: 0; }
+    .logo-wordmark { font-weight: 800; font-size: 1.15rem; color: var(--wheat); letter-spacing: 0.04em; }
 
-    /* the font for logo "FOOD BRIDGE" */
-    .logo-text {
-      color: #F4C542;
-      font-size: 1.2rem;
-      font-weight: 800;
-      text-decoration: none;
-    }
-
-    /* bottons on top right*/
-    .nav {
-      list-style: none;   /* removes bullet points */
-      display: flex;
-      gap: 10px;
-    }
-
-    .nav a {
-      color: #FFF8E7;
-      text-decoration: none;
+    .nav-pills { display: flex; gap: 0.3rem; list-style: none; }
+    .nav-pills a {
+      display: inline-block;
+      padding: 0.36rem 1.1rem;
+      border-radius: 100px;
+      font-size: 0.87rem;
       font-weight: 700;
-      font-size: 0.9rem;
-      padding: 6px 14px;
-      border-radius: 20px;
-      background-color: #6B3F18;
+      text-decoration: none;
+      color: var(--cream);
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-pills a:hover,
+    .nav-pills a.active { background: var(--wheat); color: var(--brown-dark); }
+
+    /* SECTIONS */
+    section {
+      min-height: 100vh;
+      padding-top: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* ── LANDING SECTION (what viewers see)── */
+    /* LANDING */
     #landing {
-      background-color: #6B3F18;
-      text-align: center;
-      padding: 80px 30px;
+      background: var(--brown-dark);
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    #landing::before {
+      content: '';
+      position: absolute;
+      width: 680px; height: 680px;
+      border-radius: 50%;
+      border: 80px solid rgba(244,197,66,0.06);
+      top: -200px; right: -200px;
+      pointer-events: none;
+    }
+    #landing::after {
+      content: '';
+      position: absolute;
+      width: 480px; height: 480px;
+      border-radius: 50%;
+      border: 60px solid rgba(90,143,76,0.08);
+      bottom: -140px; left: -100px;
+      pointer-events: none;
     }
 
-    .landing-emoji {
-      font-size: 5rem;          /* makes the emoji very large */
-      display: block;
-      margin-bottom: 20px;
+    .landing-inner {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      padding: 3rem 2rem;
+      animation: riseIn 0.9s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(38px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .big-logo-svg {
+      width: 150px; height: 150px;
+      margin-bottom: 1.4rem;
+      filter: drop-shadow(0 8px 36px rgba(244,197,66,0.28));
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
     }
 
     .landing-title {
-      font-size: 3rem;
+      font-size: clamp(2.8rem, 7vw, 5.2rem);
       font-weight: 800;
-      color: #F4C542;
-      margin-bottom: 10px;
+      color: var(--wheat);
+      letter-spacing: 0.05em;
+      line-height: 1;
+      margin-bottom: 0.5rem;
     }
-
-    .landing-subtitle {
-      color: #c9a870;
-      font-size: 0.9rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;  /* text ALL CAPS */
-      margin-bottom: 40px;
-    }
-
-    /* home and about us buttons */
-    .landing-buttons {
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-    }
-
-    /* ── BUTTONS ── */
-    .btn {
-      display: inline-block;
-      padding: 12px 28px;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-weight: 700;
-      text-decoration: none;
-      border: 2px solid #F4C542;
-      font-family: 'Open Sans', sans-serif;
-    }
-
-    /* home button (full color) */
-    .btn-yellow {
-      background-color: #F4C542;
-      color: #6B3F18;
-    }
-
-    /* See-through button with a border */
-    .btn-outline {
-      background-color: #6B3F18;
-      color: #F4C542;
-    }
-
-    /* Green button used for Take Action */
-    .btn-green {
-      background-color: #5A8F4C;
-      color: #ffffff;
-      border-color: #5A8F4C;
-    }
-
-    /* ── HOME SECTION ── */
-    #home {
-      background-color: #FFF8E7;
-      text-align: center;
-      padding: 60px 30px;            /* inner spacing */
-    }
-
-    /* Small pill-shaped label */
-    .badge {
-      display: inline-block;
-      background-color: #5A8F4C;
-      color: #ffffff;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 2px;
+    .landing-sub {
+      font-size: clamp(0.8rem, 1.8vw, 0.98rem);
+      color: rgba(255,248,231,0.5);
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      padding: 4px 14px;
-      border-radius: 20px;
-      margin-bottom: 16px;
+      margin-bottom: 3rem;
     }
+    .landing-btns { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
 
-    #home h2 {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #6B3F18;
-      margin-bottom: 10px;
-      line-height: 1.3;
-    }
-
-    .home-chant {
-      font-size: 1.1rem;
+    /*  BUTTONS  */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.78rem 2.1rem;
+      border-radius: 8px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.97rem;
       font-weight: 700;
-      color: #3d6634;
-      margin-bottom: 20px;
-    }
-
-    /* The paragraph of body text */
-    .home-body {
-      font-size: 0.97rem;
-      line-height: 1.9;
-      color: #5a3e20;
-      margin-bottom: 30px;
-      max-width: 620px;
-      margin-left: auto;      /* centers the paragraph block */
-      margin-right: auto;
-    }
-
-    /* The row of 3 brown stat cards */
-    .stat-row {
-      display: flex;
-      flex-wrap: wrap;        /* cards stack if screen is small */
-      gap: 14px;
-      justify-content: center;
-      margin-bottom: 30px;
-    }
-
-    .stat-card {
-      background-color: #8B5A2B;
-      color: #FFF8E7;
-      border-radius: 12px;
-      padding: 18px 24px;
-      min-width: 130px;
-      text-align: center;
-    }
-
-    /* The big number inside each card */
-    .stat-card strong {
-      display: block;
-      font-size: 1.9rem;
-      font-weight: 800;
-      color: #F4C542;
-      margin-bottom: 6px;
-    }
-
-    /* The small label below the number */
-    .stat-card span {
-      font-size: 0.75rem;
-    }
-
-    /* ── TAKE ACTION SECTION ── */
-    /* Replaces the popup modal — now a regular visible section */
-    #action {
-      background-color: #eef6eb;
-      text-align: center;
-      padding: 60px 30px;
-    }
-
-    #action h2 {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: #3d6634;
-      margin-bottom: 10px;
-    }
-
-    #action p {
-      color: #5a3e20;
-      font-size: 0.95rem;
-      margin-bottom: 30px;
-    }
-
-    /* The two option cards side by side */
-    .action-options {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      justify-content: center;
-    }
-
-    /* Each option card */
-    .action-card {
-      background-color: #ffffff;
-      border: 2px solid #5A8F4C;
-      border-radius: 12px;
-      padding: 24px 20px;
-      width: 240px;
-      text-align: center;
       text-decoration: none;
-      color: #6B3F18;
+      border: 2.5px solid transparent;
+      cursor: pointer;
+      transition: transform 0.18s, box-shadow 0.18s, background 0.2s, color 0.2s, border-color 0.2s;
+      letter-spacing: 0.03em;
     }
+    
+    /*  BUTTONS FRAME  */
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,0.2); }
+    .btn:active { transform: translateY(0); }
 
-    .action-card .card-emoji {
-      font-size: 2.5rem;
-      display: block;
-      margin-bottom: 12px;
-    }
+    .btn-wheat { background: var(--wheat); color: var(--brown-dark); border-color: var(--wheat); }
+    .btn-wheat:hover { background: var(--wheat-light); border-color: var(--wheat-light); }
 
-    .action-card strong {
-      display: block;
-      font-size: 1rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-      color: #3d6634;
-    }
+    .btn-cream-outline { background: transparent; color: var(--cream); border-color: rgba(255,248,231,0.4); }
+    .btn-cream-outline:hover { background: rgba(255,248,231,0.08); border-color: var(--cream); }
 
-    .action-card span {
-      font-size: 0.8rem;
-      color: #8a6040;
-      line-height: 1.5;
-    }
+    .btn-green { background: var(--green); color: #fff; border-color: var(--green); }
+    .btn-green:hover { background: var(--green-dark); border-color: var(--green-dark); }
 
-    /* ── ABOUT SECTION ── */
-    #about {
-      background-color: #6B3F18;
+    /* HOME  */
+    #home { background: var(--cream); flex-direction: column; }
+
+    .home-inner {
+      max-width: 820px;
+      padding: 4.5rem 2rem;
       text-align: center;
-      padding: 60px 30px;
-      color: #FFF8E7;
     }
-
-    /* The About badge uses yellow instead of green */
-    #about .badge {
-      background-color: #F4C542;
-      color: #6B3F18;
+    .section-badge {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 0.26rem 0.88rem;
+      border-radius: 100px;
+      margin-bottom: 1.2rem;
     }
-
-    #about h2 {
-      font-size: 2rem;
+    .home-inner h2 {
+      font-size: clamp(1.8rem, 4vw, 2.9rem);
       font-weight: 800;
-      color: #F4C542;
-      margin-bottom: 16px;
+      color: var(--brown-dark);
+      line-height: 1.2;
+      margin-bottom: 0.7rem;
     }
-
-    .about-intro {
-      font-size: 0.97rem;
-      line-height: 1.9;
-      color: #c9a870;
-      margin-bottom: 30px;
-      max-width: 560px;
+    .chant {
+      font-size: clamp(1rem, 2.2vw, 1.22rem);
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 1.8rem;
+    }
+    .home-body {
+      font-size: 0.98rem;
+      line-height: 1.92;
+      color: #5a3e20;
+      margin-bottom: 2.4rem;
+      max-width: 640px;
       margin-left: auto;
       margin-right: auto;
     }
 
-    /* The 4 source cards in a row */
-    .sources-grid {
+    .fact-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 1rem;
       justify-content: center;
+      margin-bottom: 2.8rem;
     }
-
-    .source-card {
-      background-color: #7a4e24;
-      border: 1px solid #c9a870;
+    .fact-card {
+      background: var(--brown);
+      color: var(--cream);
       border-radius: 12px;
-      padding: 20px 16px;
-      width: 160px;
+      padding: 1.1rem 1.6rem;
+      flex: 1;
+      min-width: 140px;
+      max-width: 200px;
       text-align: center;
     }
-
-    .source-icon {
-      font-size: 1.8rem;
+    .fact-card strong {
       display: block;
-      margin-bottom: 10px;
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--wheat);
+      margin-bottom: 0.3rem;
     }
+    .fact-card span { font-size: 0.76rem; opacity: 0.8; }
 
-    .source-card h4 {
-      font-size: 0.87rem;
-      font-weight: 700;
-      color: #F4C542;
-      margin-bottom: 6px;
+    /*  ABOUT  */
+    #about {
+      background: var(--brown-dark);
+      flex-direction: column;
     }
-
-    .source-card p {
-      font-size: 0.72rem;
-      color: #c9a870;
-      line-height: 1.5;
-    }
-
-    /* ── FOOTER ── */
-    .footer {
-      background-color: #3d2610;
-      color: #a07850;
+    .about-inner {
+      max-width: 780px;
+      padding: 4.5rem 2rem;
       text-align: center;
-      padding: 18px 30px;
-      font-size: 0.75rem;
+      color: var(--cream);
+    }
+    .about-inner .section-badge { background: var(--wheat); color: var(--brown-dark); }
+    .about-inner h2 {
+      font-size: clamp(1.8rem, 4vw, 2.9rem);
+      font-weight: 800;
+      color: var(--wheat);
+      margin-bottom: 1rem;
+    }
+    .about-intro {
+      font-size: 0.98rem;
+      line-height: 1.88;
+      color: rgba(255,248,231,0.78);
+      margin-bottom: 2.5rem;
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
+    .sources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+      gap: 1rem;
+    }
+    .source-card {
+      background: rgba(255,248,231,0.06);
+      border: 1.5px solid rgba(244,197,66,0.22);
+      border-radius: 14px;
+      padding: 1.5rem 1rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .source-card:hover { background: rgba(244,197,66,0.09); border-color: var(--wheat); }
+    .source-icon { font-size: 1.8rem; margin-bottom: 0.65rem; display: block; }
+    .source-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--wheat); margin-bottom: 0.25rem; }
+    .source-card p { font-size: 0.73rem; opacity: 0.58; line-height: 1.5; }
+
+    /*  FOOTER  */
+    .site-footer {
+      background: #3d2610;
+      color: rgba(255,248,231,0.4);
+      text-align: center;
+      padding: 1.2rem 2rem;
+      font-size: 0.74rem;
+      letter-spacing: 0.05em;
+    }
+
+    /*  MODAL  */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(50,24,6,0.75);
+      backdrop-filter: blur(7px);
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .modal-backdrop.open { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: var(--cream);
+      border-radius: 20px;
+      padding: 2.8rem 2.4rem;
+      max-width: 430px;
+      width: calc(100% - 3rem);
+      text-align: center;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+      transform: translateY(28px) scale(0.96);
+      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+      position: relative;
+    }
+    .modal-backdrop.open .modal { transform: translateY(0) scale(1); }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem; right: 1.2rem;
+      background: none; border: none;
+      font-size: 1.3rem;
+      color: var(--brown);
+      cursor: pointer;
+      opacity: 0.45;
+      transition: opacity 0.2s;
+    }
+    .modal-close:hover { opacity: 1; }
+
+    .modal-wheat-bar {
+      width: 40px; height: 4px;
+      background: var(--wheat);
+      border-radius: 2px;
+      margin: 0 auto 1.4rem;
+    }
+    .modal h3 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--brown-dark);
+      margin-bottom: 0.5rem;
+    }
+    .modal-desc {
+      font-size: 0.88rem;
+      color: #8a6040;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .action-cards { display: flex; flex-direction: column; gap: 1rem; }
+
+    .action-card {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      padding: 1.1rem 1.3rem;
+      border-radius: 13px;
+      text-decoration: none;
+      border: 2px solid transparent;
+      transition: transform 0.18s, box-shadow 0.18s, border-color 0.2s;
+      text-align: left;
+      cursor: pointer;
+    }
+    .action-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+
+    .card-30hr { background: #eef6eb; border-color: var(--green); }
+    .card-zhenshi { background: #f5ede0; border-color: var(--brown); }
+
+    .action-icon {
+      width: 50px; height: 50px;
+      border-radius: 11px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .card-30hr   .action-icon { background: var(--green); }
+    .card-zhenshi .action-icon { background: var(--brown); }
+
+    .action-text strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--brown-dark);
+      margin-bottom: 0.18rem;
+    }
+    .action-text span {
+      font-size: 0.76rem;
+      color: #8a6040;
+      line-height: 1.45;
+    }
+    .zhenshi-label {
+      font-family: 'Noto Sans TC', sans-serif;
+      letter-spacing: 0.06em;
+    }
   </style>
 </head>
 <body>
 
-  <!-- ══════════════════════════
-       HEADER
-       A simple bar at the top with the logo and nav links
-  ══════════════════════════ -->
-  <header class="header">
+<!-- ══════ HEADER ══════ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="#landing">
+      <svg class="logo-svg" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 34 Q23 10 42 34" stroke="#F4C542" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <line x1="2" y1="34" x2="44" y2="34" stroke="#F4C542" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="14" y1="34" x2="14" y2="18" stroke="#5A8F4C" stroke-width="2" stroke-linecap="round"/>
+        <ellipse cx="14" cy="15" rx="2.5" ry="4" fill="#5A8F4C" transform="rotate(-10 14 15)"/>
+        <ellipse cx="11.5" cy="20" rx="2" ry="3.2" fill="#5A8F4C" transform="rotate(-30 11.5 20)"/>
+        <ellipse cx="16.5" cy="20" rx="2" ry="3.2" fill="#5A8F4C" transform="rotate(30 16.5 20)"/>
+        <line x1="32" y1="34" x2="32" y2="18" stroke="#5A8F4C" stroke-width="2" stroke-linecap="round"/>
+        <ellipse cx="32" cy="15" rx="2.5" ry="4" fill="#5A8F4C" transform="rotate(10 32 15)"/>
+        <ellipse cx="29.5" cy="20" rx="2" ry="3.2" fill="#5A8F4C" transform="rotate(-30 29.5 20)"/>
+        <ellipse cx="34.5" cy="20" rx="2" ry="3.2" fill="#5A8F4C" transform="rotate(30 34.5 20)"/>
+        <circle cx="23" cy="26" r="3.5" fill="#F4C542" opacity="0.9"/>
+      </svg>
+      <span class="logo-wordmark">FoodBridge</span>
+    </a>
 
-    <!-- Logo (just text, no SVG) -->
-    <a class="logo-text" href="#landing">🌾 FoodBridge</a>
-
-    <!-- Navigation links -->
-    <ul class="nav">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#action">Take Action</a></li>
-      <li><a href="#about">About Us</a></li>
+    <ul class="nav-pills">
+      <li><a href="#home" id="nav-home">Home</a></li>
+      <li><a href="#about" id="nav-about">About Us</a></li>
     </ul>
+  </div>
+</header>
 
-  </header>
+<!-- ══════ LANDING ══════ -->
+<section id="landing">
+  <div class="landing-inner">
 
-
-  <!-- ══════════════════════════
-       LANDING SECTION
-       The first big screen visitors see
-  ══════════════════════════ -->
-  <section id="landing">
-
-    <!-- Large emoji as the "logo" -->
-    <span class="landing-emoji">🌾</span>
+    <!-- Big logo -->
+    <svg class="big-logo-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="FoodBridge logo">
+      <circle cx="60" cy="60" r="56" fill="rgba(244,197,66,0.05)" stroke="rgba(244,197,66,0.12)" stroke-width="1.5"/>
+      <path d="M14 84 Q60 30 106 84" stroke="#F4C542" stroke-width="6" stroke-linecap="round" fill="none"/>
+      <line x1="10" y1="84" x2="110" y2="84" stroke="#F4C542" stroke-width="5" stroke-linecap="round"/>
+      <!-- left stalk -->
+      <line x1="36" y1="84" x2="36" y2="52" stroke="#5A8F4C" stroke-width="4" stroke-linecap="round"/>
+      <ellipse cx="36" cy="45" rx="5.5" ry="9" fill="#5A8F4C" transform="rotate(-8 36 45)"/>
+      <ellipse cx="27" cy="57" rx="4.5" ry="7.5" fill="#5A8F4C" transform="rotate(-28 27 57)"/>
+      <ellipse cx="45" cy="57" rx="4.5" ry="7.5" fill="#5A8F4C" transform="rotate(28 45 57)"/>
+      <!-- right stalk -->
+      <line x1="84" y1="84" x2="84" y2="52" stroke="#5A8F4C" stroke-width="4" stroke-linecap="round"/>
+      <ellipse cx="84" cy="45" rx="5.5" ry="9" fill="#5A8F4C" transform="rotate(8 84 45)"/>
+      <ellipse cx="75" cy="57" rx="4.5" ry="7.5" fill="#5A8F4C" transform="rotate(-28 75 57)"/>
+      <ellipse cx="93" cy="57" rx="4.5" ry="7.5" fill="#5A8F4C" transform="rotate(28 93 57)"/>
+      <!-- center gem -->
+      <circle cx="60" cy="70" r="9" fill="#F4C542" opacity="0.93"/>
+      <path d="M56.5 70 Q60 64 63.5 70 Q60 76 56.5 70Z" fill="#8B5A2B"/>
+    </svg>
 
     <h1 class="landing-title">FoodBridge</h1>
-    <p class="landing-subtitle">Food Rescue Mission · 食物救援任務</p>
+    <p class="landing-sub">Food Rescue Mission · 食物救援任務</p>
 
-    <!-- Two buttons: one goes to Home, one to About -->
-    <div class="landing-buttons">
-      <a class="btn btn-yellow" href="#home">🏠 Home</a>
-      <a class="btn btn-outline" href="#about">About Us</a>
+    <div class="landing-btns">
+      <a class="btn btn-wheat" href="#home">🏠 Home</a>
+      <a class="btn btn-cream-outline" href="#about">About Us</a>
     </div>
+  </div>
+</section>
 
-  </section>
-
-
-  <!-- ══════════════════════════
-       HOME SECTION
-       Mission statement and food waste facts
-  ══════════════════════════ -->
-  <section id="home">
-
-    <!-- Small green label above the heading -->
-    <span class="badge">Our Mission</span>
-
+<!-- ══════ HOME ══════ -->
+<section id="home">
+  <div class="home-inner">
+    <span class="section-badge">Our Mission</span>
     <h2>Rescuing Food.<br>Restoring Dignity.</h2>
-    <p class="home-chant">Together we can stop hunger. 🌾</p>
+    <p class="chant">Together we can stop hunger. 🌾</p>
 
-    <!-- Body text paragraphs -->
     <p class="home-body">
       <strong>FoodBridge</strong> is a food rescue mission that bridges the gap between surplus food
       and those who need it most. Every day, tonnes of edible food are discarded while millions
@@ -408,66 +480,32 @@
       where no good food goes to waste and no one goes to bed hungry.
     </p>
 
-    <!-- 3 stat cards showing food waste facts -->
-    <div class="stat-row">
-      <div class="stat-card">
+    <div class="fact-row">
+      <div class="fact-card">
         <strong>733M</strong>
         <span>People face hunger globally</span>
       </div>
-      <div class="stat-card">
+      <div class="fact-card">
         <strong>1/3</strong>
         <span>Of all food produced is wasted</span>
       </div>
-      <div class="stat-card">
+      <div class="fact-card">
         <strong>2.5B</strong>
         <span>Tonnes wasted each year</span>
       </div>
     </div>
 
-    <!-- Button scrolls down to the Take Action section -->
-    <a class="btn btn-green" href="#action">❤️ Take Action</a>
+    <button class="btn btn-green" onclick="openModal()">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      Take Action
+    </button>
+  </div>
+</section>
 
-  </section>
-
-
-  <!-- ══════════════════════════
-       TAKE ACTION SECTION
-       Replaces the popup modal — now a plain section on the page
-  ══════════════════════════ -->
-  <section id="action">
-
-    <h2>Choose Your Action</h2>
-    <p>How would you like to make a difference today?</p>
-
-    <!-- Two option cards -->
-    <div class="action-options">
-
-      <!-- Option 1 -->
-      <a class="action-card" href="#30hr">
-        <span class="card-emoji">⏱️</span>
-        <strong>30HR Challenge</strong>
-        <span>Go 30 hours without food to experience hunger and raise awareness.</span>
-      </a>
-
-      <!-- Option 2 -->
-      <a class="action-card" href="#izhenshi">
-        <span class="card-emoji">🍱</span>
-        <strong>我珍食</strong>
-        <span>Cherish every meal — reduce food waste starting from home and school.</span>
-      </a>
-
-    </div>
-
-  </section>
-
-
-  <!-- ══════════════════════════
-       ABOUT SECTION
-  ══════════════════════════ -->
-  <section id="about">
-
-    <span class="badge">About Us</span>
-
+<!-- ══════ ABOUT US ══════ -->
+<section id="about">
+  <div class="about-inner">
+    <span class="section-badge">About Us</span>
     <h2>Why FoodBridge?</h2>
     <p class="about-intro">
       We are a student-driven initiative passionate about tackling food waste and hunger.
@@ -475,7 +513,6 @@
       The facts that drive us come from these trusted sources:
     </p>
 
-    <!-- 4 source cards -->
     <div class="sources-grid">
       <div class="source-card">
         <span class="source-icon">🌏</span>
@@ -498,20 +535,81 @@
         <p>Hunger relief &amp; aid programme research</p>
       </div>
     </div>
+  </div>
+</section>
 
-  </section>
+<!-- ══════ FOOTER ══════ -->
+<footer class="site-footer">
+  © 2025 FoodBridge · Food Rescue Mission &nbsp;·&nbsp;
+  Sources: World Vision · UN · FAO · World Food Programme
+</footer>
 
+<!-- ══════ TAKE ACTION MODAL ══════ -->
+<div class="modal-backdrop" id="actionModal" role="dialog" aria-modal="true" aria-label="Take Action">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+    <div class="modal-wheat-bar"></div>
+    <h3>Choose Your Action</h3>
+    <p class="modal-desc">How would you like to make a difference today?</p>
 
-  <!-- ══════════════════════════
-       FOOTER
-  ══════════════════════════ -->
-  <footer class="footer">
-    © 2025 FoodBridge · Food Rescue Mission &nbsp;·&nbsp;
-    Sources: World Vision · UN · FAO · World Food Programme
-  </footer>
+    <div class="action-cards">
+      <!-- 30HR -->
+      <a class="action-card card-30hr" href="#30hr" onclick="closeModal()">
+        <div class="action-icon">⏱️</div>
+        <div class="action-text">
+          <strong>30HR Challenge</strong>
+          <span>Go 30 hours without food to experience hunger and raise awareness in your community.</span>
+        </div>
+      </a>
 
+      <!-- 我珍食 -->
+      <a class="action-card card-zhenshi" href="#izhenshi" onclick="closeModal()">
+        <div class="action-icon">🍱</div>
+        <div class="action-text">
+          <strong class="zhenshi-label">我珍食</strong>
+          <span>Cherish every meal — learn to reduce food waste starting from home and school.</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
 
-  <!-- No JavaScript at all in this version! -->
+<script>
+  function openModal() {
+    document.getElementById('actionModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('actionModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Close on backdrop click
+  document.getElementById('actionModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+  // Close on Escape
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // Active nav on scroll
+  const navHome  = document.getElementById('nav-home');
+  const navAbout = document.getElementById('nav-about');
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      navHome.classList.remove('active');
+      navAbout.classList.remove('active');
+      if (entry.target.id === 'home')  navHome.classList.add('active');
+      if (entry.target.id === 'about') navAbout.classList.add('active');
+    });
+  }, { threshold: 0.5 });
+
+  ['home','about'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) obs.observe(el);
+  });
+</script>
 
 </body>
 </html>
