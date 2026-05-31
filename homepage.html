@@ -65,6 +65,33 @@
     .nav-pills a:hover,
     .nav-pills a.active { background: var(--wheat); color: var(--brown-dark); }
 
+    @media (max-width: 720px) {
+      .site-header {
+        padding: 0.75rem 0;
+      }
+      .header-inner {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+        padding: 0 1rem;
+        height: auto;
+      }
+      .logo {
+        width: 100%;
+        justify-content: center;
+      }
+      .nav-pills {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+      .nav-pills a {
+        padding: 0.38rem 0.9rem;
+        font-size: 0.82rem;
+      }
+    }
+
     /* SECTIONS */
     section {
       min-height: 100vh;
